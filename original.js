@@ -1,0 +1,116 @@
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+    window.onload = function() {
+
+		console.log("start onload function");
+
+		// var globalNextLeftArray = [425, 799, 1192, 1550, 1941, 2335, 2708, 3099, 3892, 4250, 4644, 5018, 5376]
+		//var globalNextLeftArray = []
+
+		runObserver();
+		$(window).on("resize", trimDiv);
+
+		//console.log("globalNextLeftArray is: " + globalNextLeftArray)
+		//insertCaption(globalNextLeftArray)
+		console.log("ready finished");
+
+    };
+
+  function insertCaption(nextLeftArray) {
+    var margin = 5
+    //nextLeftArray[0] = margin  // replace first value in list with margin width
+    nextLeftArray.unshift(margin)
+    nextLeftArray.pop();
+    // add 5 to each 
+    nextLeftArray.forEach( function(item, index) {
+            var extra = 4
+            item = item + margin + (extra * index)
+    }
+        )
+    console.log("nextLeftArray[0]")
+    console.log(nextLeftArray[0])
+    console.log(nextLeftArray)
+     var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];
+     oldCaptions = document.querySelectorAll("div.sqs-wrapper div");
+     console.log(oldCaptions.length)
+     oldCaptions.forEach(function(item, index) {
+         sqsWrapperOld.removeChild(oldCaptions[index]);
+     });
+     var array = nextLeftArray;
+     array.forEach(function(item, index) {
+       	 var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0];
+
+         var newDiv = document.createElement("div");
+         var content = document.createTextNode("<YOUR_CONTENT>");
+         var styleAttribute = document.createAttribute("style");
+         styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -7px;"
+         newDiv.setAttributeNode(styleAttribute); // add style to new div
+         newDiv.appendChild(content); // add text to new div
+         sqsWrapper.appendChild(newDiv); // add new div to wrapper
+
+     });
+ }
+    function trimDiv() {
+        console.log("trim div kicked in");
+        var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide");
+        if (imgs.length > 0) {
+
+        	var nextLeftArray = []
+
+            var widthTotal = 34; // margin on left and right of screen 
+            var border
+
+            for (var i = 0; i < imgs.length; i++) {
+                imgWidth = imgs[i].clientWidth;
+                widthTotal += imgWidth;
+                console.log(imgs[i].clientWidth);
+                console.log("total: " + widthTotal);
+                widthTotal += 12; // margin between images  REMOVE + BORDER IF GOES WRONG
+                nextLeftArray.push(widthTotal-34) // experiment with minus 34 minus 2 for border
+                console.log("with margin total: " + widthTotal);
+            }
+            var elemList = document.getElementsByClassName("sqs-wrapper");
+            elem = elemList[0];
+            console.log("setting maxWidth: " + widthTotal + "px")
+            elem.style.maxWidth = "" + widthTotal + "px";
+            console.log(nextLeftArray)
+            insertCaption(nextLeftArray)  // insert the captions possibly delay for a second?
+        };
+    };
+
+
+    function runObserver() {
+        console.log("start function runObserver");
+
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+        var element = document.querySelector('#content'); // valid one
+
+        var observer = new MutationObserver(function(mutations) {
+            console.log("start new observer");
+            mutations.forEach(function(mutation) {
+                console.log("mutation-type: " + mutation.type);
+                console.log("mutation-attributeName: " + mutation.attributeName);
+                if (mutation.attributeName == "data-image-resolution") {
+                    console.log("do something - attributes changed: " + mutation.attributeName);
+                    trimDiv();
+
+                }
+            });
+        });
+
+        observer.observe(element, {
+            attributes: true,
+            subtree: true,
+            attributeFilter: ['data-image-resolution'] //configure it to listen to attribute changes
+        });
+
+    }
+
+
+
+    console.log("script finished");
+</script>
+
+
