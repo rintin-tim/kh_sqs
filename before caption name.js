@@ -18,11 +18,10 @@
 
     };
 
-  function insertCaption(nextLeftArray, captionNames) {
+  function insertCaption(nextLeftArray) {
     //var margin = 0
     //nextLeftArray[0] = margin  // replace first value in list with margin width
-    captionArray = captionNames
-    nextLeftArray.unshift(0)
+    nextLeftArray.unshift("0")
     nextLeftArray.pop();
     // add 5 to each 
     nextLeftArray.forEach( function(item, index) {
@@ -45,10 +44,9 @@
        	 var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0];
 
          var newDiv = document.createElement("div");
-         var content = document.createTextNode(captionArray[index]);
-         //var content = document.createTextNode("<YOUR_CONTENT>");
+         var content = document.createTextNode("<YOUR_CONTENT>");
          var styleAttribute = document.createAttribute("style");
-         styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"
+         styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -7px; padding-left: 5px;"
          newDiv.setAttributeNode(styleAttribute); // add style to new div
          newDiv.appendChild(content); // add text to new div
          sqsWrapper.appendChild(newDiv); // add new div to wrapper
@@ -61,7 +59,6 @@
         if (imgs.length > 0) {
 
         	var nextLeftArray = []
-            var captionNames = []  // List of caption names
 
             var widthTotal = 34; // margin on left and right of screen 
             var border
@@ -72,8 +69,6 @@
                 console.log(imgs[i].clientWidth);
                 console.log("total: " + widthTotal);
                 widthTotal += 12; // margin between images  REMOVE + BORDER IF GOES WRONG
-                capName = imgs[i].getAttribute("alt")
-                captionNames.push(capName)
                 nextLeftArray.push(widthTotal-34) // experiment with minus 34 minus 2 for border
                 console.log("with margin total: " + widthTotal);
             }
@@ -83,7 +78,7 @@
             elem.style.maxWidth = "" + widthTotal + "px";
             console.log(nextLeftArray)
            // console.log("trigger caption")
-            insertCaption(nextLeftArray, captionNames)  // insert the captions possibly delay for a second?
+            insertCaption(nextLeftArray)  // insert the captions possibly delay for a second?
         };
     };
 
@@ -123,12 +118,5 @@
 
 
 
-// resize for mobile   
 
-// div.sqs-gallery-container.sqs-gallery-block-slider
-// height: 150%;  
-  
-// img: 95%
 
-// then shove in the caption rules
-  
