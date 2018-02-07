@@ -8,7 +8,7 @@
 		// var globalNextLeftArray = [425, 799, 1192, 1550, 1941, 2335, 2708, 3099, 3892, 4250, 4644, 5018, 5376]
 		//var globalNextLeftArray = []
 
-        trimDiv();
+        // trimDiv();
 		runObserver();
 		$(window).on("resize", trimDiv);
 
@@ -71,19 +71,26 @@
                 widthTotal += imgWidth;
                 console.log(imgs[i].clientWidth);
                 console.log("total: " + widthTotal);
-                widthTotal += 12; // margin between images  REMOVE + BORDER IF GOES WRONG
+                widthTotal += 12; // margin between images used to be 10!
                 capName = imgs[i].getAttribute("alt")
                 captionNames.push(capName)
-                nextLeftArray.push(widthTotal-34) // experiment with minus 34 minus 2 for border
+                nextLeftArray.push(widthTotal-34) 
                 console.log("with margin total: " + widthTotal);
             }
-            var elemList = document.getElementsByClassName("sqs-wrapper");
-            elem = elemList[0];
-            console.log("setting maxWidth: " + widthTotal + "px")
-            elem.style.maxWidth = "" + widthTotal + "px";
-            console.log(nextLeftArray)
-           // console.log("trigger caption")
-            insertCaption(nextLeftArray, captionNames)  // insert the captions possibly delay for a second?
+            // UNTESTED INNERWIDTH
+            if (window.innerWidth < 1368) {
+                var elemList = document.getElementsByClassName("sqs-wrapper");
+                elem = elemList[0];
+                console.log("setting maxWidth: " + widthTotal + "px")
+                elem.style.maxWidth = "" + widthTotal + "px";
+                console.log(nextLeftArray)
+            }
+           
+           // UNTESTED PORTRAIT PAGE ELEMENT
+            portraitPage = document.getElementById("NEED ID")  
+            if (portraitPage) {
+                insertCaption(nextLeftArray, captionNames)  // insert the captions possibly delay for a second?
+            }
         };
     };
 
