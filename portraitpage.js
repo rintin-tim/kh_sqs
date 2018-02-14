@@ -31,8 +31,9 @@
         
         console.log(nextLeftArray)
          var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];
-         oldCaptions = document.querySelectorAll("div.sqs-wrapper div");
-         console.log(oldCaptions.length)
+         oldCaptions = document.querySelectorAll("div.sqs-wrapper div"); // OLD IMPORTANT
+        // oldCaptions = document.querySelectorAll("div.sqs-wrapper img span");
+         console.log("old captions: " + oldCaptions.length)
          oldCaptions.forEach(function(item, index) {
              sqsWrapperOld.removeChild(oldCaptions[index]);
          });
@@ -42,14 +43,17 @@
 
              var newDiv = document.createElement("div");
              var content = document.createTextNode(captionArray[index]);
-             //var content = document.createTextNode("<YOUR_CONTENT>");
              var styleAttribute = document.createAttribute("style");
-             styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"
+            styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"
              newDiv.setAttributeNode(styleAttribute); // add style to new div
-             newDiv.appendChild(content); // add text to new div
+            newDiv.appendChild(content); // add text to new div
              sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
          });
+         //var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0];
+         //var newDiv = document.createElement("h4");
+         //$( ".sqs-wrapper" ).prepend( "<span>Test</span" ); // !IMPORTANT prepend worked with span
+         //sqsWrapper.appendChild(newDiv); // add new div to wrapper
      }
         function trimDiv() {
             console.log("trim div kicked in");
@@ -81,7 +85,19 @@
                     console.log("setting maxWidth: " + widthTotal + "px")
                     elem.style.maxWidth = "" + widthTotal + "px";
                     console.log(nextLeftArray)
+                } else {
+                    lastImage = imgs[imgs.length - 1];
+                    secondLastImage = imgs[imgs.length - 2];
+                    lastAttribute = document.createAttribute("style")
+                    lastAttribute.value = "pointer-events: none"
+                    lastImage.setAttributeNode(lastAttribute)
+                    //secondLastAttribute = document.createAttribute("class")
+                    secondLastImage.classList.add("no-click");
+              //      secondLastAttribute.value = "no-click"
+                //    secondLastImage.setAttributeNode(secondLastAttribute)
+                    console.log("lastImage set to nonePointer")
                 }
+
                
                // UNTESTED PORTRAIT PAGE ELEMENT
                 portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")  
