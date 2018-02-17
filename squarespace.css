@@ -75,18 +75,20 @@ pointer-events: none;
     height: 77%;
   }
   
-  img.sqs-gallery-design-strip-slide {
+  #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+  height: 95.0% !important
+}
+img.sqs-gallery-design-strip-slide {
     height: 95% !important;
+  }
+
+  div.sqs-wrapper div {
+    bottom: -3px;
   }
 }
 
 @media screen and (max-width: 1367px) {
 
-//#collection-5a52a4c753450aea1728c820 {
-//   pointer-events: none; 
-//  }
-
-  
   
 div.mobile-bar-wrapper {
   height: 60px;
@@ -123,15 +125,84 @@ div.sqs-block-content.sqs-intrinsic  {
 }
   
 #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
-	padding-bottom: 71% !important
+	padding-bottom: 70% !important
 }
 
 #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-	height: 91% !important
+	height: 95.0% !important
 }
+
+div.sqs-wrapper div {
+    bottom: 15px;
+    font-size: 13px !important;
+  }
     
-//div.sqs-wrapper {
-// max-width: 1741px !important;
- // cursor: default;
-// }
+}
+
+@media screen and (max-width: 767px) {
+  #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 71% !important;
+}
+
+  div.sqs-wrapper div {
+    bottom: -7px !important;
+    font-size: 13px !important;
+}
+
+#collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+  height: 94.5% !important
+}
+
+}
+
+@media screen and (max-width: 520px) {
+  #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 72% !important;
+}
+
+  div.sqs-wrapper div {
+    bottom: -8px !important;
+    font-size: 13px !important;
+}
+
+#collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+  height: 92.0% !important
+}
+
+
+}
+
+@media screen and (max-width: 480px) {
+  #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 72% !important;
+}
+
+  div.sqs-wrapper div {
+    bottom: -8px !important;
+    font-size: 12px !important;
+}
+
+#collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+  height: 92.0% !important
+}
+
+
+}
+
+
+@media screen and (max-width: 375px) {
+  #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 73% !important;
+}
+
+  div.sqs-wrapper div {
+    bottom: -8px !important;
+    font-size: 10px !important;
+}
+
+#collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+  height: 91.0% !important
+}
+
+
 }
