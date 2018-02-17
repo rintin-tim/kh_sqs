@@ -1,4 +1,4 @@
-@font-face {
+  @font-face {
     font-family: 'TheanoDidot-Regular';
        src: url(https://static1.squarespace.com/static/596001f7bf629a7384f21d69/t/5a52361b419202e32436f231/1515337244406/TheanoDidot-Regular.ttf);
     font-weight: 400;
@@ -45,16 +45,16 @@ div#page-599074c5db29d643eb09aada {
 }
 
 div#block-f789a21e80cc735f521a {
-	font-family: 'TheanoDidot-Regular' !important;
+  font-family: 'TheanoDidot-Regular' !important;
     padding-top: 22vh;
     padding-left: 20vw;
     padding-right: 20vw;
-  	font-size: 1.7vw;
+    font-size: 1.7vw;
   
 }
 
 div#block-f789a21e80cc735f521a h2 {
-	font-family: 'TheanoDidot-Regular' !important;
+  font-family: 'TheanoDidot-Regular' !important;
   font-size: 1.5vw;
   color: #383838 !important;
 }
@@ -120,24 +120,40 @@ div.sqs-wrapper img {
   pointer-events: none; 
 }  
 
-div.sqs-block-content.sqs-intrinsic  {
-//    padding-bottom: 65% !important;
-}
   
 #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
-	padding-bottom: 70% !important
-}
-
-#collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-	height: 95.0% !important
+  padding-bottom: 70% !important
 }
 
 div.sqs-wrapper div {
-    bottom: 15px;
+    bottom: 8px;
     font-size: 13px !important;
   }
-    
+
+
+#collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+  height: 95.0% !important
 }
+
+}
+
+@media screen and (max-width: 1024px) {
+  #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 71% !important;
+}
+
+  div.sqs-wrapper div {
+    bottom: -7px !important;
+    font-size: 13px !important;
+}
+
+#collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+  height: 94.5% !important
+}
+
+}
+
+
 
 @media screen and (max-width: 767px) {
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
