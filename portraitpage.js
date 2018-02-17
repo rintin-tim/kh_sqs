@@ -78,15 +78,16 @@
                     nextLeftArray.push(widthTotal-34) 
                     console.log("with margin total: " + widthTotal);
                 }
-                // UNTESTED INNERWIDTH
+                
                 console.log("innerWidth: " + window.innerWidth)
-                if (window.innerWidth < 1368) {
+                // if (window.innerWidth < 1024) {
+                //if (window.innerWidth < 1368) {
                     var elemList = document.getElementsByClassName("sqs-wrapper");
                     elem = elemList[0];
                     console.log("setting maxWidth: " + widthTotal + "px")
                     elem.style.maxWidth = "" + widthTotal + "px";
                     console.log(nextLeftArray)
-                } else {
+                // } else {
                     lastImage = imgs[imgs.length - 1];
                     secondLastImage = imgs[imgs.length - 2];
                     lastAttribute = document.createAttribute("style")
@@ -97,7 +98,7 @@
               //      secondLastAttribute.value = "no-click"
                 //    secondLastImage.setAttributeNode(secondLastAttribute)
                     console.log("lastImage set to nonePointer")
-                }
+                // }
 
                
                // UNTESTED PORTRAIT PAGE ELEMENT
@@ -141,8 +142,6 @@
 
         console.log("script finished");
 
-        // set max width after inserting the captions
-    // then use observer to set max wdth after left padding on sqs wrapper changes 
     </script>
 
 
