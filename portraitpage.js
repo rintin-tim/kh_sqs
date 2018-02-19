@@ -44,17 +44,13 @@
              var newDiv = document.createElement("div");
              var content = document.createTextNode(captionArray[index]);
              var styleAttribute = document.createAttribute("style");
-            // styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"
+            
             styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"
              newDiv.setAttributeNode(styleAttribute); // add style to new div
             newDiv.appendChild(content); // add text to new div
              sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
          });
-         //var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0];
-         //var newDiv = document.createElement("h4");
-         //$( ".sqs-wrapper" ).prepend( "<span>Test</span" ); // !IMPORTANT prepend worked with span
-         //sqsWrapper.appendChild(newDiv); // add new div to wrapper
      }
         function trimDiv() {
             console.log("trim div kicked in");
@@ -77,6 +73,7 @@
                     captionNames.push(capName)
                     nextLeftArray.push(widthTotal-34) 
                     console.log("with margin total: " + widthTotal);
+                    imgs[i].classList.add("border-fade")
                 }
                 
                 console.log("innerWidth: " + window.innerWidth)
