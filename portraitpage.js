@@ -73,7 +73,12 @@
                     captionNames.push(capName)
                     nextLeftArray.push(widthTotal-34) 
                     console.log("with margin total: " + widthTotal);
-                    imgs[i].classList.add("border-fade")
+                    imgs[i].classList.add("border-fade");
+                    // imgs[i].addEventListener("click", function(event) {
+                    //     console.log('You Clicked Me');
+                    //     event.stopPropagation();
+
+                    // }, false )
                 }
                 
                 console.log("innerWidth: " + window.innerWidth)
@@ -89,12 +94,38 @@
                     secondLastImage = imgs[imgs.length - 2];
                     lastAttribute = document.createAttribute("style")
                     lastAttribute.value = "pointer-events: none"
-                    lastImage.setAttributeNode(lastAttribute)
-                    //secondLastAttribute = document.createAttribute("class")
-                    secondLastImage.classList.add("no-click");
-              //      secondLastAttribute.value = "no-click"
-                //    secondLastImage.setAttributeNode(secondLastAttribute)
+
+                    lastImage.classList.add("last-image")
+
+                // imgs.forEach( function(item, index) {
+                //     item.addEventListener("click", function() {
+                //         console.log('You Clicked Me');
+                //     }, true )
+                // } 
+                // )
+                
+
+                    // TO INVESTIGATE - STOP CLICK AND RESET BANNER POSITION
+
+                    // $('img').on("click", function (e) {
+                    //   e.stopImmediatePropagation();
+                    //   e.stopPropagation();
+                    //   e.preventDefault();
+                    //   var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0];
+                    //     console.log('You Clicked Me');
+                    //     sqsWrapper.style.left = "0px"
+                      
+                    // });
+
+                    //lastImage.setAttributeNode(lastAttribute) - USING                    
+                    //secondLastImage.classList.add("no-click"); - USING
+
+                    //secondLastAttribute = document.createAttribute("class") - DELETE
+              //      secondLastAttribute.value = "no-click" - DELETE
+                //    secondLastImage.setAttributeNode(secondLastAttribute) - DELETE
                     console.log("lastImage set to nonePointer")
+
+                    // if lastImage has sqs-active-slide - set div.sqs-wrapper left margin to 0px (try !important?) (or try setAttribute syntax?) or try creating a string with all needed values
                 // }
 
                
