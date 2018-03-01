@@ -46,9 +46,10 @@
              var styleAttribute = document.createAttribute("style");
             
             styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"
-             newDiv.setAttributeNode(styleAttribute); // add style to new div
+            newDiv.setAttributeNode(styleAttribute); // add style to new div
             newDiv.appendChild(content); // add text to new div
-             sqsWrapper.appendChild(newDiv); // add new div to wrapper
+            //newDiv.classList.add("fade")
+            sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
          });
      }

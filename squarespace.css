@@ -121,16 +121,16 @@ div.sqs-wrapper img {
 
 @media screen and (max-width: 375px) and (min-width: 0px) {
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
-    padding-bottom: 73% !important;
+    padding-bottom: 75% !important;
 }
 
   div.sqs-wrapper div {
-    bottom: -8px !important;
+    bottom: -6px !important;
     font-size: 14px !important;
 }
 
 #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-  height: 91.0% !important
+  height: 88.5% !important
 }
 
 
@@ -139,16 +139,16 @@ div.sqs-wrapper img {
 
 @media screen and (max-width: 480px) and (min-width: 376px) {
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
-    padding-bottom: 72% !important;
+    padding-bottom: 74% !important;
 }
 
   div.sqs-wrapper div {
-    bottom: -8px !important;
+    bottom: -6px !important;
     font-size: 14px !important;
 }
 
 #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-  height: 92.0% !important
+  height: 90.0% !important
 }
 
 
@@ -157,16 +157,16 @@ div.sqs-wrapper img {
 
 @media screen and (max-width: 520px) and (min-width: 481px){
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
-    padding-bottom: 72% !important;
+    padding-bottom: 73% !important;
 }
 
   div.sqs-wrapper div {
-    bottom: -8px !important;
+    bottom: -6px !important;
     font-size: 14px !important;
 }
 
 #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-  height: 92.0% !important
+  height: 90.5% !important
 }
 
 
@@ -176,16 +176,16 @@ div.sqs-wrapper img {
 
 @media screen and (max-width: 767px) and (min-width: 521px) {
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
-    padding-bottom: 71% !important;
+    padding-bottom: 73% !important;
 }
 
   div.sqs-wrapper div {
-    bottom: -7px !important;
+    bottom: -6px !important;
     font-size: 14px !important;
 }
 
 #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-  height: 94.5% !important
+  height: 92.5% !important
 }
 
 }
@@ -193,16 +193,16 @@ div.sqs-wrapper img {
 
 @media screen and (max-width: 1023px) and (min-width: 768px) {
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
-    padding-bottom: 71% !important;
+    padding-bottom: 73% !important;
 }
 
   div.sqs-wrapper div {
-    bottom: -7px !important;
+    bottom: -6px !important;
     font-size: 14px !important;
 }
 
 #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-  height: 94.5% !important
+  height: 92.5% !important
 }
 
 }
@@ -246,13 +246,13 @@ div.sqs-wrapper img {
   }
   
 div.sqs-wrapper div { 
-    bottom: 8px;
+    bottom: 10px !important;
     font-size: 15px !important;
   }
 
 
 #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-  height: 93.5% !important;
+  height: 90.5% !important;
 }
 
 
@@ -278,20 +278,20 @@ div.sqs-wrapper div {
 
   
   #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-  height: 93.5% !important;
+  height: 91.5% !important;
 }
  img.sqs-gallery-design-strip-slide {
  /*   height: 95% !important; */
   }
 
   div.sqs-wrapper div {
-    bottom: -3px;
-    font-size: 15px !important;
+    bottom: 10px !important;
+    font-size: 16px !important;
   }
 
 #block-7f03ff4308643ff77c18 {
   position: fixed;
-  bottom: 5px;
+  bottom: 0px;
 }
 
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
@@ -304,8 +304,8 @@ div.sqs-wrapper div {
 @media screen and (min-width: 1920px) {
   
   div.sqs-wrapper div {
-    bottom: -3px;
-    font-size: 16px !important;
+    bottom: 15px !important;
+    font-size: 18px !important;
   }
 
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
@@ -334,6 +334,16 @@ div.sqs-wrapper div {
 }
 
 /*
+
+div.sqs-wrapper div {
+  opacity: 0;
+}
+
+div.sqs-wrapper div.fade {
+  opacity: 1;
+  -webkit-transition: opacity 2s ease 0.5s;
+  transition: opacity 2s ease 0.5s;
+}
 
 div.sqs-wrapper div {
   opacity: 0;
