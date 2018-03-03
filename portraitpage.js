@@ -88,7 +88,9 @@
                     var elemList = document.getElementsByClassName("sqs-wrapper");
                     elem = elemList[0];
                     console.log("setting maxWidth: " + widthTotal + "px")
+                    console.log("wait 2 secs")
                     elem.style.maxWidth = "" + widthTotal + "px";
+                    // setTimeout(function() { elem.style.maxWidth = "" + widthTotal + "px"; }, 2000)
                     console.log(nextLeftArray)
                 // } else {
                     lastImage = imgs[imgs.length - 1];
