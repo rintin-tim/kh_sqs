@@ -72,18 +72,6 @@ div.sqs-gallery div.sqs-wrapper img.border-fade {
   transition: border 2s ease 0.5s;
 }
 
-div.sqs-gallery div.sqs-wrapper img {
-  opacity: 0;
-  /*-webkit-transition: border 2s ease 0.5s;
-  transition: border 2s ease 0.5s;*/
-}
-
-div.sqs-gallery div.sqs-wrapper img.loaded {
-  opacity: 1;
-  -webkit-transition: border 2s ease 0.5s;
-  transition: border 2s ease 0.5s;
-}
-
 
 /*REMOVE WHEN TESTING BANNER RESET*/
 #collection-5a52a4c753450aea1728c820 div.sqs-wrapper img.sqs-active-slide.last-image {
@@ -101,9 +89,6 @@ div.mobile-bar-wrapper {
   padding-top:10px;
 }
 
-div#site {
-  top-padding: 60px;
-}
   
 .sqs-gallery-container {
   overflow: hidden;
@@ -246,6 +231,11 @@ div.sqs-wrapper img {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
+div#site {
+  padding-top: 60px !important;
+}
+
 
 #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
   height: 73vh !important;
