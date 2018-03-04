@@ -206,6 +206,17 @@ div.sqs-wrapper img {
 
 /*landscape devices*/
 @media screen and (max-width: 1023px) and (orientation: landscape) {
+  /*nav bar*/
+  div.mobile-bar-wrapper {
+    height: 50px;
+    padding-top:8px;
+    padding-bottom: 2px;
+  }
+
+  .mobile-logo-image img {
+    max-width: 95%;
+  }
+
   /*footer*/
   #collection-5a52a4c753450aea1728c820 #block-7f03ff4308643ff77c18 {
   padding-top: 0px !important;
@@ -219,7 +230,7 @@ div.sqs-wrapper img {
 }
 
   div.sqs-block-gallery {
-  padding-bottom: 0px !important;
+  padding-bottom: 0px !important; 
 }
 
 #footer {
@@ -233,7 +244,7 @@ div.sqs-wrapper img {
 }
 
 div#site {
-  padding-top: 60px !important;
+  padding-top: 100px !important;
 }
 
 
