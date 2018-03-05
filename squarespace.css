@@ -117,16 +117,25 @@ div.sqs-wrapper img {
 
 
 @media screen and (max-width: 375px) and (min-width: 0px) {
+
+/* other work page image containers */  
   div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 67% !important;
+}
+
+/* portrait page image container */
+  #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
     padding-bottom: 75% !important;
 }
 
+/* portrait caption div position */
   div.sqs-wrapper div {
     bottom: -6px !important;
     font-size: 14px !important;
 }
 
-  img.sqs-gallery-design-strip-slide {
+  /*NOTE FLickering is caused by this not being 100% */
+  #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
     height: 88.5% !important
 }
 
@@ -135,8 +144,14 @@ div.sqs-wrapper img {
 
 
 @media screen and (max-width: 480px) and (min-width: 376px) {
-  /*NOTE FLickering is caused by changing THIS OR */
+
+  /* other work page image containers */  
   div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 66% !important;
+}
+
+  
+  #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
     padding-bottom: 74% !important;
 }
 
@@ -145,8 +160,8 @@ div.sqs-wrapper img {
     font-size: 14px !important;
 }
 
-/*THIS*/
- img.sqs-gallery-design-strip-slide {
+
+ #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
   height: 90.0% !important
 }
 
@@ -155,6 +170,13 @@ div.sqs-wrapper img {
 
 
 @media screen and (max-width: 520px) and (min-width: 481px){
+
+  /* other work page image containers */  
+  div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 65% !important;
+}
+
+
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
     padding-bottom: 73% !important;
 }
@@ -174,6 +196,13 @@ div.sqs-wrapper img {
 
 
 @media screen and (max-width: 767px) and (min-width: 521px) {
+
+  /* other work page image containers */  
+  div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 65% !important;
+}
+
+
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
     padding-bottom: 73% !important;
 }
@@ -191,6 +220,13 @@ div.sqs-wrapper img {
 
 
 @media screen and (max-width: 1023px) and (min-width: 768px) {
+
+  /* other work page image containers */  
+  div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 65% !important;
+}
+
+
   #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
     padding-bottom: 73% !important;
 }
@@ -266,6 +302,13 @@ div#site {
 /*@media screen and (max-width: 699px) and (min-width: 520px)*/
 @media screen and (max-width: 1367px) and (min-width: 1024px) {
 
+/* other work page image containers */  
+div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
+    /*height: 80%;*/
+    height: 79vh;
+  }
+
+
   #collection-5a52a4c753450aea1728c820 div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
     /*height: 80%;*/
     height: 79vh;
@@ -297,6 +340,13 @@ div.sqs-wrapper div {
 
 /* all screens above 1367px */
 @media screen and (min-width: 1368px) {
+
+/* other work page image containers */  
+div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
+    /*height: 80%;*/
+    height: 79vh;
+  }
+
   #collection-5a52a4c753450aea1728c820 div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
     /*height: 80%;*/
     height: 79vh;
@@ -328,6 +378,11 @@ div.sqs-wrapper div {
 }
 
 @media screen and (min-width: 1920px) {
+
+  /* other work page image containers */  
+div.sqs-block-content.sqs-intrinsic {
+    padding-bottom: 0px !important;
+}
   
   div.sqs-wrapper div {
     bottom: 15px !important;
