@@ -75,11 +75,16 @@ div.sqs-gallery div.sqs-wrapper img.border-fade {
 }
 
 
-/* Prevent click on last slide */
+/* Prevent click on last slide of portraits */
 #collection-5a52a4c753450aea1728c820 div.sqs-wrapper img.sqs-active-slide.last-image {
 pointer-events: none;
 }
 
+
+/*Flickering on portriat is caused by height of img not being 100% - this compensates */
+  #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+    margin-bottom: 5%;
+}
 
 /* scroll overflow for mobile */
 @media screen and (max-width: 1024px) {
@@ -155,7 +160,8 @@ div.sqs-wrapper img {
 
   /*NOTE FLickering is caused by this not being 100% */
   #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-    height: 88.5% !important
+    height: 88.5% !important;
+    /*margin-bottom: 5%;*/
 }
 
 
@@ -323,7 +329,25 @@ div.sqs-block-content.sqs-intrinsic {
 }
 
 
+
 }
+
+/*landscape addition - covers end of mobile nav to ipad landscape threshold (test on iphone x) - needs fleshing out OR use mobile nav until 1023px! */
+@media screen and (max-width: 1023px) and (min-width: 769px) and (orientation: landscape) {
+
+  div#site {
+    padding-top: 5px !important;
+}
+
+/*for caption - keep in line with image height - maybe roll this out to further media queries?*/
+#collection-5a52a4c753450aea1728c820 div.sqs-wrapper {
+  height: 82vh;
+}
+
+
+
+}
+
 
 
 /*@media screen and (max-width: 699px) and (min-width: 520px)*/
