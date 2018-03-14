@@ -278,13 +278,13 @@
          height: 73vh !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-         height: 73vh !important;
+         height: 63vh !important;
     }
      div.sqs-block-content.sqs-intrinsic {
          padding-bottom: 49% !important;
     }
      #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
-         padding-bottom: 49% !important;
+         padding-bottom: 69vh !important;
     }
 }
 /*landscape addition - covers end of mobile nav to ipad landscape threshold (test on iphone x) - needs fleshing out OR use mobile nav until 1023px! */
@@ -292,19 +292,20 @@
      div#site {
          padding-top: 5px !important;
     }
-    /*for caption - keep in line with image height - maybe roll this out to further media queries?*/
+
+    /* (REMOVE HERE DOWN) for caption - keep in line with image height - maybe roll this out to further media queries?*/
      #collection-5a52a4c753450aea1728c820 div.sqs-wrapper {
          height: 82vh;
     }
  }
 
- /*<< TESTING NOW @ 481 x 360<<*/
+ /*<< IS THIS NEEDED? TRY COMMENTING OUT>>*/
      @media screen and (max-width: 600px) and (orientation: landscape) {
          #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
              height: 73vh !important;
         }
          #collection-5a52a4c753450aea1728c820 div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
-             height: 83vh;
+             height: 69vh;
         }
         /*footer*/
          #block-7f03ff4308643ff77c18 {
@@ -344,5 +345,5 @@
              padding-bottom: 0px !important;
         }
     }
-    
+
      
