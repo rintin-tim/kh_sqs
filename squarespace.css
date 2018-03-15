@@ -264,6 +264,8 @@
     }
 }
 /*landscape devices*/
+
+
  @media screen and (max-width: 1023px) and (orientation: landscape) {
     /*nav bar*/
      div.mobile-bar-wrapper {
@@ -275,14 +277,15 @@
          max-width: 95%;
     }
     /*footer*/
-  /*   #block-7f03ff4308643ff77c18 {
+     #block-7f03ff4308643ff77c18 {
          padding-top: 0px !important;
          padding-bottom: 0px !important;
-         position: relative;
+         position: fixed;
          bottom: 0px;
          left: 0;
          right: 0;
-    }*/
+    }
+    /* being overwritten */
      div.sqs-block-gallery {
          padding-bottom: 0px !important;
     }
@@ -311,6 +314,19 @@
          padding-bottom: 69vh !important;
     }
 }
+
+/* relative footer with small heights*/
+@media screen and (max-width: 1023px) and (max-height: 400px) and (orientation: landscape) {  
+    #block-7f03ff4308643ff77c18 {
+         padding-top: 0px !important;
+         padding-bottom: 0px !important;
+         position: relative;
+         bottom: 0px;
+         left: 0;
+         right: 0;
+    }
+}
+
 /*landscape addition - covers end of mobile nav to ipad landscape threshold (test on iphone x) - needs fleshing out OR use mobile nav until 1023px! */
  @media screen and (max-width: 1023px) and (min-width: 769px) and (orientation: landscape) {
      div#site {
