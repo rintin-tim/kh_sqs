@@ -98,30 +98,38 @@
      padding-top: 0px !important;
      padding-bottom: 0px !important;
      position: fixed;
-     bottom: 5px;
+     bottom: 0px;
      left: 0;
      right: 0;
 }
  #footer .text-align-center {
-     font-size: 12px;
+     font-size: 10px;
 }
 
 
-/* all screens above 1367px */
-     @media screen and (min-width: 1368px) {
+/*@media screen and (max-width: 1367px) and (min-width: 1024px) {
+
+ #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+             height: 91.5% !important;
+        }
+}*/
+
+/*@media screen and (min-width: 1368px) {*/
+/* USED TO BE all screens above 1367px */
+     @media screen and (min-width: 1024px) {
         /* other work page image containers */
          div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
             /*height: 80%;
             */
-             height: 79vh;
+             height: 76vh;
         }
          #collection-5a52a4c753450aea1728c820 div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
             /*height: 80%;
             */
-             height: 79vh;
+             height: 76vh;
         }
          #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-             height: 91.5% !important;
+             height: 91.0% !important;
         }
          img.sqs-gallery-design-strip-slide {
             /* height: 95% !important;
@@ -129,7 +137,7 @@
         }
          div.sqs-wrapper div {
              bottom: 10px !important;
-             font-size: 16px !important;
+             font-size: 11px !important;
         }
          #block-7f03ff4308643ff77c18 {
              position: fixed;
@@ -137,6 +145,9 @@
         }
          #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
              padding-bottom: 0px !important;
+        }
+         #footer .text-align-center {
+             font-size: 11px !important;
         }
     }
      @media screen and (min-width: 1920px) {
@@ -146,15 +157,16 @@
         }
          div.sqs-wrapper div {
              bottom: 15px !important;
-             font-size: 18px !important;
+             font-size: 12px !important;
         }
          #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
              padding-bottom: 0px !important;
         }
          #footer .text-align-center {
-             font-size: 14px !important;
+             font-size: 12px !important;
         }
     }
+
  @media screen and (max-width: 375px) and (min-width: 0px) {
     /* other work page image containers */
      div.sqs-block-content.sqs-intrinsic {
@@ -167,7 +179,7 @@
     /* portrait caption div position */
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 14px !important;
+         font-size: 10px !important;
     }
     /*NOTE FLickering is caused by this not being 100% */
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
@@ -186,7 +198,7 @@
     }
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 14px !important;
+         font-size: 10px !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 90.0% !important 
@@ -202,7 +214,7 @@
     }
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 14px !important;
+         font-size: 10px !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 90.5% !important 
@@ -218,12 +230,23 @@
     }
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 14px !important;
+         font-size: 10px !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 92.5% !important 
     }
 }
+
+/*for mobile menu only!! */
+ @media screen and (max-width: 767px) {
+    /*reduce gap between menu and carousel*/
+    #collection-5a52a4c753450aea1728c820 #page {
+        margin-top: 10px;
+    }
+
+ }
+
+
  @media screen and (max-width: 1023px) and (min-width: 768px) {
     /* other work page image containers */
      div.sqs-block-content.sqs-intrinsic {
@@ -234,7 +257,7 @@
     }
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 14px !important;
+         font-size: 10px !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 92.5% !important 
@@ -252,14 +275,14 @@
          max-width: 95%;
     }
     /*footer*/
-     #block-7f03ff4308643ff77c18 {
+  /*   #block-7f03ff4308643ff77c18 {
          padding-top: 0px !important;
          padding-bottom: 0px !important;
          position: relative;
-         bottom: 5px;
+         bottom: 0px;
          left: 0;
          right: 0;
-    }
+    }*/
      div.sqs-block-gallery {
          padding-bottom: 0px !important;
     }
@@ -271,8 +294,9 @@
          padding-top: 0px;
          padding-bottom: 0px;
     }
-     div#site {
-         padding-top: 100px !important;
+ 
+    div#site {
+         padding-top: 0px !important;
     }
      img.sqs-gallery-design-strip-slide {
          height: 73vh !important;
@@ -294,3 +318,5 @@
     }
 
  }
+
+ /*ok at under 1024. look at 1024 onwards. */
