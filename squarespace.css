@@ -29,6 +29,19 @@
      color: #383838 !important;
      font-size: 1.5vw !important;
 }
+
+/*main navigation*/
+#mainNavWrapper {
+    padding-right: 1.0vw !important;
+
+}
+
+div.logo-image {
+    padding-left: 1.5vw !important;
+    padding-top: 5px !important;
+}
+/*main navigation end*/
+
  div#page-599074c5db29d643eb09aada {
      margin-left: 10%;
      margin-right: 10% 
@@ -45,6 +58,8 @@
      font-size: 1.5vw;
      color: #383838 !important;
 }
+
+/* galllery image spacing*/
  div.sqs-gallery div.sqs-wrapper img {
      margin-left: 5px;
      margin-right: 5px;
@@ -53,6 +68,8 @@
      animation: borderfade 2s;
     */
 }
+
+/* galllery image borders*/
  div.sqs-gallery div.sqs-wrapper img.border-fade {
      border: 1px solid #eae7e7 !important;
      -webkit-transition: border 2s ease 0.5s;
@@ -62,10 +79,17 @@
  #collection-5a52a4c753450aea1728c820 div.sqs-wrapper img.sqs-active-slide.last-image {
      pointer-events: none;
 }
+
 /*Flickering on portriat is caused by height of img not being 100% - this compensates */
- #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
+img.sqs-gallery-design-strip-slide {
+     margin-bottom: 7%;
+}
+
+/*#collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
      margin-bottom: 5%;
 }
+*/
+
 /* scroll overflow for mobile */
  @media screen and (max-width: 1024px) {
      div.mobile-bar-wrapper {
@@ -107,6 +131,9 @@
 }
 
 
+
+
+
 /*@media screen and (max-width: 1367px) and (min-width: 1024px) {
 
  #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
@@ -114,26 +141,22 @@
         }
 }*/
 
-/*@media screen and (min-width: 1368px) {*/
+
 /* USED TO BE all screens above 1367px */
      @media screen and (min-width: 1024px) {
         /* other work page image containers */
          div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
-            /*height: 80%;
-            */
-             height: 76vh;
+             height: 70vh;
         }
          #collection-5a52a4c753450aea1728c820 div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
-            /*height: 80%;
-            */
              height: 76vh;
         }
          #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
              height: 91.0% !important;
         }
          img.sqs-gallery-design-strip-slide {
-            /* height: 95% !important;
-             */
+             height: 98.5% !important;
+             
         }
          div.sqs-wrapper div {
              bottom: 10px !important;
@@ -252,13 +275,19 @@
      div.sqs-block-content.sqs-intrinsic {
          padding-bottom: 65% !important;
     }
+
+    /* image container */
      #collection-5a52a4c753450aea1728c820 div.sqs-block-content.sqs-intrinsic {
          padding-bottom: 73% !important;
     }
+
+    /* captions */
      div.sqs-wrapper div {
          bottom: -6px !important;
          font-size: 10px !important;
     }
+
+    /* images */
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 92.5% !important 
     }
@@ -301,8 +330,10 @@
     div#site {
          padding-top: 0px !important;
     }
+
+    /* standard image and slider components */
      img.sqs-gallery-design-strip-slide {
-         height: 73vh !important;
+         height: 63vh !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 63vh !important;
@@ -335,4 +366,5 @@
 
  }
 
- /*ok at under 1024. look at 1024 onwards. */
+ /* border fade on other galleries, especially tearsheets*/
+
