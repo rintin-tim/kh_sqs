@@ -368,3 +368,26 @@ img.sqs-gallery-design-strip-slide {
 
  /* border fade on other galleries, especially tearsheets*/
 
+
+/*Homepage*/
+
+/*gap below nav to match work pages?*/
+div.sqs-system-gallery.sqs-gallery-list {
+    padding-top: 17px;
+}
+
+/*container*/
+div.slides-controls {
+    height: 61vw !important;
+}
+
+/*images*/
+#collection-596208fb6b8f5b5620b9cc34 div.slides.sqs-gallery-design-stacked img {
+    height: 100% !important;
+    width: auto !important;
+    /*padding-left: 0px !important;*/
+    /*left:0 !important;*/
+}
+
+
+/*sort out 1024 onwards on homepage*/
