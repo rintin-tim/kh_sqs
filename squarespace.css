@@ -36,7 +36,7 @@
 }
 
 div.logo-image {
-    padding-left: 1.5vw !important;
+    padding-left: 1vw !important;
     padding-top: 5px !important;
 }
 /*main navigation end*/
@@ -136,7 +136,7 @@ img.sqs-gallery-design-strip-slide {
 }*/
 
 
-/* USED TO BE all screens above 1367px */
+/* all screens above 1367px */
      @media screen and (min-width: 1024px) {
         /* other work page image containers */
          div.sqs-gallery-container.sqs-gallery-block-slider.clear.sqs-intrinsic-content {
@@ -325,7 +325,7 @@ img.sqs-gallery-design-strip-slide {
          padding-top: 0px !important;
     }
 
-    /* standard image and slider components */
+    /* standard image and slider components  */
      img.sqs-gallery-design-strip-slide {
          height: 63vh !important;
     }
@@ -364,32 +364,34 @@ img.sqs-gallery-design-strip-slide {
 
 
 /*Homepage*/
-@media screen and (orientation: landscape) {  
+
+/* >> Desktop Homepage */
+/* Disable mobile slider */
+@media screen and (min-width: 1024px) {  
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) {
         display: none;
     }
 }
 
+/* set container height */
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(1) div.sqs-gallery.sqs-gallery-design-stacked {
         height: 69vh !important;
 }
 
-/*div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(1) div.sqs-gallery.sqs-gallery-design-stacked img {
-    height: 100% !important;
-    width: auto !important;
-    
-}*/
-
-
-/* for mobile */
-
-@media screen and (orientation: portrait) {  
+/* >> Mobile Homepage */
+/* Disable desktop slider */
+@media screen and (max-width: 1023px) {  
+      /*added from above - remove and reinstate above if it doesnt work*/
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(1) {
         display: none;
-    }
 }
 
-@media screen and (max-width: 1023px) {  
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
+        height: 35vh !important;
+
+}
+
+    /*being used ? can't find in dom */
     #collection-5ac681c4aa4a99b176337f89 div.sqs-system-gallery.sqs-gallery-list {
         padding-top: 17px;
 }
@@ -400,7 +402,7 @@ img.sqs-gallery-design-strip-slide {
 }
 
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.slide.content-fill.sqs-gallery-design-stacked-slide img {
-        height: 101% !important;
+        // height: 101% !important; 
         width: auto !important;
     
 }
@@ -410,6 +412,57 @@ img.sqs-gallery-design-strip-slide {
 }
 
 }
+
+/* mobile homepage media queries*/
+
+@media screen and (max-width: 1023px) {  
+
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
+        height: 34vh !important;
+
+}
+
+}
+
+@media screen and (max-width: 375px) and (min-width: 0px) {
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
+        height: 35vh !important;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) and (min-width: 376px) {
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
+        height: 34vh !important;
+    }
+
+}
+
+@media screen and (max-width: 520px) and (min-width: 481px){
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
+        height: 33vh !important;
+    }
+
+}
+
+ @media screen and (max-width: 767px) and (min-width: 521px) {
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
+        height: 33vh !important;
+    }
+
+}
+
+
+/* mobile landscape */
+@media screen and (max-width: 1023px) and (orientation: landscape) {
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
+        height: 55vh !important;
+
+}
+
+}
+
 
 /*
 first block desktop
@@ -441,6 +494,8 @@ div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(1)
 
 
 /*
+normalise css on work pages 
+
 div.sqs-gallery-container.sqs-gallery-block-slideshow.clear:nth-of-type(2)
 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) 
   */
