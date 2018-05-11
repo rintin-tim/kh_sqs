@@ -346,7 +346,7 @@ img.sqs-gallery-design-strip-slide {
     #block-7f03ff4308643ff77c18 {
          padding-top: 0px !important;
          padding-bottom: 0px !important;
-         position: relative;
+         position: fixed;
          bottom: 0px;
          left: 0;
          right: 0;
@@ -416,7 +416,7 @@ img.sqs-gallery-design-strip-slide {
 
 }
 
-/*homepage navigation gap */
+/*homepage navigation gap portrait */
 @media screen and (min-width: 768px) {
 /* nav padding on homepage to match work pages on desktop menu (not mobile nav) */
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) {
@@ -467,15 +467,30 @@ img.sqs-gallery-design-strip-slide {
 }
 
 
-/* mobile landscape */
+/* homepage mobile landscape */
+
+/* image height*/
 @media screen and (max-width: 1023px) and (orientation: landscape) {
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
-        height: 55vh !important;
+        height: 63vh !important;
 
+}
+
+/* nav padding on landscape homepage */
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) {
+      padding-top: 0px
 }
 
 }
 
+
+/*overview page*/
+/*footer - selecting footer block and footer content as content is selected in other places (should be footer section everywhere really)*/
+#collection-5a526ba10d9297f9a596a5cb #footer,
+#collection-5a526ba10d9297f9a596a5cb #block-7f03ff4308643ff77c18 {
+    position: relative !important;
+    margin-bottom: 0px;
+} 
 
 /*
 first block desktop
