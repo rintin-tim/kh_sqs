@@ -11,6 +11,10 @@
      font-family: 'TheanoDidot-Regular' !important;
      font-weight: 400;
 }
+
+
+
+
  #kt-sqs-1 {
      font-size: 3.0vw;
      padding-top: 18vh;
@@ -18,16 +22,79 @@
      */
      line-height:10px !important;
 }
- blockquote {
+
+/*ABOUT PAGE FONT SIZES*/
+
+blockquote {
+     font-family: 'TheanoDidot-Regular' !important;
+     color: #383838 !important;
+     font-size: 29px !important;
+}
+
+ figcaption {
+        font-size: 17px !important;    
+    }
+
+@media screen and (max-width: 1023px) {
+    blockquote {
+        font-size: 19px !important;
+    }
+
+    figcaption {
+        font-size: 14px !important;    
+    }
+
+}
+
+/* client list desktop */
+#block-yui_3_17_2_13_1502637926149_18325 {
+    font-size: 18px !important;
+
+}
+
+/*footer - selecting footer block and footer content as content is selected in other places (should be footer section everywhere really)*/
+#collection-599074c5db29d643eb09aada #footer,
+#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
+    position: fixed !important;
+    margin-bottom: 0px;
+} 
+
+
+/* client list mobile */
+@media screen and (max-width: 1023px) {
+
+    #block-yui_3_17_2_13_1502637926149_18325 {
+    font-size: 16px !important;
+    line-height: 1.6em;
+}
+
+/*footer - selecting footer block and footer content as content is selected in other places (should be footer section everywhere really)*/
+#collection-599074c5db29d643eb09aada #footer,
+#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
+    position: relative !important;
+    margin-bottom: 0px;
+} 
+
+
+}
+
+
+/*redundant at the moment*/
+/*@media screen and (min-width: 1024px) {
+    blockquote,
+    blockquote span {
+        font-size: 29px !important;
+    }
+}
+*/
+
+
+
+ /*blockquote span {
      font-family: 'TheanoDidot-Regular' !important;
      color: #383838 !important;
      font-size: 1.5vw !important;
-}
- blockquote span {
-     font-family: 'TheanoDidot-Regular' !important;
-     color: #383838 !important;
-     font-size: 1.5vw !important;
-}
+}*/
 
 /*main navigation*/
 #mainNavWrapper {
@@ -41,10 +108,14 @@ div.logo-image {
 }
 /*main navigation end*/
 
+
+/* TBC */
  div#page-599074c5db29d643eb09aada {
      margin-left: 10%;
      margin-right: 10% 
 }
+
+/* BIO */
  div#block-f789a21e80cc735f521a {
      font-family: 'TheanoDidot-Regular' !important;
      padding-top: 22vh;
