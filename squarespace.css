@@ -52,13 +52,6 @@ blockquote {
 
 }
 
-/*footer - selecting footer block and footer content as content is selected in other places (should be footer section everywhere really)*/
-#collection-599074c5db29d643eb09aada #footer,
-#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
-    position: fixed !important;
-    margin-bottom: 0px;
-} 
-
 
 /* client list mobile */
 @media screen and (max-width: 1023px) {
@@ -68,7 +61,48 @@ blockquote {
     line-height: 1.6em;
 }
 
-/*footer - selecting footer block and footer content as content is selected in other places (should be footer section everywhere really)*/
+}
+
+/* footer */
+@media screen and (max-width: 1024px) and (min-width: 700px) and (orientation: portrait) {
+/* footer */
+#collection-599074c5db29d643eb09aada #footer,
+#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
+    position: fixed !important;
+    margin-bottom: 0px;
+} 
+}
+
+@media screen and (max-width: 1024px) and (min-width: 700px) and (orientation: landscape) {
+/* footer */
+#collection-599074c5db29d643eb09aada #footer,
+#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
+    position: relative !important;
+    margin-bottom: 0px;
+} 
+}
+
+@media screen and (max-width: 699px) and (min-width: 0px) and (orientation: portrait) {
+/* footer */
+#collection-599074c5db29d643eb09aada #footer,
+#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
+    position: relative !important;
+    margin-bottom: 0px;
+} 
+}
+
+@media screen and (max-width: 699px) and (min-width: 0px) and (orientation: landscape) {
+/* footer */
+#collection-599074c5db29d643eb09aada #footer,
+#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
+    position: relative !important;
+    margin-bottom: 0px;
+} 
+}
+
+
+/*@media screen and (max-width: 1024px) and (min-width: 525px) and (min-height: 685px) {
+
 #collection-599074c5db29d643eb09aada #footer,
 #collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
     position: relative !important;
@@ -78,6 +112,25 @@ blockquote {
 
 }
 
+@media screen and (max-width: 524px) and (min-width: 374px) and (min-height: 885px) {
+
+#collection-599074c5db29d643eb09aada #footer,
+#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
+    position: relative !important;
+    margin-bottom: 0px;
+}
+
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+
+#collection-599074c5db29d643eb09aada #footer,
+#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
+    position: fixed !important;
+    margin-bottom: 0px;
+}
+
+}*/
 
 /*redundant at the moment*/
 /*@media screen and (min-width: 1024px) {
