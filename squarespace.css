@@ -23,7 +23,7 @@
      line-height:10px !important;
 }
 
-/*ABOUT PAGE */ 
+/* ABOUT PAGE */ 
 
 /* font sizes */
 
@@ -76,7 +76,7 @@ blockquote {
 
 }
 
-/* footer */
+/* about page footer */
 @media screen and (max-width: 1024px) and (min-width: 700px) and (orientation: portrait) {
 /* footer */
 #collection-599074c5db29d643eb09aada #footer,
@@ -113,56 +113,7 @@ blockquote {
 } 
 }
 
-
-/*@media screen and (max-width: 1024px) and (min-width: 525px) and (min-height: 685px) {
-
-#collection-599074c5db29d643eb09aada #footer,
-#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
-    position: relative !important;
-    margin-bottom: 0px;
-} 
-
-
-}
-
-@media screen and (max-width: 524px) and (min-width: 374px) and (min-height: 885px) {
-
-#collection-599074c5db29d643eb09aada #footer,
-#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
-    position: relative !important;
-    margin-bottom: 0px;
-}
-
-}
-
-@media screen and (max-width: 1024px) and (orientation: landscape) {
-
-#collection-599074c5db29d643eb09aada #footer,
-#collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
-    position: fixed !important;
-    margin-bottom: 0px;
-}
-
-}*/
-
-/*redundant at the moment*/
-/*@media screen and (min-width: 1024px) {
-    blockquote,
-    blockquote span {
-        font-size: 29px !important;
-    }
-}
-*/
-
-
-
- /*blockquote span {
-     font-family: 'TheanoDidot-Regular' !important;
-     color: #383838 !important;
-     font-size: 1.5vw !important;
-}*/
-
-/*main navigation*/
+/* MAIN NAVIGATION */
 #mainNavWrapper {
     padding-right: 1.0vw !important;
 
@@ -181,7 +132,7 @@ div.logo-image {
      margin-right: 10% 
 }
 
-/* BIO */
+/* BIO PAGE */
  div#block-f789a21e80cc735f521a {
      font-family: 'TheanoDidot-Regular' !important;
      padding-top: 22vh;
@@ -195,6 +146,8 @@ div.logo-image {
      color: #383838 !important;
 }
 
+/* WORK PAGES */
+
 /* galllery image spacing*/
  div.sqs-gallery div.sqs-wrapper img {
      margin-left: 5px;
@@ -205,18 +158,21 @@ div.logo-image {
     */
 }
 
-/* galllery image borders*/
+/* gallery image border fade in */
  div.sqs-gallery div.sqs-wrapper img.border-fade {
      border: 1px solid #eae7e7 !important;
      -webkit-transition: border 2s ease 0.5s;
      transition: border 2s ease 0.5s;
 }
+
+
 /* Prevent click on last slide of portraits */
  #collection-5a52a4c753450aea1728c820 div.sqs-wrapper img.sqs-active-slide.last-image {
      pointer-events: none;
 }
 
-/*Flickering on portriat is caused by height of img not being 100% - this compensates */
+/* Flickering on portraIt is caused by height of img not being 100% - this compensates */
+/* TODO IS THIS NEEDED FOR ALL OR CAN IT BE PORTRAIT SPECIFIC */
 img.sqs-gallery-design-strip-slide {
      margin-bottom: 7%;
 }
@@ -248,6 +204,8 @@ img.sqs-gallery-design-strip-slide {
     }
 }
 /* ends - scroll overflow for mobile */
+
+
 /*footer tweaks for all pages */
  #block-7f03ff4308643ff77c18 {
      padding-top: 0px !important;
@@ -262,15 +220,6 @@ img.sqs-gallery-design-strip-slide {
 }
 
 
-
-
-
-/*@media screen and (max-width: 1367px) and (min-width: 1024px) {
-
- #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
-             height: 91.5% !important;
-        }
-}*/
 
 
 /* all screens above 1367px */
@@ -501,7 +450,7 @@ img.sqs-gallery-design-strip-slide {
  /* border fade on other galleries, especially tearsheets*/
 
 
-/*Homepage*/
+/* HOME PAGE */
 
 /* >> Desktop Homepage */
 /* Disable mobile slider */
@@ -621,42 +570,13 @@ img.sqs-gallery-design-strip-slide {
 }
 
 
-/*overview page*/
+/* OVERVIEW page*/
 /*footer - selecting footer block and footer content as content is selected in other places (should be footer section everywhere really)*/
 #collection-5a526ba10d9297f9a596a5cb #footer,
 #collection-5a526ba10d9297f9a596a5cb #block-7f03ff4308643ff77c18 {
     position: relative !important;
     margin-bottom: 0px;
 } 
-
-/*
-first block desktop
-div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(1)
-*/
-
-/*
-@media screen and (min-width: 1024px) {  
-
-// gap below nav to match work pages - was 17px? 
-    #collection-5ac681c4aa4a99b176337f89 div.sqs-system-gallery.sqs-gallery-list {
-        padding-top: 0px;
-}
-
-
-// image container mobile 
-    #collection-5ac681c4aa4a99b176337f89 div.slides-controls {
-        height: 69vh !important;
-}
-
-    #collection-5ac681c4aa4a99b176337f89 div.slides-controls img {
-        width: auto !important;
-        height: 69vh !important;
-}
-
-}
-*/
-
-
 
 /*
 normalise css on work pages 
