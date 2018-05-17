@@ -89,3 +89,7 @@ Cross browser matrix
 
 
 LANDSCAPE - REPLICATE BREAKPOINTS ON WORK PAGES FOR HOME PAGE, AND OVERVIEW PAGE
+Create a list of page IDs for each page - how will you recreate the portrait page? ideally only need to change the page id
+Ensure you have backup of all edited files
+Is there another way to backup using developer mode?
+fix floating footer to bottom of page in config
