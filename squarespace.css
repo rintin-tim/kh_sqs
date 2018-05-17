@@ -14,7 +14,7 @@
 
 
 
-
+/* CONTACT PAGE */
  #kt-sqs-1 {
      font-size: 3.0vw;
      padding-top: 18vh;
@@ -23,7 +23,9 @@
      line-height:10px !important;
 }
 
-/*ABOUT PAGE FONT SIZES*/
+/*ABOUT PAGE */ 
+
+/* font sizes */
 
 blockquote {
      font-family: 'TheanoDidot-Regular' !important;
@@ -45,6 +47,17 @@ blockquote {
     }
 
 }
+
+/* vertical alignment of body text */
+
+@media screen and (min-width: 640px) {
+    #collection-599074c5db29d643eb09aada div.main-content > div.sqs-layout.sqs-grid-12.columns-12 {
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+}
+
+
 
 /* client list desktop */
 #block-yui_3_17_2_13_1502637926149_18325 {
