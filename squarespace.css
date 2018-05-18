@@ -18,8 +18,6 @@
  #kt-sqs-1 {
      font-size: 3.0vw;
      padding-top: 18vh;
-    /* padding-bottom: 30vh;
-     */
      line-height:10px !important;
 }
 
@@ -159,7 +157,7 @@ div.logo-image {
     */
 }
 
-/* gallery image border fade in */
+/* gallery image border fade in - used on all galleries */
  div.sqs-gallery div.sqs-wrapper img.border-fade {
      border: 1px solid #eae7e7 !important;
      -webkit-transition: border 2s ease 0.5s;
@@ -173,7 +171,7 @@ div.logo-image {
 }
 
 /* Flickering on portraIt is caused by height of img not being 100% - this compensates */
-/* TODO IS THIS NEEDED FOR ALL OR CAN IT BE PORTRAIT SPECIFIC */
+/* TODO IS THIS NEEDED FOR ALL OR CAN IT BE PORTRAIT SPECIFIC? */
 img.sqs-gallery-design-strip-slide {
      margin-bottom: 7%;
 }
@@ -349,7 +347,6 @@ img.sqs-gallery-design-strip-slide {
 /*for mobile menu only!! */
  @media screen and (max-width: 767px) {
     /*reduce gap between menu and carousel*/
-    /*collection-5a52a4c753450aea1728c820 #page*/
     #page {
         margin-top: 10px;
     }
@@ -379,8 +376,8 @@ img.sqs-gallery-design-strip-slide {
          height: 92.5% !important 
     }
 }
-/*landscape devices*/
 
+/*landscape devices*/
 
  @media screen and (max-width: 1023px) and (orientation: landscape) {
     /*nav bar*/
@@ -401,7 +398,7 @@ img.sqs-gallery-design-strip-slide {
          left: 0;
          right: 0;
     }
-    /* being overwritten */
+    /* being overwritten ? */
      div.sqs-block-gallery {
          padding-bottom: 0px !important;
     }
@@ -453,8 +450,6 @@ img.sqs-gallery-design-strip-slide {
 
  }
 
- /* border fade on other galleries, especially tearsheets*/
-
 
 /* HOME PAGE */
 
@@ -472,32 +467,23 @@ img.sqs-gallery-design-strip-slide {
 }
 
 /* >> Mobile Homepage */
-/* Disable desktop slider */
+/* Hide desktop slider */
 @media screen and (max-width: 1023px) {  
       /*added from above - remove and reinstate above if it doesnt work*/
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(1) {
         display: none;
 }
 
-    /* image container for height */
-    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
-       // height: 35vh !important;
-       /* make this 99% is of container - somehow!*/
-
-}
-
-    /*being used ? can't find in dom */
+    /* TBC - being used ? can't find in dom */
     #collection-5ac681c4aa4a99b176337f89 div.sqs-system-gallery.sqs-gallery-list {
         padding-top: 17px;
 }
 
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.slide.content-fill.sqs-gallery-design-stacked-slide {
-        // height: 92.0% !important;
         padding-bottom: 0px !important;
 }
 
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.slide.content-fill.sqs-gallery-design-stacked-slide img {
-        // height: 101% !important; 
         width: auto !important;
     
 }
@@ -514,48 +500,6 @@ img.sqs-gallery-design-strip-slide {
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) {
       padding-top: 0px
 }
-}
-
-
-/* mobile homepage media queries*/
-
-@media screen and (max-width: 1023px) {  
-
-    /* image container for height */
-    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
-       // height: 34vh !important;
-
-}
-
-}
-
-@media screen and (max-width: 375px) and (min-width: 0px) {
-    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
-      //  height: 35vh !important;
-    }
-
-
-}
-
-@media screen and (max-width: 480px) and (min-width: 376px) {
-    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
-      //  height: 34vh !important;
-    }
-
-}
-
-@media screen and (max-width: 520px) and (min-width: 481px){
-    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
-      //  height: 33vh !important;
-    }
-
-}
-
- @media screen and (max-width: 767px) and (min-width: 521px) {
-    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) div.sqs-gallery.sqs-gallery-design-stacked {
-      //  height: 33vh !important;
-    }
-
 }
 
 
@@ -577,16 +521,10 @@ img.sqs-gallery-design-strip-slide {
 
 
 /* OVERVIEW page*/
-/*footer - selecting footer block and footer content as content is selected in other places (should be footer section everywhere really)*/
+/*footer - selecting footer block and footer content */
 #collection-5a526ba10d9297f9a596a5cb #footer,
 #collection-5a526ba10d9297f9a596a5cb #block-7f03ff4308643ff77c18 {
     position: relative !important;
     margin-bottom: 0px;
 } 
 
-/*
-normalise css on work pages 
-
-div.sqs-gallery-container.sqs-gallery-block-slideshow.clear:nth-of-type(2)
-div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) 
-  */
