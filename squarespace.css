@@ -23,7 +23,13 @@
      line-height:10px !important;
 }
 
-/* ABOUT PAGE */ 
+/* CLIENT PAGE */ 
+
+/* page width */
+ div#page-599074c5db29d643eb09aada {
+     margin-left: 10%;
+     margin-right: 10% 
+}
 
 /* font sizes */
 
@@ -126,11 +132,6 @@ div.logo-image {
 /*main navigation end*/
 
 
-/* TBC */
- div#page-599074c5db29d643eb09aada {
-     margin-left: 10%;
-     margin-right: 10% 
-}
 
 /* BIO PAGE */
  div#block-f789a21e80cc735f521a {
@@ -217,6 +218,11 @@ img.sqs-gallery-design-strip-slide {
 }
  #footer .text-align-center {
      font-size: 10px;
+}
+
+/*  reposition CMS footer on Portriat page */
+#collection-5a52a4c753450aea1728c820 #page {
+    height: 75vh;
 }
 
 
