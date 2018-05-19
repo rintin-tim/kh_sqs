@@ -127,6 +127,16 @@ div.logo-image {
     padding-left: 1vw !important;
     padding-top: 5px !important;
 }
+
+/*for mobile menu only */
+ @media screen and (max-width: 767px) {
+    /*reduce gap between menu and carousel*/
+    #page {
+        margin-top: 10px;
+    }
+
+ }
+
 /*main navigation end*/
 
 
@@ -277,11 +287,10 @@ img.sqs-gallery-design-strip-slide {
          bottom: -6px !important;
          font-size: 10px !important;
     }
-    /*NOTE FLickering is caused by this not being 100% */
+
+    /* NOTE FLickering on load is caused by this not being 100% */
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 88.5% !important;
-        /*margin-bottom: 5%;
-        */
     }
 }
  @media screen and (max-width: 480px) and (min-width: 376px) {
@@ -332,15 +341,6 @@ img.sqs-gallery-design-strip-slide {
          height: 92.5% !important 
     }
 }
-
-/*for mobile menu only!! */
- @media screen and (max-width: 767px) {
-    /*reduce gap between menu and carousel*/
-    #page {
-        margin-top: 10px;
-    }
-
- }
 
 
  @media screen and (max-width: 1023px) and (min-width: 768px) {
@@ -431,7 +431,7 @@ img.sqs-gallery-design-strip-slide {
     }
 }
 
-/*landscape addition - covers end of mobile nav to ipad landscape threshold (test on iphone x) - needs fleshing out OR use mobile nav until 1023px! */
+/*landscape addition - covers end of mobile nav to ipad landscape threshold  */
  @media screen and (max-width: 1023px) and (min-width: 769px) and (orientation: landscape) {
      div#site {
          padding-top: 5px !important;
