@@ -145,7 +145,7 @@ div.logo-image {
      color: #383838 !important;
 }
 
-/* WORK PAGES */
+/* ALL WORK PAGES */
 
 /* galllery image spacing*/
  div.sqs-gallery div.sqs-wrapper img {
@@ -165,18 +165,13 @@ div.logo-image {
 }
 
 
-/* Prevent click on last slide of portraits */
- #collection-5a52a4c753450aea1728c820 div.sqs-wrapper img.sqs-active-slide.last-image {
-     pointer-events: none;
-}
 
-/* Flickering on portraIt is caused by height of img not being 100% - this compensates */
-/* TODO IS THIS NEEDED FOR ALL OR CAN IT BE PORTRAIT SPECIFIC? */
+/* Prevents images flickering underneath carousel, which is caused by height of img not being 100% */
 img.sqs-gallery-design-strip-slide {
      margin-bottom: 7%;
 }
 
-/* scroll overflow for mobile */
+/* carousel scroll overflow for mobile */
  @media screen and (max-width: 1024px) {
      div.mobile-bar-wrapper {
          height: 60px;
@@ -202,7 +197,7 @@ img.sqs-gallery-design-strip-slide {
          pointer-events: none;
     }
 }
-/* ends - scroll overflow for mobile */
+/* ends - carousel scroll overflow for mobile */
 
 
 /*footer tweaks for all pages */
@@ -218,13 +213,7 @@ img.sqs-gallery-design-strip-slide {
      font-size: 10px;
 }
 
-/*  reposition CMS footer on Portriat page */
-#collection-5a52a4c753450aea1728c820 #page {
-    height: 75vh;
-}
-
-
-
+/* WORK PAGE CAROUSELS - BOTH PORTRAIT AND OTHER */
 
 /* all screens above 1367px */
      @media screen and (min-width: 1024px) {
@@ -449,6 +438,18 @@ img.sqs-gallery-design-strip-slide {
     }
 
  }
+
+ /* PORTRAIT PAGES */
+
+/* Prevent click on last slide of portraits */
+ #collection-5a52a4c753450aea1728c820 div.sqs-wrapper img.sqs-active-slide.last-image {
+     pointer-events: none;
+}
+
+/*  reposition CMS footer on Portriat page */
+#collection-5a52a4c753450aea1728c820 #page {
+    height: 75vh;
+}
 
 
 /* HOME PAGE */
