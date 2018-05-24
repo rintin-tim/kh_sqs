@@ -387,14 +387,17 @@ img.sqs-gallery-design-strip-slide {
          left: 0;
          right: 0;
     }
-    /* being overwritten ? */
+
+     /* being overwritten ? */
      div.sqs-block-gallery {
          padding-bottom: 0px !important;
-    }
+     }
+
      #footer {
          margin-top: 0px;
          margin-bottom: 0px;
     }
+     
      #block-yui_3_17_2_2_1517089979273_10098 {
          padding-top: 0px;
          padding-bottom: 0px;
@@ -404,7 +407,7 @@ img.sqs-gallery-design-strip-slide {
          padding-top: 0px !important;
     }
 
-    /* standard image and slider components  */
+    /* to adjust height of images and sliders on Work and Portrait pages */
      img.sqs-gallery-design-strip-slide {
          height: 63vh !important;
     }
