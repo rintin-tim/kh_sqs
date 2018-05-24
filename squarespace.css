@@ -388,10 +388,6 @@ img.sqs-gallery-design-strip-slide {
          right: 0;
     }
 
-     /* being overwritten ? */
-     div.sqs-block-gallery {
-         padding-bottom: 0px !important;
-     }
 
      #footer {
          margin-top: 0px;
