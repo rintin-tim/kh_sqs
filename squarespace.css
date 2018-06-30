@@ -15,11 +15,28 @@
 
 
 /* CONTACT PAGE */
- #kt-sqs-1 {
-     font-size: 3.0vw;
-     padding-top: 18vh;
-     line-height:10px !important;
+
+#collection-59907e246a49633fe3ff105f p {
+    font-family: 'TheanoDidot-Regular' !important;
+    font-size: 43px;
+    padding-top: 18vh;
+    line-height:normal !important;  
 }
+
+@media screen and (max-width: 1024px) {
+    #collection-59907e246a49633fe3ff105f p {
+        font-size: 35px;
+    }
+
+}
+
+@media screen and (max-width: 766px) {
+    #collection-59907e246a49633fe3ff105f p {
+        font-size: 25px;
+    }
+
+}
+
 
 /* CLIENT PAGE */ 
 
