@@ -160,17 +160,60 @@ div.logo-image {
 
 /* BIO PAGE */
  div#block-f789a21e80cc735f521a {
-     font-family: 'TheanoDidot-Regular' !important;
      padding-top: 22vh;
-     padding-left: 20vw;
-     padding-right: 20vw;
-     font-size: 1.7vw;
+     padding-left: 18vw;
+     padding-right: 18vw;
+     
 }
  div#block-f789a21e80cc735f521a h2 {
      font-family: 'TheanoDidot-Regular' !important;
-     font-size: 1.5vw;
      color: #383838 !important;
 }
+
+@media and (min-width: 1025px) {
+
+    div#block-f789a21e80cc735f521a {
+     padding-top: 22vh;
+     padding-left: 18vw;
+     padding-right: 18vw;
+     
+}
+
+    div#block-f789a21e80cc735f521a h2 {
+        font-size: 25px !important;
+    }
+
+}
+
+@media and (min-width: 768px) and (max-width: 1024px) {
+
+    div#block-f789a21e80cc735f521a {
+     padding-top: 22vh;
+     padding-left: 14vw;
+     padding-right: 14vw;
+     
+}
+    div#block-f789a21e80cc735f521a h2 {
+        font-size: 25px !important;
+
+    }
+}
+
+@media (max-width: 767px) {
+
+    div#block-f789a21e80cc735f521a {
+     padding-top: 22vh;
+     padding-left: 9vw;
+     padding-right: 9vw;
+     
+}
+    div#block-f789a21e80cc735f521a h2 {
+        font-size: 16px !important;
+
+    }
+}
+
+
 
 /* ALL WORK PAGES */
 
