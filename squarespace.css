@@ -64,7 +64,7 @@ blockquote {
     }
 
     /* list of clients */
-    #block-yui_3_17_2_13_1502637926149_18325 {
+    #collection-599074c5db29d643eb09aada main div[data-block-type='2'] {
         font-size: 18px !important;
     }
 
@@ -80,7 +80,7 @@ blockquote {
     }
 
     /* list of clients */
-    #block-yui_3_17_2_13_1502637926149_18325 {
+    #collection-599074c5db29d643eb09aada main div[data-block-type='2'] {
         font-size: 16px !important;
         line-height: 1.6em;
     }
@@ -163,27 +163,27 @@ div.logo-image {
 
 
 /* BIO PAGE */
- div#block-f789a21e80cc735f521a {
+ #collection-59907775ff7c500cded8050d main div.sqs-block {
      padding-top: 22vh;
      padding-left: 18vw;
      padding-right: 18vw;
      
 }
- div#block-f789a21e80cc735f521a h2 {
+ #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
      font-family: 'TheanoDidot-Regular' !important;
      color: #383838 !important;
 }
 
 @media and (min-width: 1025px) {
-
-    div#block-f789a21e80cc735f521a {
+    
+    #collection-59907775ff7c500cded8050d main div.sqs-block {
      padding-top: 22vh;
      padding-left: 18vw;
      padding-right: 18vw;
      
 }
 
-    div#block-f789a21e80cc735f521a h2 {
+    #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
         font-size: 25px !important;
     }
 
@@ -191,13 +191,14 @@ div.logo-image {
 
 @media and (min-width: 768px) and (max-width: 1024px) {
 
-    div#block-f789a21e80cc735f521a {
+    #collection-59907775ff7c500cded8050d main div.sqs-block {
      padding-top: 22vh;
      padding-left: 14vw;
      padding-right: 14vw;
      
-}
-    div#block-f789a21e80cc735f521a h2 {
+    }
+    
+    #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
         font-size: 25px !important;
 
     }
@@ -205,13 +206,13 @@ div.logo-image {
 
 @media (max-width: 767px) {
 
-    div#block-f789a21e80cc735f521a {
+    #collection-59907775ff7c500cded8050d main div.sqs-block {
      padding-top: 22vh;
      padding-left: 9vw;
      padding-right: 9vw;
      
 }
-    div#block-f789a21e80cc735f521a h2 {
+    #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
         font-size: 16px !important;
 
     }
