@@ -96,7 +96,7 @@ blockquote {
 }
 /* vertical position of the body mobile */
 @media screen and (max-width: 640px) {
-    div#page-599074c5db29d643eb09aada div.sqs-block.quote-block {
+    #collection-599074c5db29d643eb09aada div.sqs-block.quote-block {
         padding-top:  0 !important;
     }
 }
