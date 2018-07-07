@@ -16,7 +16,7 @@
 
 /* CONTACT PAGE */
 
-#collection-59907e246a49633fe3ff105f p {
+#collection-59907e246a49633fe3ff105f main p {
     font-family: 'TheanoDidot-Regular' !important;
     font-size: 43px;
     padding-top: 18vh;
@@ -24,14 +24,14 @@
 }
 
 @media screen and (max-width: 1024px) {
-    #collection-59907e246a49633fe3ff105f p {
+    #collection-59907e246a49633fe3ff105f main p {
         font-size: 35px;
     }
 
 }
 
 @media screen and (max-width: 766px) {
-    #collection-59907e246a49633fe3ff105f p {
+    #collection-59907e246a49633fe3ff105f main p {
         font-size: 25px;
     }
 
@@ -103,6 +103,13 @@ blockquote {
 
 
 /* CLIENT PAGE footer */
+
+/*footer has a position of relative/static as fixed position would overlap content */
+/* remove padding for code block */
+#collection-599074c5db29d643eb09aada div.sqs-block.code-block {
+        padding: 0px !important;
+}
+
 @media screen and (max-width: 1024px) and (min-width: 700px) and (orientation: portrait) {
     /* footer */
     #collection-599074c5db29d643eb09aada #footer,
@@ -586,10 +593,17 @@ img.sqs-gallery-design-strip-slide {
 
 
 /* OVERVIEW page*/
+/*footer has a position of relative/static as fixed position would overlap content */
 /*footer - selecting footer block and footer content */
-#collection-5a526ba10d9297f9a596a5cb #footer,
-#collection-5a526ba10d9297f9a596a5cb #block-7f03ff4308643ff77c18 {
-    position: relative !important;
-    margin-bottom: 0px;
+    #collection-5a526ba10d9297f9a596a5cb #footer,
+    #collection-5a526ba10d9297f9a596a5cb #block-7f03ff4308643ff77c18 {
+        position: relative !important;
+        margin-bottom: 0px;
 } 
+
+/* remove default padding from code block */
+    #collection-5a526ba10d9297f9a596a5cb div.sqs-block.code-block {
+        padding: 0px !important;
+}
+
 
