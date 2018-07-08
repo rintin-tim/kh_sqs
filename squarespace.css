@@ -60,7 +60,7 @@ blockquote {
      color: #383838 !important;
 }
 
-/* font sizes */
+/* CLIENT PAGE - font sizes */
 @media screen and (min-width: 1025px) {
 
     blockquote {
@@ -95,43 +95,49 @@ blockquote {
 
 }
 
-/* vertical alignment of body - ipad/desktop */
+/* CLIENT PAGE - vertical alignment of body (ipad/desktop) */
 @media screen and (min-width: 640px) {
     #collection-599074c5db29d643eb09aada div.main-content > div.sqs-layout.sqs-grid-12.columns-12 {
         margin-top: 7%;
         margin-bottom: 7%;
     }
 }
-/* vertical alignment of body - mobile */
+
+/* vertical alignment of body (mobile) */
 @media screen and (max-width: 640px) {
     #collection-599074c5db29d643eb09aada div.sqs-block.quote-block {
         padding-top:  0 !important;
     }
 }
 
-
 /* CLIENT PAGE footer */
 
-/*footer position is relative because fixed position would overlap content on this page */
-/* remove default padding around code block */
+/* more complicated because sometimes the content is below the fold  */
+/* remove default padding around code block as it knocks the footer out of position */
+
 #collection-599074c5db29d643eb09aada div.sqs-block.code-block {
         padding: 0px !important;
 }
 
+/* CLIENT PAGE footer media queries */
+
+
+/* DELETE*/
 @media screen and (max-width: 1024px) and (min-width: 700px) and (orientation: portrait) {
     /* footer */
-    #collection-599074c5db29d643eb09aada #footer,
+/*    #collection-599074c5db29d643eb09aada #footer,
     #collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
         position: fixed !important;
         margin-bottom: 0px;
-    } 
+    } */
 }
+
 
 @media screen and (max-width: 1024px) and (min-width: 700px) and (orientation: landscape) {
     /* footer */
     #collection-599074c5db29d643eb09aada #footer,
     #collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
-        position: relative !important;
+        position: fixed !important;
         margin-bottom: 0px;
     } 
 }
@@ -153,6 +159,7 @@ blockquote {
         margin-bottom: 0px;
     } 
 }
+
 
 /* MAIN NAVIGATION */
 #mainNavWrapper {
@@ -178,26 +185,32 @@ div.logo-image {
 
 
 /* BIO PAGE */
- #collection-59907775ff7c500cded8050d main div.sqs-block {
+
+/* DELETE */
+/* vertical positioning of the text block */
+/* #collection-59907775ff7c500cded8050d main div.sqs-block {
      padding-top: 22vh;
      padding-left: 18vw;
      padding-right: 18vw;
      
-}
+}*/
+
+/* font for body text */
  #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
      font-family: 'TheanoDidot-Regular' !important;
      color: #383838 !important;
 }
 
 @media and (min-width: 1025px) {
-    
+
+    /* vertical positioning of text block */   
     #collection-59907775ff7c500cded8050d main div.sqs-block {
-     padding-top: 22vh;
-     padding-left: 18vw;
-     padding-right: 18vw;
+         padding-top: 22vh;
+         padding-left: 18vw;
+         padding-right: 18vw;
      
 }
-
+    /* font size */
     #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
         font-size: 25px !important;
     }
@@ -207,9 +220,9 @@ div.logo-image {
 @media and (min-width: 768px) and (max-width: 1024px) {
 
     #collection-59907775ff7c500cded8050d main div.sqs-block {
-     padding-top: 22vh;
-     padding-left: 14vw;
-     padding-right: 14vw;
+         padding-top: 22vh;
+         padding-left: 14vw;
+         padding-right: 14vw;
      
     }
     
@@ -222,9 +235,9 @@ div.logo-image {
 @media (max-width: 767px) {
 
     #collection-59907775ff7c500cded8050d main div.sqs-block {
-     padding-top: 22vh;
-     padding-left: 9vw;
-     padding-right: 9vw;
+         padding-top: 22vh;
+         padding-left: 9vw;
+         padding-right: 9vw;
      
 }
     #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
@@ -233,7 +246,7 @@ div.logo-image {
     }
 }
 
-
+/*  REFACTOR CONTINUE FROM HERE */
 
 /* ALL WORK PAGES */
 
