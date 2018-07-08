@@ -1,26 +1,34 @@
+/* GENERAL */
+
  @font-face {
      font-family: 'TheanoDidot-Regular';
-     src: url(https://static1.squarespace.com/static/596001f7bf629a7384f21d69/t/5a52361b419202e32436f231/1515337244406/TheanoDidot-Regular.ttf);
+     src: url(https://static1.squarespace.com/static/596001f7bf629a7384f21d69/t/5a52361b419202e32436f231/1515337244406/theanodidot-regular.ttf);
      font-weight: 400;
 }
+
+/* hyperlink styling */
  a[href^="mailto:"]:hover {
      text-decoration: none;
      opacity: 0.6;
-}
- .theano {
-     font-family: 'TheanoDidot-Regular' !important;
-     font-weight: 400;
 }
 
 
 
 /* CONTACT PAGE */
 
+/* font for contact page */
 #collection-59907e246a49633fe3ff105f main p {
-    font-family: 'TheanoDidot-Regular' !important;
-    font-size: 43px;
-    padding-top: 18vh;
+    font-family: 'TheanoDidot-Regular' !important;    
     line-height:normal !important;  
+    padding-top: 18vh;
+}
+
+/* font size for contact page */
+@media screen and (min-width: 1025px) {
+    #collection-59907e246a49633fe3ff105f main p {
+        font-size: 43px;
+    }
+
 }
 
 @media screen and (max-width: 1024px) {
@@ -46,7 +54,7 @@
      margin-right: 10% 
 }
 
-/* blockquote font style */
+/* blockquote font */
 blockquote {
      font-family: 'TheanoDidot-Regular' !important;
      color: #383838 !important;
@@ -87,14 +95,14 @@ blockquote {
 
 }
 
-/* vertical position of the body ipad/desktop */
+/* vertical alignment of body - ipad/desktop */
 @media screen and (min-width: 640px) {
     #collection-599074c5db29d643eb09aada div.main-content > div.sqs-layout.sqs-grid-12.columns-12 {
         margin-top: 7%;
         margin-bottom: 7%;
     }
 }
-/* vertical position of the body mobile */
+/* vertical alignment of body - mobile */
 @media screen and (max-width: 640px) {
     #collection-599074c5db29d643eb09aada div.sqs-block.quote-block {
         padding-top:  0 !important;
@@ -104,8 +112,8 @@ blockquote {
 
 /* CLIENT PAGE footer */
 
-/*footer has a position of relative/static as fixed position would overlap content */
-/* remove padding for code block */
+/*footer position is relative because fixed position would overlap content on this page */
+/* remove default padding around code block */
 #collection-599074c5db29d643eb09aada div.sqs-block.code-block {
         padding: 0px !important;
 }
