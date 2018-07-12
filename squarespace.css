@@ -528,7 +528,7 @@ img.sqs-gallery-design-strip-slide {
     }
 }
 
-/* relative footer with small heights - currently same as main footer so could removed */
+/* experimental - relative footer with small heights - currently same as main footer so could removed */
 @media screen and (max-width: 1023px) and (max-height: 400px) and (orientation: landscape) {  
     #block-7f03ff4308643ff77c18 {
          padding-top: 0px !important;
