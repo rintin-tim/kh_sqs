@@ -246,7 +246,6 @@ div.logo-image {
     }
 }
 
-/*  REFACTOR CONTINUE FROM HERE */
 
 /* ALL WORK PAGES */
 
@@ -314,6 +313,11 @@ img.sqs-gallery-design-strip-slide {
  #footer .text-align-center {
      font-size: 10px;
 }
+
+/* stops the code block interferring with the page length and thus the footer position. TODO remove from reducdant places! */
+ /*#footer div.sqs-block.code-block.sqs-block-code {
+        padding: 0px !important;
+}*/
 
 /* WORK PAGE CAROUSELS - BOTH PORTRAIT AND OTHER */
 
@@ -531,9 +535,19 @@ img.sqs-gallery-design-strip-slide {
 /* experimental - relative footer with small heights - currently same as main footer so could removed */
 @media screen and (max-width: 1023px) and (max-height: 400px) and (orientation: landscape) {  
     #block-7f03ff4308643ff77c18 {
+         padding-top: 14px !important;
+         padding-bottom: 0px !important;
+         position: relative;
+         bottom: 0px;
+         left: 0;
+         right: 0;
+    }
+
+    /* adjustment to accomodate the captions on the portrait page */
+    #collection-5a52a4c753450aea1728c820 #block-7f03ff4308643ff77c18 {
          padding-top: 0px !important;
          padding-bottom: 0px !important;
-         position: fixed;
+         position: relative;
          bottom: 0px;
          left: 0;
          right: 0;
@@ -637,9 +651,9 @@ img.sqs-gallery-design-strip-slide {
 } 
 
 /* removed default padding from code block because it was creating a large gap at the bottom of the page */
-    #collection-5a526ba10d9297f9a596a5cb div.sqs-block.code-block {
+ /*   #collection-5a526ba10d9297f9a596a5cb div.sqs-block.code-block {
         padding: 0px !important;
-}
+}*/
 
 /* EXPERIMENTAL landscape css for gallery images - as there's currently too much vertical scroll at bottom of the page */
 @media screen and (max-width: 1023px) and (orientation:landscape ){  
