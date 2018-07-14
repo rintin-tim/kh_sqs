@@ -189,7 +189,7 @@ div.logo-image {
 #mainNavWrapper span,
 #mainNavWrapper label {
     font-size:95%;
-    font-family:verdana;
+    /*font-family:verdana;*/
 }
 
 #mainNavWrapper .subnav a>span {
@@ -215,7 +215,7 @@ div.logo-image {
     /* Mobile nav - Home and Overview, Work and About */
     nav>div.collection>a,
     .folder label {
-        font-family:  verdana;
+        /*font-family:  verdana;*/
         font-size: 90%;
         font-weight: 600;
     }
@@ -225,7 +225,7 @@ div.logo-image {
         font-size: 80%;
         font-style: normal;
         font-weight: 400;
-        font-family:  verdana;
+        /*font-family:  verdana;*/
     }
 
 
