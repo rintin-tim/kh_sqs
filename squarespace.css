@@ -162,6 +162,11 @@ blockquote {
 
 
 /* MAIN NAVIGATION */
+
+
+/* Desktop */
+
+/* position of menu */
 #mainNavWrapper {
     padding-right: 1.0vw !important;
 
@@ -172,12 +177,59 @@ div.logo-image {
     padding-top: 5px !important;
 }
 
-/*for mobile menu only */
+@media screen and (min-width: 768px) {
+
+/* menu positioning */
+
+.overlay-nav-wrapper {
+    margin-top: 90% !important
+}
+
+/* menu fonts */
+#mainNavWrapper span,
+#mainNavWrapper label {
+    font-size:95%;
+    font-family:verdana;
+}
+
+#mainNavWrapper .subnav a>span {
+    font-size:95% !important;
+}
+
+/* sub nav background*/
+#mainNavWrapper .subnav {
+    background-color: #ffffff !important;
+    opacity: 0.95;
+}
+
+}
+
+/* Mobile */
+
  @media screen and (max-width: 767px) {
     /*reduce gap between menu and carousel*/
     #page {
         margin-top: 10px;
     }
+
+    /* Mobile nav - Home and Overview, Work and About */
+    nav>div.collection>a,
+    .folder label {
+        font-family:  verdana;
+        font-size: 90%;
+        font-weight: 600;
+    }
+
+    /* Mobile sub nav*/
+    .subnav {
+        font-size: 80%;
+        font-style: normal;
+        font-weight: 400;
+        font-family:  verdana;
+    }
+
+
+
 
  }
 
