@@ -367,9 +367,9 @@ img.sqs-gallery-design-strip-slide {
 }
 
 /* stops the code block interferring with the page length and thus the footer position. TODO remove from reducdant places! */
- /*#footer div.sqs-block.code-block.sqs-block-code {
+ #footer div.sqs-block.code-block.sqs-block-code {
         padding: 0px !important;
-}*/
+    }
 
 /* WORK PAGE CAROUSELS - BOTH PORTRAIT AND OTHER */
 
@@ -710,7 +710,8 @@ img.sqs-gallery-design-strip-slide {
 /* EXPERIMENTAL landscape css for gallery images - as there's currently too much vertical scroll at bottom of the page */
 @media screen and (max-width: 1023px) and (orientation:landscape ){  
 
-div.sqs-block.gallery-block.sqs-block-gallery {
+    #page div.sqs-block.gallery-block.sqs-block-gallery {
         padding-bottom: 0px !important;
-}
+        padding-top: 0px !important;
+    }
 }
