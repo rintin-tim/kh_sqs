@@ -1,0 +1,28 @@
+var wrapper = document.getElementById('yui_3_17_2_1_1531605112667_655')
+
+// log the scroll position
+elementPosition = wrapper.scrollLeft
+console.log(elementPosition)
+
+// set the scroll position
+wrapper.scrollLeft = 1761
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
+// https://stackoverflow.com/questions/7076763/how-to-detect-horizontal-scrolling-in-jquery
+
+
+// to resolve 
+1. add event listener to scroll on wrapper? record scrollleft position
+2. add event listener on resize function
+3. create new function that takes the old scroll position variable and sets it back
+
+
+
+///
+
+1. add event listener to scroll on wrapper? record scrollleft position
+https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+window.addEventListener('scroll', function(e) {
+ // stuff
+}
+ 
