@@ -1,30 +1,30 @@
-var wrapper = document.getElementById('yui_3_17_2_1_1531605112667_655')
+// var wrapper = document.getElementById('yui_3_17_2_1_1531605112667_655')
 
-// log the scroll position
-elementPosition = wrapper.scrollLeft
-console.log(elementPosition)
+// // log the scroll position
+// elementPosition = wrapper.scrollLeft
+// console.log(elementPosition)
 
-// set the scroll position
-wrapper.scrollLeft = 1761
+// // set the scroll position
+// wrapper.scrollLeft = 1761
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
-// https://stackoverflow.com/questions/7076763/how-to-detect-horizontal-scrolling-in-jquery
+// // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
+// // https://stackoverflow.com/questions/7076763/how-to-detect-horizontal-scrolling-in-jquery
 
 
-// to resolve 
-1. add event listener to scroll on wrapper? record scrollleft position
-2. add event listener on resize function
-3. create new function that takes the old scroll position variable and sets it back
+// // to resolve 
+// 1. add event listener to scroll on wrapper? record scrollleft position
+// 2. add event listener on resize function
+// 3. create new function that takes the old scroll position variable and sets it back
 
 
 
 ///
 
-1. add event listener to scroll on wrapper? record scrollleft position
-https://developer.mozilla.org/en-US/docs/Web/Events/scroll
-window.addEventListener('scroll', function(e) {
- // stuff
-}
+// 1. add event listener to scroll on wrapper? record scrollleft position
+// https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+// window.addEventListener('scroll', function(e) {
+//  // stuff
+// }
  
 /////
 
@@ -51,9 +51,13 @@ window.onresize = function() { scrollUpdate(wrapper) };
 
 //  functions
 function scrollLog(wrapper) {
+	console.log('in the function now')
+	//var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
 	console.log(scrollPosition)
-	element = wrapper
-	logPosition = element.scrollLeft;
+	element = wrapper.target
+	console.log(element)
+	console.log(element.scrollLeft)
+	var logPosition = element.scrollLeft;
 	console.log("new scroll log position is: " + logPosition)
 	scrollPosition = logPosition
 	console.log("new actual scroll log position is: " + scrollPosition)
@@ -61,7 +65,9 @@ function scrollLog(wrapper) {
 }
 
 function scrollUpdate(wrapper) {
-	element = wrapper
+	element = wrapper.target
+	console.log('here now')
+	console.log(scrollPosition)
 	element.scrollLeft = scrollPosition
 	console.log('scroll updated to: ' + scrollPosition)
 }
