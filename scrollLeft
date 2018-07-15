@@ -26,3 +26,49 @@ window.addEventListener('scroll', function(e) {
  // stuff
 }
  
+/////
+
+// var wrapper = document.getElementsByClassName("sqs-wrapper")[0];
+var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+
+var scrollPosition = 0
+
+// proper ones
+wrapper.addEventListener('scroll', scrollLog);
+window.onresize = function() { scrollUpdate(wrapper) };
+
+
+
+//  test ones
+// var scrollCount = 0
+// wrapper.addEventListener('scroll', function() { console.log( 'scroll count is: ' + (scrollCount += 1))} );
+
+// wrapper.onscroll = function() {console.log( 'scroll count is: ' + (scrollCount += 1))}
+
+// var count = 0
+// window.onresize = function() { console.log( 'resize count is: ' + (count += 1)) };
+
+
+//  functions
+function scrollLog(wrapper) {
+	console.log(scrollPosition)
+	element = wrapper
+	logPosition = element.scrollLeft;
+	console.log("new scroll log position is: " + logPosition)
+	scrollPosition = logPosition
+	console.log("new actual scroll log position is: " + scrollPosition)
+
+}
+
+function scrollUpdate(wrapper) {
+	element = wrapper
+	element.scrollLeft = scrollPosition
+	console.log('scroll updated to: ' + scrollPosition)
+}
+
+
+
+
+// return rather than assign the variable?
+
+// sqs-gallery sqs-gallery-design-strip
