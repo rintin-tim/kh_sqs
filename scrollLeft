@@ -32,21 +32,11 @@
 var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
 
 var scrollPosition = 0
-
+var tolerance = 100;
 // proper ones
 wrapper.addEventListener('scroll', scrollLog);
 window.onresize = function() { scrollUpdate(wrapper) };
 
-
-
-//  test ones
-// var scrollCount = 0
-// wrapper.addEventListener('scroll', function() { console.log( 'scroll count is: ' + (scrollCount += 1))} );
-
-// wrapper.onscroll = function() {console.log( 'scroll count is: ' + (scrollCount += 1))}
-
-// var count = 0
-// window.onresize = function() { console.log( 'resize count is: ' + (count += 1)) };
 
 
 //  functions
@@ -57,10 +47,20 @@ function scrollLog(wrapper) {
 	element = wrapper.target
 	console.log(element)
 	console.log(element.scrollLeft)
-	var logPosition = element.scrollLeft;
+	var logPosition = scrollPosition
+	if (element.scrollLeft !== 0) {
+		logPosition = element.scrollLeft;
+	}
+	 
 	console.log("new scroll log position is: " + logPosition)
-	scrollPosition = logPosition
-	console.log("new actual scroll log position is: " + scrollPosition)
+	if ((logPosition - scrollPosition > tolerance) || (logPosition - scrollPosition < tolerance) ) {
+		console.log('too big a difference - no action: scrollPosition: ' + scrollPosition + ' logPosition: ' + logPosition)
+	} else {
+		scrollPosition = logPosition
+		console.log("new variable scrolllog position is: " + scrollPosition)
+		console.log("banner scrollLog value is: " + element.scrollLeft)
+	}
+	
 
 }
 
@@ -72,8 +72,16 @@ function scrollUpdate(wrapper) {
 	console.log(element)
 	console.log('here now')
 	console.log(scrollPosition)
-	element.scrollLeft = scrollPosition
-	console.log('scroll updated to: ' + scrollPosition)
+	console.log('element.scrollLeft: ' + element.scrollLeft)
+	console.log('scrollPosition: ' + scrollPosition)
+	if ((element.scrollLeft - scrollPosition > tolerance) || (element.scrollLeft - scrollPosition < tolerance) ) {
+		element.scrollLeft = scrollPosition;
+		console.log('attempted to update scroll to: ' + scrollPosition);
+		console.log('current scroll is: ' + element.scrollLeft);
+
+	}
+	
+	
 }
 
 
