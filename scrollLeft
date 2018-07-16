@@ -65,7 +65,11 @@ function scrollLog(wrapper) {
 }
 
 function scrollUpdate(wrapper) {
-	element = wrapper.target
+	console.log('scroll update function')
+	element = wrapper
+	// element = wrapper.target
+	//debugger;
+	console.log(element)
 	console.log('here now')
 	console.log(scrollPosition)
 	element.scrollLeft = scrollPosition
