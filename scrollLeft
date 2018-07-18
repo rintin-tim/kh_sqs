@@ -1,92 +1,39 @@
-// var wrapper = document.getElementById('yui_3_17_2_1_1531605112667_655')
 
-// // log the scroll position
-// elementPosition = wrapper.scrollLeft
-// console.log(elementPosition)
-
-// // set the scroll position
-// wrapper.scrollLeft = 1761
-
-// // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
-// // https://stackoverflow.com/questions/7076763/how-to-detect-horizontal-scrolling-in-jquery
-
-
-// // to resolve 
-// 1. add event listener to scroll on wrapper? record scrollleft position
-// 2. add event listener on resize function
-// 3. create new function that takes the old scroll position variable and sets it back
-
-
-
-///
-
-// 1. add event listener to scroll on wrapper? record scrollleft position
-// https://developer.mozilla.org/en-US/docs/Web/Events/scroll
-// window.addEventListener('scroll', function(e) {
-//  // stuff
-// }
- 
-/////
-
-// var wrapper = document.getElementsByClassName("sqs-wrapper")[0];
 var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
 
+/** store the leftScroll position */
 var scrollPosition = 0
+
+/** set tolerance */
 var tolerance = 100;
-// proper ones
-wrapper.addEventListener('scroll', scrollLog);
-window.onresize = function() { scrollUpdate(wrapper) };
 
+/** listen for any scroll even and run function. */
+wrapper.onscroll = function() { scrollLog(wrapper) };
 
+/** listen for any window resize and run function */
+window.onresize = function() { scrollLog(wrapper) };
 
-//  functions
+/** keep track of the current scrollLeft position and compare it to the stored scrollPosition value. 
+if the current position is within 100 (tolerance) of previous value, everything is OK - update scrollPosition 
+If it is greater "something happened". Do not update and revert element's scrollLeft to last known. 
+If the difference is greater it is probably because the scroll has jumped to the beginning.
+ */
 function scrollLog(wrapper) {
-	console.log('in the function now')
-	//var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
-	console.log(scrollPosition)
-	element = wrapper.target
-	console.log(element)
-	console.log(element.scrollLeft)
-	var logPosition = scrollPosition
-	if (element.scrollLeft !== 0) {
-		logPosition = element.scrollLeft;
-	}
-	 
-	console.log("new scroll log position is: " + logPosition)
-	if ((logPosition - scrollPosition > tolerance) || (logPosition - scrollPosition < tolerance) ) {
-		console.log('too big a difference - no action: scrollPosition: ' + scrollPosition + ' logPosition: ' + logPosition)
-	} else {
-		scrollPosition = logPosition
-		console.log("new variable scrolllog position is: " + scrollPosition)
-		console.log("banner scrollLog value is: " + element.scrollLeft)
-	}
-	
-
-}
-
-function scrollUpdate(wrapper) {
-	console.log('scroll update function')
+	console.log('start scrollLog function')
 	element = wrapper
-	// element = wrapper.target
-	//debugger;
 	console.log(element)
-	console.log('here now')
-	console.log(scrollPosition)
-	console.log('element.scrollLeft: ' + element.scrollLeft)
-	console.log('scrollPosition: ' + scrollPosition)
-	if ((element.scrollLeft - scrollPosition > tolerance) || (element.scrollLeft - scrollPosition < tolerance) ) {
+	console.log('current scrollPosition is: ' + scrollPosition)
+	console.log('current scrollLeft is: ' + element.scrollLeft)
+	var stored = scrollPosition
+	var current = element.scrollLeft
+	
+	// if there's a large jump, restore the previous scrollPosition, otherwise update the scroll position
+	if ((stored  - current) > tolerance ) {
+		console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
 		element.scrollLeft = scrollPosition;
-		console.log('attempted to update scroll to: ' + scrollPosition);
-		console.log('current scroll is: ' + element.scrollLeft);
-
+	} else {
+		console.log('within tolerance. scrollPosition updated to: ' + current)
+		scrollPosition = current;
 	}
-	
-	
+
 }
-
-
-
-
-// return rather than assign the variable?
-
-// sqs-gallery sqs-gallery-design-strip

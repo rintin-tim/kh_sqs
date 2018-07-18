@@ -1,0 +1,92 @@
+// var wrapper = document.getElementById('yui_3_17_2_1_1531605112667_655')
+
+// // log the scroll position
+// elementPosition = wrapper.scrollLeft
+// console.log(elementPosition)
+
+// // set the scroll position
+// wrapper.scrollLeft = 1761
+
+// // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
+// // https://stackoverflow.com/questions/7076763/how-to-detect-horizontal-scrolling-in-jquery
+
+
+// // to resolve 
+// 1. add event listener to scroll on wrapper? record scrollleft position
+// 2. add event listener on resize function
+// 3. create new function that takes the old scroll position variable and sets it back
+
+
+
+///
+
+// 1. add event listener to scroll on wrapper? record scrollleft position
+// https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+// window.addEventListener('scroll', function(e) {
+//  // stuff
+// }
+ 
+/////
+
+// var wrapper = document.getElementsByClassName("sqs-wrapper")[0];
+var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+
+var scrollPosition = 0
+var tolerance = 100;
+// proper ones
+wrapper.addEventListener('scroll', scrollLog);
+window.onresize = function() { scrollUpdate(wrapper) };
+
+
+
+//  functions
+function scrollLog(wrapper) {
+	console.log('in the function now')
+	//var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+	console.log(scrollPosition)
+	element = wrapper.target
+	console.log(element)
+	console.log(element.scrollLeft)
+	var logPosition = scrollPosition
+	if (element.scrollLeft !== 0) {
+		logPosition = element.scrollLeft;
+	}
+	 
+	console.log("new scroll log position is: " + logPosition)
+	if ((logPosition - scrollPosition > tolerance) || (logPosition - scrollPosition < tolerance) ) {
+		console.log('too big a difference - no action: scrollPosition: ' + scrollPosition + ' logPosition: ' + logPosition)
+	} else {
+		scrollPosition = logPosition
+		console.log("new variable scrolllog position is: " + scrollPosition)
+		console.log("banner scrollLog value is: " + element.scrollLeft)
+	}
+	
+
+}
+
+function scrollUpdate(wrapper) {
+	console.log('scroll update function')
+	element = wrapper
+	// element = wrapper.target
+	//debugger;
+	console.log(element)
+	console.log('here now')
+	console.log(scrollPosition)
+	console.log('element.scrollLeft: ' + element.scrollLeft)
+	console.log('scrollPosition: ' + scrollPosition)
+	if ((element.scrollLeft - scrollPosition > tolerance) || (element.scrollLeft - scrollPosition < tolerance) ) {
+		element.scrollLeft = scrollPosition;
+		console.log('attempted to update scroll to: ' + scrollPosition);
+		console.log('current scroll is: ' + element.scrollLeft);
+
+	}
+	
+	
+}
+
+
+
+
+// return rather than assign the variable?
+
+// sqs-gallery sqs-gallery-design-strip
