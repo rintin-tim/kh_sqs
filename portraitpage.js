@@ -1,5 +1,3 @@
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
     <script>
         window.onload = function() {
 
@@ -7,7 +5,9 @@
 
             trimDiv();
     		runObserver();
-    		window.addEventListener('resize', trimDiv);
+            // updateBannerScroll();
+            //window.onresize = function() { trimDiv(); };
+    		window.addEventListener('resize', trimDiv);  // consider change for onresize
             //$(window).on("resize", trimDiv);  // TODO remove jquery library and try with: window.onresize = function() { trimdiv };
 
     		//console.log("globalNextLeftArray is: " + globalNextLeftArray)
@@ -15,6 +15,46 @@
     		console.log("ready finished");
 
         };
+
+        function updateBannerScroll() {
+
+            /** this function maintains the overflow scroll positon when the viewport size changes (e.g. portrait to landscape)
+            */
+           
+           /** store the leftScroll position */
+            var scrollPosition = 0
+
+            /** set tolerance */
+            var tolerance = 100;
+            var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+            
+            if (wrapper) {
+                /** listen for any scroll event and run function. */
+                wrapper.onscroll = function() { scrollLog(wrapper); };
+                //wrapper.addEventListener('scroll', function() { scrollLog(wrapper); });
+            }
+       
+
+            function scrollLog(wrapper) {
+                console.log('start scrollLog function')
+                element = wrapper
+                console.log('current scrollPosition is: ' + scrollPosition)
+                console.log('current scrollLeft is: ' + element.scrollLeft)
+                var stored = scrollPosition
+                var current = element.scrollLeft
+                
+                // if there's a large jump, restore the previous scrollPosition, otherwise update the scroll position
+                if (((stored  - current) > tolerance ) && (current < tolerance)) {
+                    console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
+                    element.scrollLeft = scrollPosition;
+                } else {
+                    console.log('within tolerance. scrollPosition updated to: ' + current)
+                    scrollPosition = current;
+                }
+
+            }
+        }
+     
 
       function insertCaption(nextLeftArray, captionNames) {
         //var margin = 0
@@ -27,8 +67,8 @@
                 var extra = 2
                 item = item + (extra * index)
                 //item = item + margin + (extra * index)
-        }
-            )
+            }
+        )
         
         console.log(nextLeftArray)
          var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];
@@ -127,6 +167,7 @@
                     if (mutation.attributeName == "data-image-resolution") {
                         console.log("do something - attributes changed: " + mutation.attributeName);
                         trimDiv();
+                        updateBannerScroll();
 
                     }
                 });
