@@ -7,7 +7,8 @@
 
             trimDiv();
     		runObserver();
-    		$(window).on("resize", trimDiv);  // TODO remove jquery library and try with: window.onresize = function() { trimdiv };
+    		window.addEventListener('resize', trimDiv);
+            //$(window).on("resize", trimDiv);  // TODO remove jquery library and try with: window.onresize = function() { trimdiv };
 
     		//console.log("globalNextLeftArray is: " + globalNextLeftArray)
     		//insertCaption(globalNextLeftArray)

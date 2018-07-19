@@ -8,10 +8,7 @@ var scrollPosition = 0
 var tolerance = 100;
 
 /** listen for any scroll even and run function. */
-wrapper.onscroll = function() { scrollLog(wrapper) };
-
-/** listen for any window resize and run function */
-window.onresize = function() { scrollLog(wrapper) };
+wrapper.addEventListener('scroll', function() { scrollLog(wrapper); });
 
 /** keep track of the current scrollLeft position and compare it to the stored scrollPosition value. 
 if the current position is within 100 (tolerance) of previous value, everything is OK - update scrollPosition 
@@ -21,7 +18,6 @@ If the difference is greater it is probably because the scroll has jumped to the
 function scrollLog(wrapper) {
 	console.log('start scrollLog function')
 	element = wrapper
-	console.log(element)
 	console.log('current scrollPosition is: ' + scrollPosition)
 	console.log('current scrollLeft is: ' + element.scrollLeft)
 	var stored = scrollPosition
