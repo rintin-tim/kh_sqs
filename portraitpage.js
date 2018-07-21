@@ -212,7 +212,7 @@
                 // trimDiv();
                 // updateBannerScroll();
 
-                // debouncing - to ensure functions aren't called unnecessarily, this functions only execute if another mutation isn't triggered within the delay (250 ms) 
+                // debouncing - ensures functions aren't called unnecessarily. These functions execute when another mutation isn't triggered within  the delay (250 ms) 
                 var delay = 250
     
                 clearTimeout(actions)
