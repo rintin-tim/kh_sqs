@@ -116,65 +116,73 @@
              */
 
             console.log("trim div kicked in");
-            var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide");  // overflow element
-            
-            // check images are loaded before continuing 
-            if (imgs.length > 0) {
+            var homePage = document.getElementById("collection-5ac681c4aa4a99b176337f89") 
 
-            	var nextLeftArray = []  // list of image widths
-                var captionNames = []  // list of caption names
+            // skip function if on the homepage
+            if (!homePage) {
 
-                var widthTotal = 34; // // add up the total width of all images. includes value for margin on the left and right of screen 
-
-                for (var i = 0; i < imgs.length; i++) {
-                    // calculate the width of each gallery image 
-                    imgWidth = imgs[i].clientWidth;
-                    
-                    // add the widths to a running total
-                    widthTotal += imgWidth;
-                    // console.log(imgs[i].clientWidth);
-                    // console.log("total: " + widthTotal);
-                    widthTotal += 12; // gap between images 
-                    
-                    // add captions to list
-                    capName = imgs[i].getAttribute("alt")
-                    captionNames.push(capName)
-
-                    // add widths to list
-                    nextLeftArray.push(widthTotal-34) // add to array but compensate for page margin
-                    // console.log("with margin total: " + widthTotal);
-
-                    console.log('calculating img.clientWidth and adding widthTotal')
-                    
-                    // adds fade class used by the CSS for border transition animation
-                    imgs[i].classList.add("border-fade");
+                var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide");  // overflow element
                 
+                // check images are loaded before continuing 
+                if (imgs.length > 0) {
+
+                	var nextLeftArray = []  // list of image widths
+                    var captionNames = []  // list of caption names
+
+                    var widthTotal = 34; // // add up the total width of all images. includes value for margin on the left and right of screen 
+
+                    for (var i = 0; i < imgs.length; i++) {
+                        // calculate the width of each gallery image 
+                        imgWidth = imgs[i].clientWidth;
+                        
+                        // add the widths to a running total
+                        widthTotal += imgWidth;
+                        // console.log(imgs[i].clientWidth);
+                        // console.log("total: " + widthTotal);
+                        widthTotal += 12; // gap between images 
+                        
+                        // add captions to list
+                        capName = imgs[i].getAttribute("alt")
+                        captionNames.push(capName)
+
+                        // add widths to list
+                        nextLeftArray.push(widthTotal-34) // add to array but compensate for page margin
+                        // console.log("with margin total: " + widthTotal);
+
+                        console.log('calculating img.clientWidth and adding widthTotal')
+                        
+                        // adds fade class used by the CSS for border transition animation
+                        imgs[i].classList.add("border-fade");
+                    
+                    }
+                    
+                    //console.log("innerWidth: " + window.innerWidth)            
+                    
+                    // set max width of element to the sum of its images within it (plus margins, etc) 
+                    var elem = document.getElementsByClassName("sqs-wrapper")[0];
+                    console.log("setting maxWidth: " + widthTotal + "px")
+                    elem.style.maxWidth = "" + widthTotal + "px";
+    //                console.log(nextLeftArray)
+
+                    // prevent the last image in the carousel being clicked     
+                    lastImage = imgs[imgs.length - 1];  // find last image
+                   // secondLastImage = imgs[imgs.length - 2];
+                    // lastAttribute = document.createAttribute("style")
+                    // lastAttribute.value = "pointer-events: none"
+
+                    lastImage.classList.add("last-image")  // in order to apply none pointer in css
+
+                    // console.log("lastImage set to nonePointer")
+                   
+                    // if portrait page - insert the captions
+                    portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")  
+                    if (portraitPage) {
+                        insertCaption(nextLeftArray, captionNames)  // insert the captions 
+                    }
+                } 
+            } else { 
+                console.log('cancel out - on the homepage');  // else clause can be removed
                 }
-                
-                //console.log("innerWidth: " + window.innerWidth)            
-                
-                // set max width of element to the sum of its images within it (plus margins, etc) 
-                var elem = document.getElementsByClassName("sqs-wrapper")[0];
-                console.log("setting maxWidth: " + widthTotal + "px")
-                elem.style.maxWidth = "" + widthTotal + "px";
-//                console.log(nextLeftArray)
-
-                // prevent the last image in the carousel being clicked     
-                lastImage = imgs[imgs.length - 1];  // find last image
-               // secondLastImage = imgs[imgs.length - 2];
-                // lastAttribute = document.createAttribute("style")
-                // lastAttribute.value = "pointer-events: none"
-
-                lastImage.classList.add("last-image")  // apply none pointer
-
-                console.log("lastImage set to nonePointer")
-               
-                // if portrait page - insert the captions
-                portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")  
-                if (portraitPage) {
-                    insertCaption(nextLeftArray, captionNames)  // insert the captions 
-                }
-            };
         };
 
 
