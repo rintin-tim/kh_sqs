@@ -1,0 +1,191 @@
+    <script>
+        window.onload = function() {
+
+    		console.log("start onload function");
+
+            trimDiv();
+    		runObserver();
+            // updateBannerScroll();
+            //window.onresize = function() { trimDiv(); };
+    		window.addEventListener('resize', trimDiv);  // consider change for onresize
+            //$(window).on("resize", trimDiv);  // TODO remove jquery library and try with: window.onresize = function() { trimdiv };
+
+    		//console.log("globalNextLeftArray is: " + globalNextLeftArray)
+    		//insertCaption(globalNextLeftArray)
+    		console.log("ready finished");
+
+        };
+
+        function updateBannerScroll() {
+
+            /** this function maintains the overflow scroll positon when the viewport size changes (e.g. portrait to landscape)
+            */
+           
+           /** store the leftScroll position */
+            var scrollPosition = 0
+
+            /** set tolerance */
+            var tolerance = 100;
+            var wrapper = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+            
+            if (wrapper) {
+                /** listen for any scroll event and run function. */
+                wrapper.onscroll = function() { scrollLog(wrapper); };
+                //wrapper.addEventListener('scroll', function() { scrollLog(wrapper); });
+            }
+       
+
+            function scrollLog(wrapper) {
+                console.log('start scrollLog function')
+                element = wrapper
+                console.log('current scrollPosition is: ' + scrollPosition)
+                console.log('current scrollLeft is: ' + element.scrollLeft)
+                var stored = scrollPosition
+                var current = element.scrollLeft
+                
+                // if there's a large jump, restore the previous scrollPosition, otherwise update the scroll position
+                if (((stored  - current) > tolerance ) && (current < tolerance)) {
+                    console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
+                    element.scrollLeft = scrollPosition;
+                } else {
+                    console.log('within tolerance. scrollPosition updated to: ' + current)
+                    scrollPosition = current;
+                }
+
+            }
+        }
+     
+
+      function insertCaption(nextLeftArray, captionNames) {
+        //var margin = 0
+        //nextLeftArray[0] = margin  // replace first value in list with margin width
+        captionArray = captionNames
+        nextLeftArray.unshift(0)
+        nextLeftArray.pop();
+        // add 5 to each 
+        nextLeftArray.forEach( function(item, index) {
+                var extra = 2
+                item = item + (extra * index)
+                //item = item + margin + (extra * index)
+            }
+        )
+        
+        console.log(nextLeftArray)
+         var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];
+         oldCaptions = document.querySelectorAll("div.sqs-wrapper div"); // OLD IMPORTANT
+        // oldCaptions = document.querySelectorAll("div.sqs-wrapper img span");
+         console.log("old captions: " + oldCaptions.length)
+         oldCaptions.forEach(function(item, index) {
+             sqsWrapperOld.removeChild(oldCaptions[index]);
+         });
+         var array = nextLeftArray;
+         array.forEach(function(item, index) {
+           	 var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0];
+
+             var newDiv = document.createElement("div");
+             var content = document.createTextNode(captionArray[index]);
+             var styleAttribute = document.createAttribute("style");
+            
+            styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"
+            newDiv.setAttributeNode(styleAttribute); // add style to new div
+            newDiv.appendChild(content); // add text to new div
+            //newDiv.classList.add("fade")
+            sqsWrapper.appendChild(newDiv); // add new div to wrapper
+
+         });
+     }
+        function trimDiv() {
+            console.log("trim div kicked in");
+            var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide");
+            if (imgs.length > 0) {
+
+            	var nextLeftArray = []
+                var captionNames = []  // List of caption names
+
+                var widthTotal = 34; // margin on left and right of screen 
+                var border
+
+                for (var i = 0; i < imgs.length; i++) {
+                    imgWidth = imgs[i].clientWidth;
+                    widthTotal += imgWidth;
+                    console.log(imgs[i].clientWidth);
+                    console.log("total: " + widthTotal);
+                    widthTotal += 12; // margin between images used to be 10!
+                    capName = imgs[i].getAttribute("alt")
+                    captionNames.push(capName)
+                    nextLeftArray.push(widthTotal-34) 
+                    console.log("with margin total: " + widthTotal);
+                    imgs[i].classList.add("border-fade");
+                    // imgs[i].addEventListener("click", function(event) {
+                    //     console.log('You Clicked Me');
+                    //     event.stopPropagation();
+
+                    // }, false )
+                }
+                
+                console.log("innerWidth: " + window.innerWidth)
+                // if (window.innerWidth < 1024) {
+                //if (window.innerWidth < 1368) {
+                    var elemList = document.getElementsByClassName("sqs-wrapper");
+                    elem = elemList[0];
+                    console.log("setting maxWidth: " + widthTotal + "px")
+                    console.log("wait 2 secs")
+                    elem.style.maxWidth = "" + widthTotal + "px";
+                    // setTimeout(function() { elem.style.maxWidth = "" + widthTotal + "px"; }, 2000)
+                    console.log(nextLeftArray)
+                // } else {
+                    lastImage = imgs[imgs.length - 1];
+                    secondLastImage = imgs[imgs.length - 2];
+                    lastAttribute = document.createAttribute("style")
+                    lastAttribute.value = "pointer-events: none"
+
+                    lastImage.classList.add("last-image")
+
+                    console.log("lastImage set to nonePointer")
+
+               
+                portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")  
+                if (portraitPage) {
+                    insertCaption(nextLeftArray, captionNames)  // insert the captions possibly delay for a second?
+                }
+            };
+        };
+
+
+        function runObserver() {
+            console.log("start function runObserver");
+
+            var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+            var element = document.querySelector('#content'); // valid one
+
+            var observer = new MutationObserver(function(mutations) {
+                console.log("start new observer");
+                mutations.forEach(function(mutation) {
+                    console.log("mutation-type: " + mutation.type);
+                    console.log("mutation-attributeName: " + mutation.attributeName);
+                    if (mutation.attributeName == "data-image-resolution") {
+                        console.log("do something - attributes changed: " + mutation.attributeName);
+                        trimDiv();
+                        updateBannerScroll();
+
+                    }
+                });
+            });
+
+            observer.observe(element, {
+                attributes: true,
+                subtree: true,
+                attributeFilter: ['data-image-resolution'] //configure it to listen to attribute changes
+            });
+
+        }
+
+
+
+        console.log("script finished");
+
+    </script>
+
+
+
