@@ -1,5 +1,8 @@
     <script>
-        window.onload = function() {
+        console.log("script started");
+        window.addEventListener('load', function() {
+    
+        // window.onload = function() {
 
     		console.log("start onload function");
 
@@ -7,9 +10,9 @@
     		runObserver();
             window.onresize = function() { trimDiv(); };
     		//window.addEventListener('resize', trimDiv);  // consider change for onresize
-    		console.log("ready finished");
+    		console.log("finish onload function");
 
-        };
+        });
 
         function updateBannerScroll() {
 
@@ -61,14 +64,14 @@
             are calculated by the trimDiv function  */
 
             captionArray = captionNames // list of captions
-            nextLeftArray.unshift(0) // insert zero as the first position at the beginning of the array 
-            nextLeftArray.pop(); // and remove the last value because this is the distance to the end of the carousel
+            nextLeftArray.unshift(0) // insert a zero to be the first position 
+            nextLeftArray.pop(); // and remove the last value because this is the distance to the end of the last image 
             nextLeftArray.forEach( function(item, index) {
                 var extra = 2
                 item = item + (extra * index)
-            });  // add extra pixels to each item in the list to compensate for the margin between images
+            });  // add extra pixels to each item in the list to accomodate the gap between images
         
-            console.log(nextLeftArray)
+            // console.log(nextLeftArray)
 
             // images are inserted multiple times per page load - remove old captions before re-inserting each time.
             var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];  // wrapper
@@ -79,13 +82,11 @@
             sqsWrapperOld.removeChild(oldCaptions[index]);
             });
          
-            // for item distance in the array, insert the next caption at the corresponding position 
-
+            // for item in nextLeftArray, insert the next caption at the corresponding position 
             var array = nextLeftArray;
-            var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0]; // get wrapper
-
+            
             array.forEach(function(item, index) {
-           	
+           	    var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0]; // get wrapper. captions overlap briefly if wrapper is placed outside of loop.
                 var newDiv = document.createElement("div");
                 var content = document.createTextNode(captionArray[index]);
 
@@ -105,13 +106,13 @@
 
             /** 
             1. calculates the width of images in the gallery in order to ascertain: 
-                1a. the required length of the overflow element, which Squarespace is constantly trying to extend to 3 times its required length.
-                1b. the required position for portriat gallery captions
-            2. trims down the length of the wrapper element once Squarespace has messed it up again
-            3. pulls the alt tags for all gallery images into a list - these are then used as captions by the insertCaption function
-            4. triggers the insert caption
+                1a. the max length of the wrapper element, which Squarespace is over extending 
+                1b. the insertion points for captions on the gallery page
+            2. trims the max length of the wrapper element according to above (needed particulalry for mobile)
+            3. gathers the alt tags for all gallery images into a list - these are then used as captions by the insertCaption function
+            4. triggers the above insert caption function
             5. adds fade class to image borders
-            5. prevents clicking on the last image in the carousel as this causes the legth of the wrapper to go crazy 
+            5. prevents clicking on the last image in the carousel as this causes the length of a trimmed wrapper to go crazy 
              */
 
             console.log("trim div kicked in");
@@ -131,36 +132,38 @@
                     
                     // add the widths to a running total
                     widthTotal += imgWidth;
-                    console.log(imgs[i].clientWidth);
-                    console.log("total: " + widthTotal);
-                    widthTotal += 12; // margin between images 
+                    // console.log(imgs[i].clientWidth);
+                    // console.log("total: " + widthTotal);
+                    widthTotal += 12; // gap between images 
                     
                     // add captions to list
                     capName = imgs[i].getAttribute("alt")
                     captionNames.push(capName)
 
                     // add widths to list
-                    nextLeftArray.push(widthTotal-34) // add to array but compensate for margin
-                    console.log("with margin total: " + widthTotal);
+                    nextLeftArray.push(widthTotal-34) // add to array but compensate for page margin
+                    // console.log("with margin total: " + widthTotal);
+
+                    console.log('calculating img.clientWidth and adding widthTotal')
                     
                     // adds fade class used by the CSS for border transition animation
                     imgs[i].classList.add("border-fade");
                 
                 }
                 
-                console.log("innerWidth: " + window.innerWidth)            
+                //console.log("innerWidth: " + window.innerWidth)            
                 
                 // set max width of element to the sum of its images within it (plus margins, etc) 
                 var elem = document.getElementsByClassName("sqs-wrapper")[0];
                 console.log("setting maxWidth: " + widthTotal + "px")
                 elem.style.maxWidth = "" + widthTotal + "px";
-                console.log(nextLeftArray)
+//                console.log(nextLeftArray)
 
                 // prevent the last image in the carousel being clicked     
                 lastImage = imgs[imgs.length - 1];  // find last image
                // secondLastImage = imgs[imgs.length - 2];
-                lastAttribute = document.createAttribute("style")
-                lastAttribute.value = "pointer-events: none"
+                // lastAttribute = document.createAttribute("style")
+                // lastAttribute.value = "pointer-events: none"
 
                 lastImage.classList.add("last-image")  // apply none pointer
 
@@ -192,21 +195,52 @@
             // var observerCount = 0  // TBC counts number of times mutation obeserver has run
             // var myTimestamp = 0
 
+            var actions = false // placeholder value for action in the MutationObserver
+
             var observer = new MutationObserver(function(mutations) {
                 console.log("start new observer");
+                console.log("mutations length :" + mutations.length);
+                
+                // trimDiv();
+                // updateBannerScroll();
+
+                // debouncing - to ensure functions aren't called unnecessarily, this functions only execute if another mutation isn't triggered within the delay (250 ms) 
+                var delay = 250
+    
+                clearTimeout(actions)
+
+                actions = setTimeout(function() {
+                            console.log('ok doing something now')
+                            trimDiv();
+                            updateBannerScroll();
+                            }, delay);
+
+
+                /*    
                 mutations.forEach(function(mutation) {
-                    console.log("mutation-type: " + mutation.type);
-                    console.log("mutation-attributeName: " + mutation.attributeName);
-                    if (mutation.attributeName == "data-image-resolution") {
+                   // console.log("mutation-type: " + mutation.type);
+                   // console.log("mutation-attributeName: " + mutation.attributeName);
+                   // if (mutation.attributeName == "data-image-resolution") {
                         console.log("do something - attributes changed: " + mutation.attributeName);
-                        trimDiv();
-                        updateBannerScroll();
+                        //debugger;
+
+                        clearTimeout(actions)
+                        
+                        actions = setTimeout(function() {
+                            console.log('ok doing something now')
+                            trimDiv();
+                            updateBannerScroll();
+                        }, delay);
+                        
+                        
                         // observerCount += 1  // TBC
                         // console.log('observerCount is: ' + observerCount)
-                    }
+                    //}
                 });
+                */
             });
 
+            // run observer with below parameters
             observer.observe(element, {
                 attributes: true,
                 subtree: true,
