@@ -117,7 +117,7 @@ blockquote {
 
 /* DEVELOPMENT - PADDING ADDED TO ENABLE ACCESS TO JS. CLIENT PAGE FOOTER ITEMS TO BE DELETED WHEN DONE */
 
-#collection-599074c5db29d643eb09aada div.sqs-block.code-block {
+#collection-599074c5db29d643eb09aada #page div.sqs-block.code-block {
         padding: 17px !important;
 }
 
@@ -632,6 +632,12 @@ img.sqs-gallery-design-strip-slide {
 
 /* HOME PAGE */
 
+/* mouse pointer on banner*/
+#collection-5ac681c4aa4a99b176337f89 .sqs-gallery-design-stacked {
+    cursor: pointer;
+}
+
+
 /* >> Desktop Homepage slider */
 
 /* set container height */
@@ -704,10 +710,12 @@ img.sqs-gallery-design-strip-slide {
         margin-bottom: 0px;
 } 
 
-/* removed default padding from code block because it was creating a large gap at the bottom of the page */
- /*   #collection-5a526ba10d9297f9a596a5cb div.sqs-block.code-block {
-        padding: 0px !important;
-}*/
+/* adjust the image to fit the container - TEST PAGE */
+    #collection-5b53a8a6575d1f8f7ce0d584 .image-block-wrapper img {
+        object-fit: cover;
+}
+
+
 
 /* EXPERIMENTAL landscape css for gallery images - as there's currently too much vertical scroll at bottom of the page */
 @media screen and (max-width: 1023px) and (orientation:landscape ){  
