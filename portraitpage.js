@@ -81,43 +81,61 @@
             Each caption is inserted in the document from the left margin according to the next corresponding LeftArray value. The distances 
             are calculated by the trimDiv function  */
 
-            captionArray = captionNames // list of captions
-            nextLeftArray.unshift(0) // insert a zero to be the first position 
-            nextLeftArray.pop(); // and remove the last value because this is the distance to the end of the last image 
-            nextLeftArray.forEach( function(item, index) {
-                var extra = 2
-                item = item + (extra * index)
-            });  // add extra pixels to each item in the list to accomodate the gap between images
-        
-            // console.log(nextLeftArray)
+            // debouncer
 
-            // images are inserted multiple times per page load - remove old captions before re-inserting each time.
-            var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];  // wrapper
-            oldCaptions = document.querySelectorAll("div.sqs-wrapper div"); // captions to be removed
-        
-            console.log("old captions: " + oldCaptions.length)
-            oldCaptions.forEach(function(item, index) {
-            sqsWrapperOld.removeChild(oldCaptions[index]);
-            });
-         
-            // for item in nextLeftArray, insert the next caption at the corresponding position 
-            var array = nextLeftArray;
+            captionAction = false;
+
+            console.log('insertCaption fired')
+            delay = 250
+
+            clearTimeout(captionAction)
+
+            captionAction = setTimeout(function() {
+                internalInsertCaption(nextLeftArray, captionNames);
+
+            }, delay)
+
+            function internalInsertCaption(nextLeftArray, captionNames) {
+
+                console.log('insertCaption running')
+                captionArray = captionNames // list of captions
+                nextLeftArray.unshift(0) // insert a zero to be the first position 
+                nextLeftArray.pop(); // and remove the last value because this is the distance to the end of the last image 
+                nextLeftArray.forEach( function(item, index) {
+                    var extra = 2
+                    item = item + (extra * index)
+                });  // add extra pixels to each item in the list to accomodate the gap between images
             
-            array.forEach(function(item, index) {
-           	    var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0]; // get wrapper. captions overlap briefly if wrapper is placed outside of loop.
-                var newDiv = document.createElement("div");
-                var content = document.createTextNode(captionArray[index]);
+                // console.log(nextLeftArray)
 
-                // create needed css directly in html
-                var styleAttribute = document.createAttribute("style");
-                styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"  
+                // images are inserted multiple times per page load - remove old captions before re-inserting each time.
+                var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];  // wrapper
+                oldCaptions = document.querySelectorAll("div.sqs-wrapper div"); // captions to be removed
+            
+                console.log("old captions: " + oldCaptions.length)
+                oldCaptions.forEach(function(item, index) {
+                sqsWrapperOld.removeChild(oldCaptions[index]);
+                });
+             
+                // for item in nextLeftArray, insert the next caption at the corresponding position 
+                var array = nextLeftArray;
+                
+                array.forEach(function(item, index) {
+               	    var sqsWrapper = document.getElementsByClassName("sqs-wrapper")[0]; // get wrapper. captions overlap briefly if wrapper is placed outside of loop.
+                    var newDiv = document.createElement("div");
+                    var content = document.createTextNode(captionArray[index]);
 
-                // insert into page    
-                newDiv.setAttributeNode(styleAttribute); // add style to new div
-                newDiv.appendChild(content); // add text to new div
-                sqsWrapper.appendChild(newDiv); // add new div to wrapper
+                    // create needed css directly in html
+                    var styleAttribute = document.createAttribute("style");
+                    styleAttribute.value = "position: absolute; z-index: 1; float: left; left: " + item + "px; bottom: -3px; padding-left: 5px;"  
 
-            });
+                    // insert into page    
+                    newDiv.setAttributeNode(styleAttribute); // add style to new div
+                    newDiv.appendChild(content); // add text to new div
+                    sqsWrapper.appendChild(newDiv); // add new div to wrapper
+
+                });
+            }
         }
 
         function trimDiv() {

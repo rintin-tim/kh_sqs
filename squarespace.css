@@ -710,9 +710,25 @@ img.sqs-gallery-design-strip-slide {
         margin-bottom: 0px;
 } 
 
-/* adjust the image to fit the container - TEST PAGE */
-    #collection-5b53a8a6575d1f8f7ce0d584 .image-block-wrapper img {
+/* set image to fit the container aftere equalising - TEST PAGE */
+    #collection-5b53a8a6575d1f8f7ce0d584 .image-block-wrapper img,
+    #collection-5a526ba10d9297f9a596a5cb .image-block-wrapper img {
         object-fit: cover;
+}
+
+/* match image spacing on the portrait page - first row */
+#page .sqs-layout>div.sqs-row:nth-of-type(1) .image-block {
+    padding-bottom: 8px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+/* match image spacing on the portrait page - every other row (n+2 is all rows starting with an offset of 2) */
+#page .sqs-layout>div.sqs-row:nth-of-type(n+2) .image-block {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
 }
 
 
