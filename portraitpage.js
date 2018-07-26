@@ -196,8 +196,10 @@
                     
                     // set max width of element to the sum of its images within it (plus margins, etc) 
                     var elem = document.getElementsByClassName("sqs-wrapper")[0];
-                    console.log("setting maxWidth: " + widthTotal + "px")
+                    
+                    console.log("setting new maxWidth: " + widthTotal + "px")
                     elem.style.maxWidth = "" + widthTotal + "px";
+
     //                console.log(nextLeftArray)
 
                     // prevent the last image in the carousel being clicked     
@@ -207,6 +209,12 @@
                     // lastAttribute.value = "pointer-events: none"
 
                     lastImage.classList.add("last-image")  // in order to apply none pointer in css
+
+                    // TODO add to on-click listener?    
+                    if (lastImage && lastImage.classList.contains('sqs-active-slide')) {
+                        console.log('adding 150px to scroll left')
+                        lastImage.scrollLeft = 150;
+                    }
 
                     // console.log("lastImage set to nonePointer")
                    
