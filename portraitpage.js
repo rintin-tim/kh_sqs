@@ -157,7 +157,7 @@
             // skip function if on the homepage
             if (!homePage) {
 
-                var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide");  // overflow element
+                var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide");  // images within overflow element
                 
                 // check images are loaded before continuing 
                 if (imgs.length > 0) {
@@ -203,18 +203,43 @@
     //                console.log(nextLeftArray)
 
                     // prevent the last image in the carousel being clicked     
-                    lastImage = imgs[imgs.length - 1];  // find last image
+                    var lastImage = imgs[imgs.length - 1];  // find last image
                    // secondLastImage = imgs[imgs.length - 2];
                     // lastAttribute = document.createAttribute("style")
                     // lastAttribute.value = "pointer-events: none"
 
-                    lastImage.classList.add("last-image")  // in order to apply none pointer in css
+                    lastImage.classList.add("last-image")  // in order to apply 'pointer: none' in css
 
-                    // TODO add to on-click listener?    
-                    if (lastImage && lastImage.classList.contains('sqs-active-slide')) {
-                        console.log('adding 150px to scroll left')
-                        lastImage.scrollLeft = 150;
+                    // var imgConfig = { attributes: true, childList: false, subtree: false, attributeFilter: 'class' };
+
+                    var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+
+                    function runImageObserver() {
+                        var imgObserver = new MutationObserver(function(mutation) {
+                        console.log('statement executed')
+                        // TODO add to on-click listener?    
+                        if (lastImage && lastImage.classList.contains('sqs-active-slide')) {
+                            console.log('adding 150px to scroll left is: ' + galleryStrip.scrollLeft)
+                           setTimeout(function() {
+                               console.log('hang on a sec')
+                               galleryStrip.scrollLeft = 100;}, 250) 
+                               console.log('hung on a sec scrollLeft is now ' + galleryStrip.scrollLeft)
+                            } else {
+                               galleryStrip.scrollLeft = 0
+                            }
+                        })
+
+                    console.log('last image: ' + typeof lastImage)
+                    //debugger;
+
+                    imgObserver.observe(lastImage, { attributes: true, subtree: true, attributeFilter: ['class'] } )
+
                     }
+
+                    runImageObserver()
+
+
+                    
 
                     // console.log("lastImage set to nonePointer")
                    
