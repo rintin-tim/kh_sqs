@@ -35,3 +35,26 @@ function scrollLog(wrapper) {
 	}
 
 }
+
+
+
+
+
+/// Portrait listener click 
+
+// attempts to reset the left position
+wrapper = document.getElementsByClassName("sqs-wrapper")[0];
+var tim = document.getElementsByClassName("sqs-gallery-design-strip-slide")[19]  // "last" image
+//tim.addEventListener('click', function() {wrapper.style.left = "0px"})
+
+tim.addEventListener('click', function() {
+	console.log('wrapper: ' + wrapper.style.left);
+	setTimeout(function() {
+		wrapper.style.left = "0px",
+		console.log('new wrapper: ' + wrapper.style.left);
+	}, 250)})
+
+
+// debugger - prints the element within the wrapper receiving the click
+wrapper = document.getElementsByClassName("sqs-wrapper")[0];
+wrapper.addEventListener('click', function(e) {console.log(e.target)})
