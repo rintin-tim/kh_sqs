@@ -170,6 +170,7 @@
                     var captionNames = []  // list of caption names
 
                     var widthTotal = 34; // // add up the total width of all images. includes value for margin on the left and right of screen 
+                    var testWidth = 0
 
                     for (var i = 0; i < imgs.length; i++) {
                         // calculate the width of each gallery image 
@@ -177,6 +178,7 @@
                         
                         // add the widths to a running total
                         widthTotal += imgWidth;
+                        testWidth += imgWidth;
                         // console.log(imgs[i].clientWidth);
                         // console.log("total: " + widthTotal);
                         widthTotal += 12; // gap between images 
@@ -188,6 +190,8 @@
                         // add widths to list
                         nextLeftArray.push(widthTotal-34) // add to array but compensate for page margin
                         // console.log("with margin total: " + widthTotal);
+
+                        console.log('testWidth is: ' + testWidth)
 
                         console.log('calculating img.clientWidth and adding widthTotal')
                         
@@ -221,6 +225,19 @@
                     
                     var resetFlag = false;
                     console.log('resetFlag 0: ' + resetFlag)
+
+                    // TODO - add this function into resetWrapper
+                    function isScrolledIntoView(el) {
+                        var rect = el.getBoundingClientRect();
+                        var elemTop = rect.top;
+                        var elemBottom = rect.bottom;
+
+                        // Only completely visible elements return true:
+                        var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                        // Partially visible elements return true:
+                        //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+                        return isVisible;
+                    }
         
                     function resetWrapper(event) {
                         console.log('running resetWrapper')
@@ -235,7 +252,7 @@
                             event.stopPropagation();
                             event.preventDefault();
                             console.log('seting wrapper to 0...')
-                            elem.style.left = "0px";
+                            elem.style.left = 0;
                             console.log('seting scrollLeft to 0...')
                             galleryStrip.scrollLeft = 0;
                             console.log('wrapper left is: ' + elem.style.left + ' scrollLeft is: ' + galleryStrip.scrollLeft)
