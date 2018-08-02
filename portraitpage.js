@@ -44,11 +44,14 @@
             /** set tolerance */
             var tolerance = 100;
 
+            var viewportWidth = window.innerWidth
+
             // overflow page element
             var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
             
-            if (galleryStrip) {
-                /** listen for any scroll event and run function. */
+            if (galleryStrip && (viewportWidth < 1024) ) {
+                /** listen for any scroll event and run function. but only on mobile. */
+                console.log('screen is smaller than 1024')
                 galleryStrip.onscroll = function() { scrollLog(galleryStrip); };
             }
        
@@ -153,6 +156,7 @@
 
             console.log("trim div kicked in");
             var homePage = document.getElementById("collection-5ac681c4aa4a99b176337f89") 
+            var portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")  
 
             // skip function if on the homepage
             if (!homePage) {
@@ -202,29 +206,84 @@
 
     //                console.log(nextLeftArray)
 
-                    // prevent the last image in the carousel being clicked     
-                    var lastImage = imgs[imgs.length - 1];  // find last image
-                   // secondLastImage = imgs[imgs.length - 2];
-                    // lastAttribute = document.createAttribute("style")
-                    // lastAttribute.value = "pointer-events: none"
+                    var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
 
-                    lastImage.classList.add("last-image")  // in order to apply 'pointer: none' in css
+                    // identify the last image in the carousel clicked and add identifying class     
+                    var lastImage = imgs[imgs.length - 1];  // find last image
+                    var secondLastImage = imgs[imgs.length - 2];
+
+
+                    // added
+                    if (portraitPage) {
+                        secondLastImage.addEventListener("click", resetWrapper, true);
+                        lastImage.addEventListener("click", resetWrapper, true);
+                    }
+                    
+                    var resetFlag = false;
+                    console.log('resetFlag 0: ' + resetFlag)
+        
+                    function resetWrapper(event) {
+                        console.log('running resetWrapper')
+                        var firstCaptionDiv = document.querySelector('div.sqs-wrapper>div')
+                        //debugger;                        
+                        if (resetFlag && (lastImage.classList.contains('sqs-active-slide') || firstCaptionDiv.classList.contains('sqs-active-slide'))) {
+                            console.log('resetFlag 1: ' + resetFlag)
+                            console.log('resetFlag 1: detaching listener from lastimage...')
+                            Y.detach("click", "undefined", lastImage);
+                            console.log('stopPropagation and preventDefault...')
+                            console.log(event.type)
+                            event.stopPropagation();
+                            event.preventDefault();
+                            console.log('seting wrapper to 0...')
+                            elem.style.left = "0px";
+                            console.log('seting scrollLeft to 0...')
+                            galleryStrip.scrollLeft = 0;
+                            console.log('wrapper left is: ' + elem.style.left + ' scrollLeft is: ' + galleryStrip.scrollLeft)
+                            resetFlag = false;
+                            console.log('resetFlag 2: ' + resetFlag)
+                        } else if (lastImage.classList.contains('sqs-active-slide') || secondLastImage.classList.contains('sqs-active-slide' ) && !resetFlag) { 
+                            console.log('resetFlag 3: ' + resetFlag)
+                            // console.log('resetFlag 3: detaching click listener')
+                            // Y.detach("click", "undefined", lastImage);
+                            resetFlag = true;
+                            console.log('resetFlag 4: ' + resetFlag)
+                        } else {
+                            console.log('do nothing: lastImage contains sqs-active-slide is: ' + lastImage.classList.contains('sqs-active-slide') + ' resetFlag is: ' + resetFlag)
+                        }
+                    }
+
+                    
+
+                    
+     
+                    // removed
+                    // lastImage.classList.add("last-image")  // in order to apply 'pointer: none' in css. pointer:none is on portrait page only in css
 
                     // var imgConfig = { attributes: true, childList: false, subtree: false, attributeFilter: 'class' };
 
-                    var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+                    // var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
 
-                    function runImageObserver() {
+
+
+                    function imageNudgeObserver(nudgePixels) {
+
+                        /** when the last image is active, nudge to the right to ensure it's fully visible using scrollLeft
+                        when the last image is not active, remove the nudge  */
+                        var nudge = nudgePixels  // in pixels
                         var imgObserver = new MutationObserver(function(mutation) {
-                        console.log('statement executed')
+                        console.log('running imageNudgeObserver')
                         // TODO add to on-click listener?    
-                        if (lastImage && lastImage.classList.contains('sqs-active-slide')) {
-                            console.log('adding 150px to scroll left is: ' + galleryStrip.scrollLeft)
-                           setTimeout(function() {
-                               console.log('hang on a sec')
-                               galleryStrip.scrollLeft = 100;}, 250) 
-                               console.log('hung on a sec scrollLeft is now ' + galleryStrip.scrollLeft)
+                        if (lastImage.classList.contains('sqs-active-slide')) {
+                            console.log('adding nudge. scrollLeft is: ' + galleryStrip.scrollLeft)
+                            /** debouncer for observer */
+                            console.log('hang on for debounce')
+                           setTimeout(function() {                         
+                               galleryStrip.scrollLeft = nudge;
+                               console.log('debounce cleared scrollLeft is now ' + galleryStrip.scrollLeft)
+                           }, 250) 
+                               
                             } else {
+                                console.log('resetting scrollLeft to 0')
                                galleryStrip.scrollLeft = 0
                             }
                         })
@@ -232,21 +291,27 @@
                     console.log('last image: ' + typeof lastImage)
                     //debugger;
 
-                    imgObserver.observe(lastImage, { attributes: true, subtree: true, attributeFilter: ['class'] } )
+                    imgObserver.observe(lastImage, { attributes: true, subtree: false, attributeFilter: ['class'] } )
 
                     }
 
-                    runImageObserver()
 
+                    /** functions to run depending upon portrait page status */
 
-                    
-
-                    // console.log("lastImage set to nonePointer")
                    
-                    // if portrait page - insert the captions
-                    portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")  
+                    // if portrait page - run these functions
+                    
                     if (portraitPage) {
-                        insertCaption(nextLeftArray, captionNames)  // insert the captions 
+                        insertCaption(nextLeftArray, captionNames)  // insert the captions on the portrait page
+                        console.log('running portrait mode')
+                       // imageNudgeObserver(80) // nudge on portrait
+                    } 
+
+                    // if not portrait page - run these functions
+
+                    if (!portraitPage) {
+                        console.log('running not portrait mode')
+                        imageNudgeObserver(100) // nudge if not on the portrait page 
                     }
                 } 
             } else { 
