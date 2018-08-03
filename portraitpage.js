@@ -217,10 +217,16 @@
                     var secondLastImage = imgs[imgs.length - 2];
 
 
+                    // REMOEMBER THIS 
+                    // if (portraitPage) {
+                    //     secondLastImage.addEventListener("click", resetWrapper, true);
+                    //     lastImage.addEventListener("click", resetWrapper, true);
+                    // }
+
                     // added
                     if (portraitPage) {
-                        secondLastImage.addEventListener("click", resetWrapper, true);
-                        lastImage.addEventListener("click", resetWrapper, true);
+                        secondLastImage.addEventListener("click", lastImageVisible, true);
+                        lastImage.addEventListener("click", lastImageVisible, true);
                     }
                     
                     var resetFlag = false;
@@ -268,6 +274,54 @@
                             console.log('do nothing: lastImage contains sqs-active-slide is: ' + lastImage.classList.contains('sqs-active-slide') + ' resetFlag is: ' + resetFlag)
                         }
                     }
+
+                    var visibleFlag = false
+
+                    function lastImageVisible() {
+
+                        console.log('running lastImageVisible')
+
+                        if (!visibleFlag) {
+
+                            setTimeout(internalImageVisible, 250)
+
+                            function internalImageVisible() {
+
+                                console.log('running internalImageVisible')
+
+                                rect = lastImage.getBoundingClientRect();    
+                                lastImagePosition = rect.x;
+                                viewport = window.innerWidth;
+                                lastImageWidth = rect.width;
+
+                                visibleBuffer = 10  // to accomodate the page margins left and right
+
+                                fullyVisiblePoint = (viewport - lastImageWidth) - visibleBuffer 
+
+                                if (fullyVisiblePoint > lastImagePosition) {
+                                    console.log('last image IS fully visible')
+                                    console.log('fullyVisiblePoint: ' + fullyVisiblePoint + 'lastImagePosition: ' + lastImagePosition)
+                                    visibleFlag = true;
+                                    Y.detach("click", "undefined", lastImage);
+                                } else {
+                                    console.log('last image NOT fully visible')
+                                    console.log('fullyVisiblePoint: ' + fullyVisiblePoint + 'lastImagePosition: ' + lastImagePosition)
+                                    visibleFlag = false
+                                }
+                            }
+                        } else { 
+                            console.log('stopPropagation and preventDefault...')
+                            console.log(event.type)
+                            event.stopPropagation();
+                            event.preventDefault();
+                            console.log('seting wrapper to 0...')
+                            elem.style.left = 0;   
+                            visibleFlag = false
+                        }
+
+                    }
+
+                    //  if canno
 
                     
 
