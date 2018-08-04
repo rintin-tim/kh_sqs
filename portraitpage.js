@@ -225,8 +225,8 @@
 
                     // added
                     if (portraitPage) {
-                        secondLastImage.addEventListener("click", lastImageVisible, true);
-                        lastImage.addEventListener("click", lastImageVisible, true);
+                        secondLastImage.addEventListener("click", lastImageVisible, true );
+                        lastImage.addEventListener("click", lastImageVisible, true );
                     }
                     
                     var resetFlag = false;
@@ -277,15 +277,15 @@
 
                     var visibleFlag = false
 
-                    function lastImageVisible() {
+                    function lastImageVisible(ev) {
 
                         console.log('running lastImageVisible')
 
                         if (!visibleFlag) {
 
-                            setTimeout(internalImageVisible, 250)
+                            setTimeout(internalImageVisible(ev), 250)
 
-                            function internalImageVisible() {
+                            function internalImageVisible(ev) {
 
                                 console.log('running internalImageVisible')
 
@@ -294,9 +294,11 @@
                                 viewport = window.innerWidth;
                                 lastImageWidth = rect.width;
 
-                                visibleBuffer = 10  // to accomodate the page margins left and right
+                                visibleBuffer = 10  // an estimate to accomodate the page margins left and right
 
-                                fullyVisiblePoint = (viewport - lastImageWidth) - visibleBuffer 
+                                fullyVisiblePoint = (viewport - lastImageWidth) - visibleBuffer // x value at which the last image would be fully visible
+
+                                //debugger;
 
                                 if (fullyVisiblePoint > lastImagePosition) {
                                     console.log('last image IS fully visible')
@@ -304,9 +306,26 @@
                                     visibleFlag = true;
                                     Y.detach("click", "undefined", lastImage);
                                 } else {
-                                    console.log('last image NOT fully visible')
-                                    console.log('fullyVisiblePoint: ' + fullyVisiblePoint + 'lastImagePosition: ' + lastImagePosition)
-                                    visibleFlag = false
+                                    // if it's the last image use new function and detach, else just change visible flag as before
+                                    //debugger;
+                                    console.log('event.target is: ' + ev.target)
+                                    if (ev.target == lastImage) {
+                                        Y.detach("click", "undefined", lastImage);
+                                        // insert new function
+                                        // calculate the amount to move the image along evertything visible and then remove that amount from the left margin
+                                        imageDelta = lastImagePosition - fullyVisiblePoint;  // how many pixels to get the last image visible
+                                        // get the current left value and add the image delta
+                                        if (imageDelta > 0) { 
+                                            currentLeft = parseFloat(elem.style.left, 10);
+                                            var finalLeftMargin = currentLeft - imageDelta;  // remove the imageDelta from the curren left margin to nudge the last image fully into view
+                                            elem.style.left = finalLeftMargin + 'px';   
+                                            visibleFlag = true;
+                                        }
+                                    } else {
+                                        console.log('last image NOT fully visible')
+                                        console.log('fullyVisiblePoint: ' + fullyVisiblePoint + 'lastImagePosition: ' + lastImagePosition)
+                                        visibleFlag = false
+                                    }
                                 }
                             }
                         } else { 
