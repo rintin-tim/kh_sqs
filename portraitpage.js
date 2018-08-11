@@ -217,21 +217,30 @@
                     var secondLastImage = imgs[imgs.length - 2];
 
 
-                    // REMOEMBER THIS 
+                    // REMEMBER THIS 
                     // if (portraitPage) {
                     //     secondLastImage.addEventListener("click", resetWrapper, true);
                     //     lastImage.addEventListener("click", resetWrapper, true);
                     // }
 
-                    // added
-                    if (portraitPage) {
-                        secondLastImage.addEventListener("click", lastImageVisible, true );
-                        lastImage.addEventListener("click", lastImageVisible, true );
+                    // // REMEMBER THIS TOO - USED TO ADD LAST IMAGE LISTENERS
+                    // if (portraitPage) {
+                    //     elem.addEventListener("transitionend", function() { console.log('end of transition') } )
+                    //     secondLastImage.addEventListener("click", lastImageVisible, true );
+                    //     lastImage.addEventListener("click", lastImageVisible, true );
+                    // }
+
+                    function imageVisible(el) {
+                        var rect = el.getBoundingClientRect();
+                        var elemRight = rect.right
+                        viewport = window.innerWidth;
+                        if (elemRight < viewport) {
+                            console.log('image is fully visible')
+                            return true;
+                        }
                     }
                     
-                    var resetFlag = false;
-                    console.log('resetFlag 0: ' + resetFlag)
-
+                   
                     // TODO - add this function into resetWrapper
                     function isScrolledIntoView(el) {
                         var rect = el.getBoundingClientRect();
@@ -244,7 +253,32 @@
                         //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
                         return isVisible;
                     }
-        
+
+                    function bannerScrollObserver() {
+                        var wrapper = document.getElementsByClassName('sqs-wrapper')[0];  
+                        scrollDelay = 50  
+                        /** detects when then banner has finished scrolling  */
+
+                        var debounce = false
+
+                        var bannerScrollObserver = new MutationObserver(function(mutation) {
+                            clearTimeout(debounce)
+                            debounce = setTimeout( function() { 
+                                console.log('finished scroll - TODO check if last image is visible, if yes, detach listener and reset on next attempt') 
+                                if imageVisible(lastImage)
+                            }, scrollDelay )
+                            
+                        })
+                        
+                    bannerScrollObserver.observe(wrapper, { attributes: true, subtree: false, attributeFilter: ['style'] } )
+                    }
+
+                    bannerScrollObserver()
+
+                    var resetFlag = false;
+                    console.log('resetFlag 0: ' + resetFlag)
+
+                    // NOT USED CURRENTLY
                     function resetWrapper(event) {
                         console.log('running resetWrapper')
                         var firstCaptionDiv = document.querySelector('div.sqs-wrapper>div')
@@ -305,25 +339,28 @@
                                     console.log('fullyVisiblePoint: ' + fullyVisiblePoint + 'lastImagePosition: ' + lastImagePosition)
                                     visibleFlag = true;
                                     Y.detach("click", "undefined", lastImage);
+                                    // TEST
+                                    console.log('seting wrapper to 0...')
+                                    elem.style.left = 0;   
                                 } else {
                                     // if it's the last image use new function and detach, else just change visible flag as before
                                     //debugger;
                                     console.log('event.target is: ' + ev.target)
                                     if (ev.target == lastImage) {
                                         Y.detach("click", "undefined", lastImage);
-                                        // insert new function
+                                        // new function
                                         // calculate the amount to move the image along evertything visible and then remove that amount from the left margin
                                         imageDelta = lastImagePosition - fullyVisiblePoint;  // how many pixels to get the last image visible
                                         // get the current left value and add the image delta
                                         if (imageDelta > 0) { 
-                                            currentLeft = parseFloat(elem.style.left, 10);
-                                            var finalLeftMargin = currentLeft - imageDelta;  // remove the imageDelta from the curren left margin to nudge the last image fully into view
+                                            currentLeft = parseFloat(elem.style.left, 10);  // extract decimal number from the DOM string which includes PX value
+                                            var finalLeftMargin = currentLeft - imageDelta;  // remove the imageDelta from the current left margin to nudge the last image fully into view
                                             elem.style.left = finalLeftMargin + 'px';   
                                             visibleFlag = true;
                                         }
                                     } else {
                                         console.log('last image NOT fully visible')
-                                        console.log('fullyVisiblePoint: ' + fullyVisiblePoint + 'lastImagePosition: ' + lastImagePosition)
+                                        console.log('fullyVisiblePoint: ' + fullyVisiblePoint + 'lastImagePosition: ' + lastImagePosition + 'rect.x: ' + rect.x)
                                         visibleFlag = false
                                     }
                                 }
@@ -366,6 +403,7 @@
                         if (lastImage.classList.contains('sqs-active-slide')) {
                             console.log('adding nudge. scrollLeft is: ' + galleryStrip.scrollLeft)
                             /** debouncer for observer */
+                            // TODO NOT DEBOUNCING!!!!
                             console.log('hang on for debounce')
                            setTimeout(function() {                         
                                galleryStrip.scrollLeft = nudge;
