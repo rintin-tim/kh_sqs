@@ -215,7 +215,8 @@
                     // identify the last image in the carousel clicked and add identifying class     
                     var lastImage = imgs[imgs.length - 1];  // find last image
                     var secondLastImage = imgs[imgs.length - 2];
-
+                    var resetFlag = false;
+                    var sqsListenerRemoved = false
 
                     // REMEMBER THIS 
                     // if (portraitPage) {
@@ -230,42 +231,68 @@
                     //     lastImage.addEventListener("click", lastImageVisible, true );
                     // }
 
+                    if (portraitPage) {
+                        console.log('adding listener')
+                        secondLastImage.addEventListener("click", resetBanner, true );
+                        lastImage.addEventListener("click", resetBanner, true );
+                    }
+
                     function imageVisible(el) {
                         var rect = el.getBoundingClientRect();
                         var elemRight = rect.right
                         viewport = window.innerWidth;
                         if (elemRight < viewport) {
                             console.log('image is fully visible')
-                            return true;
+                            console.log('nudging')
+                            nudgeBannerAlong(25);
+                            return true;  
                         }
+                    }
+
+                    function nudgeBannerAlong(pixels) {
+                        // if (viewport >= 1025 && viewport <= 1205) {  
+                            galleryStrip.scrollLeft = pixels;
+                        // }
+                       
                     }
                     
                    
-                    // TODO - add this function into resetWrapper
-                    function isScrolledIntoView(el) {
-                        var rect = el.getBoundingClientRect();
-                        var elemTop = rect.top;
-                        var elemBottom = rect.bottom;
+                    // // TODO - add this function into resetWrapper
+                    // function isScrolledIntoView(el) {
+                    //     var rect = el.getBoundingClientRect();
+                    //     var elemTop = rect.top;
+                    //     var elemBottom = rect.bottom;
 
-                        // Only completely visible elements return true:
-                        var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-                        // Partially visible elements return true:
-                        //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
-                        return isVisible;
-                    }
+                    //     // Only completely visible elements return true:
+                    //     var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                    //     // Partially visible elements return true:
+                    //     //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+                    //     return isVisible;
+                    // }
 
+                    // IN USE
                     function bannerScrollObserver() {
                         var wrapper = document.getElementsByClassName('sqs-wrapper')[0];  
                         scrollDelay = 50  
-                        /** detects when then banner has finished scrolling  */
+                        /** detects when the banner has finished scrolling  */
 
                         var debounce = false
 
                         var bannerScrollObserver = new MutationObserver(function(mutation) {
                             clearTimeout(debounce)
                             debounce = setTimeout( function() { 
-                                console.log('finished scroll - TODO check if last image is visible, if yes, detach listener and reset on next attempt') 
-                                if imageVisible(lastImage)
+                                console.log('finished scroll')
+                                // debugger; 
+                                if (imageVisible(lastImage) && !sqsListenerRemoved) {
+                                    resetFlag = true;  // set flag to true - reset banner on next click
+                                    Y.detach("click", "undefined", lastImage);  // detatch listener on last image (and second to last) - can this go in the click handler?
+                                    sqsListenerRemoved = true
+                                } else if (imageVisible(lastImage) && sqsListenerRemoved) {
+                                    resetFlag = true
+                                } else { 
+                                    resetFlag = false; 
+                                }
+
                             }, scrollDelay )
                             
                         })
@@ -275,7 +302,44 @@
 
                     bannerScrollObserver()
 
-                    var resetFlag = false;
+                    function resetBanner(ev) {
+                        console.log('resestBanner function')
+                        console.log('resetFlag is: ' + resetFlag)
+                        if (resetFlag) {
+                            console.log('resetBanner true: reset banner: ' + resetFlag)
+                            nudgeBannerAlong(0)  // CHECK IF NEEDED
+                            elem.style.left = 0;
+                            //galleryStrip.scrollLeft = 0; // TODO check if needed
+                        } else if ((sqsListenerRemoved) && (ev.target == lastImage)) {
+                            var imageRight = lastImage.getBoundingClientRect().right;
+                            scrollAmount = imageRight - window.innerWidth;
+                            if (scrollAmount > 0) {
+                                console.log('remove from the scroll: ' + scrollAmount) 
+                                elemLeftInt = parseFloat(elem.style.left, 10);
+                                extraMargin = 50  // to try and make sure the last image is visible
+                                //debugger;  see why it doesn't work second time around
+                                updatedElemLeftInt = elemLeftInt - (scrollAmount + extraMargin)  
+                                // updatedElemLeftInt = elemLeftInt - scrollAmount 
+                                console.log('manual resetBanner')
+                                elem.style.left = updatedElemLeftInt.toString() + 'px';
+                                console.log('elem.style.left: ' + elem.style.left)
+                                nudgeBannerAlong(25)  // 1920 px second pass tweak
+
+                                if (imageVisible(lastImage)) {
+                                    resetFlag = true
+                                };
+                                // move the scroll along or take from the margin wrapper
+                                //currentLeft = parseFloat(elem.style.left, 10);  // extract decimal number from the DOM string which includes PX value
+                                //var finalLeftMargin = currentLeft - imageDelta;  // remove the imageDelta from the current left margin to nudge the last image fully into view
+                                //elem.style.left = finalLeftMargin + 'px';   
+                            }
+
+                        } else {
+                            console.log('resetBanner false: do nothing: ' + resetFlag)
+                        }
+                    }
+
+                    
                     console.log('resetFlag 0: ' + resetFlag)
 
                     // NOT USED CURRENTLY
