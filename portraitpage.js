@@ -8,7 +8,7 @@
 
         		console.log("start onload function");
 
-                trimDiv();
+                //trimDiv();  // potentially don't need this as it occurs in runObserver
         		runObserver();
                 equalizeHeight();
                 // $( document ).ready( function() { equalizeHeight(); });
@@ -22,11 +22,11 @@
                 /** for use on the Overview page. Function equalizes the height of the images next to each other. Use jquery plugin: matchHeight 
                 https://github.com/liabru/jquery-match-height/blob/master/README.md#usage */
                 
-                var testOverviewPage = document.getElementById('collection-5b53a8a6575d1f8f7ce0d584') 
+                // var testOverviewPage = document.getElementById('collection-5b53a8a6575d1f8f7ce0d584') 
                 var overviewPage = document.getElementById('collection-5a526ba10d9297f9a596a5cb')
-                console.log('testOverviewPage element result: ' + testOverviewPage)
-                console.log('overviewPage element result: ' + overviewPage)
-                if (testOverviewPage || overviewPage) { $('.image-block-wrapper').matchHeight();
+                // console.log('testOverviewPage element result: ' + testOverviewPage)
+                // console.log('overviewPage element result: ' + overviewPage)
+                if (overviewPage) { $('.image-block-wrapper').matchHeight();
                     console.log('equalise baby');
                 }
             }           
@@ -153,6 +153,8 @@
                 5. adds fade class to image borders
                 5. prevents clicking on the last image in the carousel as this causes the length of a trimmed wrapper to go crazy 
                  */
+
+                 //  TODO - add debouncer to trimDiv
 
                 console.log("trim div kicked in");
                 var homePage = document.getElementById("collection-5ac681c4aa4a99b176337f89") 
@@ -399,7 +401,7 @@
                     // trimDiv();
                     // updateBannerScroll();
 
-                    // debouncing - ensures functions aren't called unnecessarily. These functions execute when another mutation isn't triggered within  the delay (250 ms) 
+                    // debouncing - ensures functions aren't called unnecessarily. These functions execute when another mutation isn't triggered within  the delay (ms) 
                     var delay = 400
         
                     clearTimeout(actions)
