@@ -1,6 +1,17 @@
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
         <script>
+
+        // Add this to div.sqs-wrapper when setting back to zero and then remove?
+        // transition-property: left;
+        // transition-duration: 0.5s;
+        // transition-timing-function: linear;
+        // transition-delay: 0s;
+        // // todo make the above into a 'transition' property and add in javascript? or maybe CSS, then figure out how to toggle
+        // transition: none // toggle 
+        // https://stackoverflow.com/questions/6634470/disable-turn-off-inherited-css3-transitions
+        
             console.log("script started");
             window.addEventListener('load', function() {
         
