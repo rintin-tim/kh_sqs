@@ -227,20 +227,23 @@
                   }
 
                   function imageVisible(el) {
+                    console.log("image visible function...");
                       var rect = el.getBoundingClientRect();
                       var elemRight = rect.right
                       viewport = window.innerWidth;
                       if (elemRight < viewport) {
                           console.log('image is fully visible')
-                          console.log('nudging...')
+                          // console.log('nudging...')
+                          nudgeBannerAlong(el.clientWidth/20);
                           // nudgeBannerAlong(25);
-                          console.log('...nudged')
+                          // console.log('...nudged')
                           return true;
                       }
                   }
 
                   function nudgeBannerAlong(pixels) {
                       // if (viewport >= 1025 && viewport <= 1205) {
+                      console.log('nudgeBannerAlong: ' + pixels)
                           galleryStrip.scrollLeft = pixels;
                       // }
 
@@ -343,15 +346,16 @@
                       console.log('running imageNudgeObserver')
                       // TODO add to on-click listener?
                       if (lastImage.classList.contains('sqs-active-slide')) {
-                          console.log('adding nudge. scrollLeft is: ' + galleryStrip.scrollLeft)
+                          console.log('adding nudge to current scrollLeft of: ' + galleryStrip.scrollLeft)
                           /** debouncer for observer */
-                          console.log('hang on for debounce')
+                          console.log('hang on for debounce...')
                          clearTimeout(dbTimeout)
                          dbTimeout = setTimeout(function() {
                              galleryStrip.scrollLeft = nudge;
-                             console.log('debounce cleared scrollLeft is now ' + galleryStrip.scrollLeft)
+                             console.log('debounce cleared. scrollLeft is now ' + galleryStrip.scrollLeft)
                          }, 50)
 
+                         // TODO to many resets? should this be else if?
                           } else {
                               console.log('resetting scrollLeft to 0')
                              galleryStrip.scrollLeft = 0
@@ -378,10 +382,10 @@
                      // imageNudgeObserver(80) // nudge on portrait
                   }
 
-                  // if not portrait page - run these functions
-                  if (!portraitPage) {
+                  // if not portrait page (and now, not mobile) - run these functions
+                  if (!portraitPage && (window.innerWidth > 1024)) {
                       console.log('running not portrait mode')
-                      imageNudgeObserver(100) // nudge if not on the portrait page
+                      imageNudgeObserver(100) // nudge if not on the portrait page  TODO make this % of image width in imageNudgeObserver?
                   }
               }
           } else {
@@ -417,7 +421,7 @@
               // updateBannerScroll();
 
               // debouncing - ensures functions aren't called unnecessarily. These functions execute when another mutation isn't triggered within  the delay (ms)
-              var delay = 250
+              var delay = 400
 
               clearTimeout(actions)
 
