@@ -285,31 +285,27 @@ div.logo-image {
      color: #383838 !important;
 }
 
-/* @media and (min-width: 1025px) { */
+@media screen and (min-width: 1025px) {
 
     /* vertical positioning of text block */
     #collection-59907775ff7c500cded8050d main div.sqs-block {
          padding-top: 18vh;
          padding-left: 18vw;
          padding-right: 18vw;
-
     }
-
     /* font size */
     #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
         font-size: 25px !important;
     }
-
-/* } */
+}
 
 /* ipad */
-@media and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
 
     #collection-59907775ff7c500cded8050d main div.sqs-block {
          padding-top: 22vh;
          padding-left: 14vw;
          padding-right: 14vw;
-
     }
 
     #collection-59907775ff7c500cded8050d main div.sqs-block h2 {
@@ -319,7 +315,7 @@ div.logo-image {
 }
 
 /* mobile */
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
 
     #collection-59907775ff7c500cded8050d main div.sqs-block {
          padding-top: 15vw !important;
@@ -462,6 +458,7 @@ img.sqs-gallery-design-strip-slide {
         }
     }
 
+/* TODO MOBILE CAPTION FONT SIZE... replace HERE */
 /* mobile - from 0px to 1024px */
 
  @media screen and (max-width: 375px) and (min-width: 0px) {
@@ -476,7 +473,7 @@ img.sqs-gallery-design-strip-slide {
     /* portrait caption div position */
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 10px !important;
+         font-size: 11px !important;
     }
 
     /* NOTE FLickering on load is caused by this not being 100% */
@@ -494,7 +491,7 @@ img.sqs-gallery-design-strip-slide {
     }
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 10px !important;
+         font-size: 11px !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 90.0% !important
@@ -510,7 +507,7 @@ img.sqs-gallery-design-strip-slide {
     }
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 10px !important;
+         font-size: 11px !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 90.5% !important
@@ -526,7 +523,7 @@ img.sqs-gallery-design-strip-slide {
     }
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 10px !important;
+         font-size: 11px !important;
     }
      #collection-5a52a4c753450aea1728c820 img.sqs-gallery-design-strip-slide {
          height: 92.5% !important
@@ -548,7 +545,7 @@ img.sqs-gallery-design-strip-slide {
     /* captions */
      div.sqs-wrapper div {
          bottom: -6px !important;
-         font-size: 10px !important;
+         font-size: 11px !important;
     }
 
     /* images */
@@ -570,6 +567,8 @@ img.sqs-gallery-design-strip-slide {
      .mobile-logo-image img {
          max-width: 95%;
     }
+
+/* TODO replace UNTIL HERE */
 
     /*footer*/
      #block-7f03ff4308643ff77c18 {
