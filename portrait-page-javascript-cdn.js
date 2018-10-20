@@ -298,7 +298,8 @@
                           scrollAmount = imageRight - window.innerWidth;
                           if (scrollAmount > 0) {
                               console.log('remove from the scroll: ' + scrollAmount)
-                              elemLeftInt = parseFloat(elem.style.left, 10);
+                              elemLeftInt = parseFloat(elem.style.left);
+                              // elemLeftInt = parseInt(elem.style.left, 10);
                               extraMargin = 50  // to try and make sure the last image is visible
                               //debugger;  see why it doesn't work second time around
                               updatedElemLeftInt = elemLeftInt - (scrollAmount + extraMargin)
