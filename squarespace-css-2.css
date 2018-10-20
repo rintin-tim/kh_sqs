@@ -176,6 +176,7 @@ blockquote {
     #collection-599074c5db29d643eb09aada #block-7f03ff4308643ff77c18 {
         position: relative !important;
         margin-bottom: 0px;
+        bottom: 5px;
     }
 }
 
@@ -204,13 +205,12 @@ div.logo-image {
     padding-top: 5px !important;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
 
-/* menu positioning */
-
-.overlay-nav-wrapper {
-    margin-top: 90% !important
-}
+/* menu positioning - don't think this is used */
+  /* .overlay-nav-wrapper {
+      margin-top: 30% !important
+  } */
 
 /* menu fonts */
 #mainNavWrapper span,
@@ -233,10 +233,15 @@ div.logo-image {
 
 /* Mobile */
 
- @media screen and (max-width: 767px) {
+ @media screen and (max-width: 768px) {
     /*reduce gap between menu and carousel*/
     #page {
         margin-top: 10px;
+    }
+
+    /* menu positioning */
+    .overlay-nav-wrapper {
+        margin-top: 15vh;
     }
 
     /* Mobile nav - Home and Overview, Work and About */
@@ -385,15 +390,18 @@ img.sqs-gallery-design-strip-slide {
      padding-top: 0px !important;
      padding-bottom: 0px !important;
      position: fixed;
-     bottom: 0px;
+     bottom: 5px !important;
      left: 0;
      right: 0;
-}
- #footer .text-align-center {
-     font-size: 10px;
+     font-size: 13px;
 }
 
-/* stops the code block interferring with the page length and thus the footer position. TODO remove from reducdant places! */
+/*  possibly delete - don't think this does anything */
+ #footer .text-align-center {
+     font-size: 12px;
+}
+
+/* stops the code block interferring with the page length and thus the footer position. TODO remove from redundant places! */
  #footer div.sqs-block.code-block.sqs-block-code {
         padding: 0px !important;
     }
@@ -423,7 +431,7 @@ img.sqs-gallery-design-strip-slide {
         }
          div.sqs-wrapper div {
              bottom: 10px !important;
-             font-size: 11px !important;
+             font-size: 12px !important;
         }
          #block-7f03ff4308643ff77c18 {
              position: fixed;
@@ -433,7 +441,7 @@ img.sqs-gallery-design-strip-slide {
              padding-bottom: 0px !important;
         }
          #footer .text-align-center {
-             font-size: 11px !important;
+             font-size: 12px !important;
         }
     }
 
