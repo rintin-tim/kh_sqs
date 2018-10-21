@@ -458,7 +458,7 @@ img.sqs-gallery-design-strip-slide {
         }
     }
 
-/* TODO MOBILE CAPTION FONT SIZE... replace HERE */
+/* TO CHANGE PORTRAIT CAPTION FONT SIZES IN MOBILE... replace HERE */
 /* mobile - from 0px to 1024px */
 
  @media screen and (max-width: 375px) and (min-width: 0px) {
