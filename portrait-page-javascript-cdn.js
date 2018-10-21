@@ -1,4 +1,4 @@
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
 
       <script>
@@ -67,16 +67,11 @@
                   var stored = scrollPosition
                   var current = element.scrollLeft
 
-                  // if (((stored  - current) > tolerance ) && (current < tolerance)) {  TODO works everywhere except end of portrait
-                  // if (((stored  - current) > tolerance ) && (current >= 1)) {
-                  if (((stored  - current) > tolerance ) && (stored >= 0)) {
+                  if (((stored  - current) > tolerance ) && (current < tolerance)) {
                       console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
                       element.scrollLeft = scrollPosition;
                   } else {
                       console.log('within tolerance. scrollPosition updated to: ' + current)
-                      console.log('tolerance result: ' + 'stored scroll: ' + stored + ' current scroll: ' + current + ' tolerance: ' + tolerance)
-                      console.log(' ((stored  - current) > tolerance ) = ' + ((stored  - current) > tolerance ) + ' (current >= 1) = ' + (current >= 1))
-                      // console.log(' ((stored  - current) > tolerance ) = ' + ((stored  - current) > tolerance ) + ' (current < tolerance) = ' + (current < tolerance))
                       scrollPosition = current;
                   }
 
@@ -102,7 +97,7 @@
               captionAction = setTimeout(function() {
                   internalInsertCaption(nextLeftArray, captionNames);
 
-              }, delay);
+              }, delay)
 
               function internalInsertCaption(nextLeftArray, captionNames) {
 
@@ -143,14 +138,14 @@
                       newDiv.appendChild(content); // add text to new div
                       sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
+                  // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
+                  console.log("setting scroll to zero after captions");
+                  var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+                  // nudgeBannerAlong(0)
+                  galleryStrip.scrollLeft = 0
+
                   });
               }
-              // console.log("finished writing captions");
-              // // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
-              // console.log("setting scroll to zero after captions");
-              // var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
-              // // nudgeBannerAlong(0)
-              // galleryStrip.scrollLeft = 0
           }
 
           function trimDiv() {
