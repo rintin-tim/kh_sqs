@@ -67,10 +67,13 @@
                   var stored = scrollPosition
                   var current = element.scrollLeft
 
+                  // if (((stored  - current) > tolerance ) && (current < tolerance)) {
                   if (((stored  - current) > tolerance ) && (current < tolerance)) {
+                      console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
                       console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
                       element.scrollLeft = scrollPosition;
                   } else {
+                      console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
                       console.log('within tolerance. scrollPosition updated to: ' + current)
                       scrollPosition = current;
                   }
@@ -138,11 +141,11 @@
                       newDiv.appendChild(content); // add text to new div
                       sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
-                  // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
-                  console.log("setting scroll to zero after captions");
-                  var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
-                  // nudgeBannerAlong(0)
-                  galleryStrip.scrollLeft = 0
+                  // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it  TODO is this needed? should it be elsewhere - fires multiple times here
+                  // console.log("setting scroll to zero after captions");
+                  // var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+                  // // nudgeBannerAlong(0)
+                  // galleryStrip.scrollLeft = 0
 
                   });
               }
