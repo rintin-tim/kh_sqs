@@ -70,10 +70,12 @@
                   // if (((stored  - current) > tolerance ) && (current < tolerance)) {
                   if (((stored  - current) > tolerance ) && (current < tolerance)) {
                       console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
+                      console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
                       console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
                       element.scrollLeft = scrollPosition;
                   } else {
                       console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
+                      console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
                       console.log('within tolerance. scrollPosition updated to: ' + current)
                       scrollPosition = current;
                   }
@@ -167,6 +169,7 @@
               console.log("trim div kicked in");
               var homePage = document.getElementById("collection-5ac681c4aa4a99b176337f89")
               var portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")
+              // TODO add viewportWidth to trimdiv here so that it can be used by imageVisible and nudgeBannerAlong (if jumpy scroll is fixed)
 
               // skip function if on the homepage
               if (!homePage) {
@@ -252,32 +255,42 @@
 
                       function nudgeBannerAlong(pixels) {
                           // if (viewport >= 1025 && viewport <= 1205) {
-                          console.log('nudgeBannerAlong: ' + pixels)
+                          console.log('requesting nudgeBanner along');
+                          if (window.innerWidth > 1024) {
+                              console.log('nudgeBannerAlong: ' + pixels)
                               galleryStrip.scrollLeft = pixels;
+                          }
                           // }
 
                       }
 
 
                       function bannerScrollObserver() {
+                        /** uses imageVisible function to update the DOM for a banner reset - removes existing listener or  if relevant  */
+                          console.log('initialise bannerScrollObserver')
                           var wrapper = document.getElementsByClassName('sqs-wrapper')[0];
                           scrollDelay = 50
                           /** detects when the banner has finished scrolling  */
 
                           var debounce = false
+                          // TODO does this debounce really work?
 
                           var bannerScrollObserver = new MutationObserver(function(mutation) {
+                              console.log('bannerscroll actions kick in')
                               clearTimeout(debounce)
                               debounce = setTimeout( function() {
                                   console.log('finished scroll')
                                   // debugger;
                                   if (imageVisible(lastImage) && !sqsListenerRemoved) {
+                                      console.log('image visible, listener present - listener removed')
                                       resetFlag = true;  // set flag to true - reset banner on next click
                                       Y.detach("click", "undefined", lastImage);  // detatch listener on last image (and second to last) - can this go in the click handler?
                                       sqsListenerRemoved = true
                                   } else if (imageVisible(lastImage) && sqsListenerRemoved) {
+                                      console.log('image visible, listener already removed - flag set to true')
                                       resetFlag = true
                                   } else {
+                                      console.log('else - flag set to false')
                                       resetFlag = false;
                                   }
 
@@ -291,7 +304,10 @@
                       // test - run banner scroll only if on portrait page???
 
                       if (portraitPage) {
+                        if (window.innerWidth > 1025) {
+                          console.log('over 1025px on portrait - run bannerScrollObserver')
                           bannerScrollObserver()
+                        }
                       }
 
                       function resetBanner(ev) {
