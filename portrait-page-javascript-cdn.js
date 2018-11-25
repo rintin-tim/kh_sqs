@@ -1,5 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
 
       <script>
       console.log("script started");
@@ -13,7 +13,10 @@
               runObserver()
               equalizeHeight();
               // $( document ).ready( function() { equalizeHeight(); });
-              window.onresize = function() { trimDiv(); };
+              window.onresize = function() {
+                trimDiv();
+                runObserver();
+              };
           //window.addEventListener('resize', trimDiv);  // consider change for onresize
           console.log("finish onload function");
 
@@ -42,6 +45,9 @@
              /** store the leftScroll position */
               var scrollPosition = 0
 
+              // set cancel reset flag
+              var cancelReset = false  // if this is true it's because we've detected the banner has momentum (is still moving) and should not be reset
+
               /** set tolerance */
               var tolerance = 100;
 
@@ -50,9 +56,9 @@
               // overflow page element
               var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
 
-              if (galleryStrip && (viewportWidth < 1024) ) {
+              if (galleryStrip && (viewportWidth < 1025) ) {
                   /** listen for any scroll event and run function. but only on mobile. */
-                  console.log('screen is smaller than 1024')
+                  console.log('screen is smaller than 1025')
                   galleryStrip.onscroll = function() { scrollLog(galleryStrip); };
               }
 
@@ -68,16 +74,136 @@
                   var current = element.scrollLeft
 
                   // if (((stored  - current) > tolerance ) && (current < tolerance)) {
+                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
+                  //     console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
+                  //     console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
+                  //     element.scrollLeft = scrollPosition;
+                  // } else {
+                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
+                  //     console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
+                  //     console.log('within tolerance. scrollPosition updated to: ' + current)
+                  //     scrollPosition = current;
+                  // }
+
+                  // current < tolerance checks if the scrollLeft will take the user somewhere near the beginning of the gallery - origuinally these were the only resets of relevance
+                  // however there's also an Else If now that does the reset even if it's not going near the beignning
+
+                  // TODO if scrollLeft doesn't go back (or only goes back breifly) it's because of momentum, in this instance don't change the scollLeft again
+                  // if (((stored  - current) > tolerance ) && (current < tolerance)) {
+                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
+                  //     console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
+                  //     console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
+                  //     element.scrollLeft = scrollPosition;
+                  // } else if (((stored  - current) > tolerance ) && (current > tolerance)) {
+                  //     // try resetting as per normal
+                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
+                  //     console.log('not to the beginning but large jump. resetting scrollLeft to: ' + scrollPosition)
+                  //     element.scrollLeft = scrollPosition;
+                  //     // try NOT resetting the scroll - and keeping the previous scroll position
+                  //     //	console.log('big jump but not to the beginning - doing nothing)
+                  // }
+                  // else {
+                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
+                  //     console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
+                  //     console.log('within tolerance. scrollPosition updated to: ' + current)
+                  //     scrollPosition = current;
+                  // }
+
+                  // TODO if scrollLeft doesn't go back (or only goes back breifly) it's because of momentum, in this instance don't change the scollLeft again
                   if (((stored  - current) > tolerance ) && (current < tolerance)) {
                       console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
                       console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
                       console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
-                      element.scrollLeft = scrollPosition;
-                  } else {
+
+                      // scrollLeft1 = False
+                      // scrollLeft2 = False
+                      // scrollLeft3 = False
+
+                      setTimeout( function() {
+                        updatedScroll = element.scrollLeft
+                        console.log('old updated scroll (aka current) is '+ current +'new updated scroll is: ' + updatedScroll)
+                        if ((current == updatedScroll) && !cancelReset) {
+                          console.log('resetting to scrollPosition: ' + scrollPosition)
+                          element.scrollLeft = scrollPosition;
+                        } else {
+                          console.log('skipping over')
+                          cancelReset = true
+                          scrollPosition = current;
+                        }
+
+                      }, 3 )
+
+                      // scrollLeft1 = element.scrollLeft
+                      // setTimeout( function() {
+                      //   scrollLeft2 = element.scrollLeft
+                      //   }, 2)
+
+                      // setTimeout( function() {
+                      //   scrollLeft3 = element.scrollLeft
+                      //   }, 4)
+                      
+                      // console.log('double check scrollLeft1 = ' + scrollLeft1 + 'scrollLeft2 = ' + scrollLeft2)
+
+                      // if (scrollLeft1 == scrollLeft2) {
+                      //     element.scrollLeft = scrollPosition;
+                      // } 
+
+                      // if (scrollLeft2 == scrollLeft3) {
+                      //   console.log('double check scrollLeft2 = ' + scrollLeft1 + 'scrollLeft3 = ' + scrollLeft2)
+                      //     element.scrollLeft = scrollPosition;
+                      // }
+                      // element.scrollLeft = scrollPosition;
+                  } else if (((stored  - current) > tolerance ) && (current > tolerance)) {
+                      // try resetting as per normal
+                      console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
+                      console.log('not to the beginning but large jump. current scrollPosition: ' + scrollPosition)
+
+                      setTimeout( function() {
+                        updatedScroll = element.scrollLeft
+                        console.log('old updated scroll (aka current) is '+ current +'new updated scroll is: ' + updatedScroll)
+                        if ((current == updatedScroll) && !cancelReset) {
+                          console.log('resetting to scrollPosition: ' + scrollPosition)
+                          element.scrollLeft = scrollPosition;
+                        } else {
+                          console.log('skipping over')
+                          cancelReset = true
+                          scrollPosition = current;
+                        }
+
+                      }, 3 )
+
+                      // scrollLeft1 = False
+                      // scrollLeft2 = False
+                      // scrollLeft3 = False
+
+                      // scrollLeft1 = element.scrollLeft
+                      // setTimeout( function() {
+                      //   scrollLeft2 = element.scrollLeft
+                      //   }, 2)
+
+                      // setTimeout( function() {
+                      //   scrollLeft3 = element.scrollLeft
+                      //   }, 4)
+                      
+                      // console.log('double check scrollLeft1 = ' + scrollLeft1 + 'scrollLeft2 = ' + scrollLeft2)
+
+                      // if (scrollLeft1 == scrollLeft2) {
+                      //     element.scrollLeft = scrollPosition;
+                      // } 
+
+                      // if (scrollLeft2 == scrollLeft3) {
+                      //   console.log('double check scrollLeft2 = ' + scrollLeft1 + 'scrollLeft3 = ' + scrollLeft2)
+                      //     element.scrollLeft = scrollPosition;
+                      // }
+                  }
+                  else {
+                      console.log('in the else')
                       console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
                       console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
                       console.log('within tolerance. scrollPosition updated to: ' + current)
                       scrollPosition = current;
+                      cancelReset = false
+
                   }
 
               }
@@ -169,6 +295,7 @@
               console.log("trim div kicked in");
               var homePage = document.getElementById("collection-5ac681c4aa4a99b176337f89")
               var portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")
+              // TODO make a new "galleyPage" variable - which returns true if the gallery element is found on the page. use this instrad of 'homepage' to determine whether to run the below
               // TODO add viewportWidth to trimdiv here so that it can be used by imageVisible and nudgeBannerAlong (if jumpy scroll is fixed)
 
               // skip function if on the homepage
@@ -304,8 +431,8 @@
                       // test - run banner scroll only if on portrait page???
 
                       if (portraitPage) {
-                        if (window.innerWidth > 1025) {
-                          console.log('over 1025px on portrait - run bannerScrollObserver')
+                        if (window.innerWidth > 1024) {
+                          console.log('over 1024px on portrait - run bannerScrollObserver')
                           bannerScrollObserver()
                         }
                       }

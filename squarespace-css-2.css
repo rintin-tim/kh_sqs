@@ -458,7 +458,7 @@ img.sqs-gallery-design-strip-slide {
         }
     }
 
-/* TO CHANGE PORTRAIT CAPTION FONT SIZES IN MOBILE... replace HERE */
+/* Portrait caption font sizes are changed here... */
 /* mobile - from 0px to 1024px */
 
  @media screen and (max-width: 375px) and (min-width: 0px) {
@@ -554,6 +554,15 @@ img.sqs-gallery-design-strip-slide {
     }
 }
 
+/* mobile logo */
+@media screen and (max-width: 1023px) {
+
+     .mobile-logo-image img {
+         max-height: 40px;
+    }
+}
+
+
 /* landscape mobile device customisations */
 
  @media screen and (max-width: 1023px) and (orientation: landscape) {
@@ -568,7 +577,6 @@ img.sqs-gallery-design-strip-slide {
          max-width: 95%;
     }
 
-/* TODO replace UNTIL HERE */
 
     /*footer*/
      #block-7f03ff4308643ff77c18 {
@@ -685,9 +693,15 @@ img.sqs-gallery-design-strip-slide {
 }
 
 /* >> Mobile Homepage slider */
+@media screen and (max-width: 1023px) and (orientation: landscape) {
+    /* Hide mobile slider when viewing on mobile in landscape */
+    #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(2) {
+        display: none;
+    }
+}
 
-@media screen and (max-width: 1023px) {
-    /* Hide desktop slider when viewing on mobile */
+@media screen and (max-width: 1023px) and (orientation: portrait) {
+    /* Hide desktop slider when viewing on mobile in portrait */
     #collection-5ac681c4aa4a99b176337f89 div.sqs-block.gallery-block.sqs-block-gallery:nth-of-type(1) {
         display: none;
 }
