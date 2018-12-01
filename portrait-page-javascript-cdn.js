@@ -26,12 +26,11 @@
               /** for use on the Overview page. Function equalizes the height of the images next to each other. Use jquery plugin: matchHeight
               https://github.com/liabru/jquery-match-height/blob/master/README.md#usage */
 
-              // var testOverviewPage = document.getElementById('collection-5b53a8a6575d1f8f7ce0d584')
+          
               var overviewPage = document.getElementById('collection-5a526ba10d9297f9a596a5cb')
-              // console.log('testOverviewPage element result: ' + testOverviewPage)
-              // console.log('overviewPage element result: ' + overviewPage)
-              if (overviewPage) { $('.image-block-wrapper').matchHeight();
-                  console.log('equalise baby');
+              if (overviewPage) { 
+                  $('.image-block-wrapper').matchHeight();
+                  console.log('equalising');
               }
           }
 
@@ -204,7 +203,9 @@
               3. gathers the alt tags for all gallery images into a list - these are then used as captions by the insertCaption function
               4. triggers the above insert caption function
               5. adds fade class to image borders
-              5. prevents clicking on the last image in the carousel as this causes the length of a trimmed wrapper to go crazy
+              6. prevents clicking on the last image in the carousel as this causes the length of a trimmed wrapper to go crazy
+              7. probably does other stuff too
+
                */
 
               console.log("trim div initialised");
@@ -235,8 +236,7 @@
                           // add the widths to a running total
                           widthTotal += imgWidth;
                           testWidth += imgWidth;
-                          // console.log(imgs[i].clientWidth);
-                          // console.log("total: " + widthTotal);
+                          
                           widthTotal += 12; // gap between images
 
                           // add captions to list
@@ -256,15 +256,11 @@
 
                       }
 
-                      //console.log("innerWidth: " + window.innerWidth)
-
                       // set max width of element to the sum of its images within it (plus margins, etc)
                       var elem = document.getElementsByClassName("sqs-wrapper")[0];
 
                       console.log("setting new maxWidth: " + widthTotal + "px")
                       elem.style.maxWidth = "" + widthTotal + "px";
-
-          //                console.log(nextLeftArray)
 
                       var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
 
@@ -287,7 +283,6 @@
                           viewport = window.innerWidth;
                           if (elemRight < viewport) {
                               console.log('image is fully visible')
-                              // console.log('nudging...')
                               nudgeBannerAlong(el.clientWidth/20);
                               // nudgeBannerAlong(25);
                               // console.log('...nudged')
@@ -296,13 +291,12 @@
                       }
 
                       function nudgeBannerAlong(pixels) {
-                          // if (viewport >= 1025 && viewport <= 1205) {
+                        /** shifts the scroll left position by the number of pixels*/
                           console.log('requesting nudgeBanner along');
                           if (window.innerWidth > 1024) {
                               console.log('nudgeBannerAlong: ' + pixels)
                               galleryStrip.scrollLeft = pixels;
                           }
-                          // }
 
                       }
 
