@@ -2,12 +2,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
 
       <script>
-      console.log("script started");
+      // console.log("script started");
           window.addEventListener('load', function() {
 
           // window.onload = function() {
 
-          console.log("start onload function");
+          // console.log("start onload function");
 
               trimDiv();  // potentially debounce trimDiv  runObserver();
               runObserver()
@@ -18,7 +18,7 @@
                 runObserver();
               };
           //window.addEventListener('resize', trimDiv);  // consider change for onresize
-          console.log("finish onload function");
+          // console.log("finish onload function");
 
           });
 
@@ -147,7 +147,7 @@
 
               function internalInsertCaption(nextLeftArray, captionNames) {
 
-                  console.log('insertCaption running')
+                  // console.log('insertCaption running')
                   captionArray = captionNames // list of captions
                   nextLeftArray.unshift(0) // insert a zero to be the first position
                   nextLeftArray.pop(); // and remove the last value because this is the distance to the end of the last image
@@ -161,7 +161,7 @@
                   var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];  // wrapper
                   oldCaptions = document.querySelectorAll("div.sqs-wrapper div"); // captions to be removed
 
-                  console.log("old captions: " + oldCaptions.length)
+                  // console.log("old captions: " + oldCaptions.length)
                   oldCaptions.forEach(function(item, index) {
                   sqsWrapperOld.removeChild(oldCaptions[index]);
                   });
@@ -221,7 +221,7 @@
 
                   // check images are loaded before continuing
                   if (imgs.length > 0) {
-                    console.log("images are present");
+                    // console.log("images are present");
 
                     var nextLeftArray = []  // list of image widths
                       var captionNames = []  // list of caption names
@@ -245,11 +245,10 @@
 
                           // add widths to list
                           nextLeftArray.push(widthTotal-34) // add to array but compensate for page margin
+
                           // console.log("with margin total: " + widthTotal);
-
-                          console.log('testWidth is: ' + testWidth)
-
-                          console.log('calculating img.clientWidth and adding widthTotal')
+                          // console.log('testWidth is: ' + testWidth)
+                          // console.log('calculating img.clientWidth and adding widthTotal')
 
                           // adds fade class used by the CSS for border transition animation
                           imgs[i].classList.add("border-fade");
@@ -266,25 +265,24 @@
 
                       // identify the last image in the carousel clicked and add identifying class
                       var lastImage = imgs[imgs.length - 1];  // find last image
-                      var secondLastImage = imgs[imgs.length - 2];
+                      // var secondLastImage = imgs[imgs.length - 2];  // not used
                       var resetFlag = false;
                       var sqsListenerRemoved = false
 
                       if (portraitPage) {
-                          console.log('adding listener')
+                          // console.log('adding listener')
                           // secondLastImage.addEventListener("click", resetBanner, true );
                           lastImage.addEventListener("click", resetBanner, true );
                       }
 
                       function imageVisible(el) {
-                        console.log("image visible function...");
+                        // console.log("image visible function...");
                           var rect = el.getBoundingClientRect();
                           var elemRight = rect.right
                           viewport = window.innerWidth;
                           if (elemRight < viewport) {
                               console.log('image is fully visible')
                               nudgeBannerAlong(el.clientWidth/20);
-                              // nudgeBannerAlong(25);
                               // console.log('...nudged')
                               return true;
                           }
@@ -296,14 +294,14 @@
                           if (window.innerWidth > 1024) {
                               console.log('nudgeBannerAlong: ' + pixels)
                               //galleryStrip.scrollLeft = pixels;
-                              $(galleryStrip).animate( { scrollLeft: pixels });
+                              $(galleryStrip).animate( { scrollLeft: pixels }, 'fast');
                           }
 
                       }
 
 
                       function bannerScrollObserver() {
-                        /** uses imageVisible function to update the DOM for a banner reset - removes existing listener or  if relevant  */
+                        /** uses imageVisible function to update the DOM for a banner reset - removes existing listener if relevant  */
                           console.log('initialise bannerScrollObserver')
                           var wrapper = document.getElementsByClassName('sqs-wrapper')[0];
                           scrollDelay = 50
@@ -312,21 +310,21 @@
                           var debounce = false
 
                           var bannerScrollObserver = new MutationObserver(function(mutation) {
-                              console.log('bannerscroll actions kick in')
+                              // console.log('bannerscroll actions kick in')
                               clearTimeout(debounce)
                               debounce = setTimeout( function() {
-                                  console.log('finished scroll')
+                                  // console.log('finished scroll')
                                   
                                   if (imageVisible(lastImage) && !sqsListenerRemoved) {
-                                      console.log('image visible, listener present - listener removed')
+                                      // console.log('image visible, listener present - listener removed')
                                       resetFlag = true;  // set flag to true - reset banner on next click
                                       Y.detach("click", "undefined", lastImage);  // detatch listener on last image (and second to last) - can this go in the click handler?
                                       sqsListenerRemoved = true
                                   } else if (imageVisible(lastImage) && sqsListenerRemoved) {
-                                      console.log('image visible, listener already removed - flag set to true')
+                                      // console.log('image visible, listener already removed - flag set to true')
                                       resetFlag = true
                                   } else {
-                                      console.log('else - flag set to false')
+                                      // console.log('else - flag set to false')
                                       resetFlag = false;
                                   }
 
@@ -340,16 +338,16 @@
 
                       if (portraitPage) {
                         if (window.innerWidth > 1024) {
-                          console.log('over 1024px on portrait - run bannerScrollObserver')
+                          // console.log('over 1024px on portrait - run bannerScrollObserver')
                           bannerScrollObserver()
                         }
                       }
 
                       function resetBanner(ev) {
-                          console.log('resestBanner function')
-                          console.log('resetFlag is: ' + resetFlag)
+                          // console.log('resestBanner function')
+                          // console.log('resetFlag is: ' + resetFlag)
                           if (resetFlag) {
-                              console.log('resetBanner true: reset banner: ' + resetFlag)
+                              // console.log('reset banner: ' + resetFlag)
                               //elem.style.left = 0;  // reset banner / gallery position to the beginning 
                               $(elem).animate( { left: '0' });
                               nudgeBannerAlong(0)  // sometimes on rest the first caption is partially obscured - this helps 
@@ -372,17 +370,15 @@
                               }
 
                           } else {
-                              console.log('resetBanner false: do nothing: ' + resetFlag)
+                              null;
+                              //console.log('resetBanner false: do nothing: ' + resetFlag)
                           }
                       }
 
 
-                      console.log('resetFlag 0: ' + resetFlag)
-
+                      // console.log('resetFlag 0: ' + resetFlag)
 
                       var visibleFlag = false
-
-
 
                       function imageNudgeObserver(nudgePixels) {
                           console.log("waiting to nudge if required");
@@ -419,30 +415,23 @@
                               }
                           })
 
-                      console.log('last image: ' + typeof lastImage)
-                      //debugger;
+                      // console.log('last image: ' + typeof lastImage)
 
                       imgObserver.observe(lastImage, { attributes: true, subtree: false, attributeFilter: ['class'] } )
 
                       }
-
 
                       /** functions to run depending upon portrait page status */
 
                       // if portrait page - run these functions
                       if (portraitPage) {
                           insertCaption(nextLeftArray, captionNames)  // insert the captions on the portrait page
-                          console.log('running portrait mode')
-                          // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
-                          // console.log("setting scroll to zero after captions");
-                          // galleryStrip.scrollLeft = 0
-
-                         // imageNudgeObserver(80) // nudge on portrait
+                          // console.log('running portrait mode')
                       }
 
                       // if not portrait page (and now, not mobile) - run these functions
                       if (!portraitPage && (window.innerWidth > 1024)) {
-                          console.log('running not portrait mode')
+                          // console.log('running not portrait mode')
                           imageNudgeObserver(100) // nudge if not on the portrait page  
                       }
                   }
@@ -460,8 +449,7 @@
               This functions is responsible for firing trimDiv and updateBannerScroll each time a new page is opened
               */
 
-              console.log("start function runObserver");
-
+              // console.log("start function runObserver");
               var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
               var element = document.querySelector('#content'); // ouer wrapper used
@@ -469,8 +457,8 @@
               var actions = false // placeholder value for action in the MutationObserver
 
               var observer = new MutationObserver(function(mutations) {
-                  console.log("start new observer");
-                  console.log("mutations length :" + mutations.length);
+                  // console.log("start new observer");
+                  // console.log("mutations length :" + mutations.length);
 
                   // debouncing - ensures functions aren't called unnecessarily. These functions execute when another mutation isn't triggered within  the delay (ms)
                   var delay = 400
@@ -496,5 +484,5 @@
 
           }
 
-          console.log("script finished");
+          // console.log("script finished");
       </script>
