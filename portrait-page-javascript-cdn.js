@@ -8,16 +8,24 @@
           // console.log("start onload function");
 
               trimDiv();  // potentially debounce trimDiv  runObserver();
-              runObserver()
+              runObserver();
               equalizeHeight();
+              updateCopyright();
               window.onresize = function() {
                 trimDiv();
                 runObserver();
               };
               
           // console.log("finish onload function");
-
           });
+
+          function updateCopyright(){
+              var year = new Date().getFullYear();
+              var copyText = "Copyright \u00A9 Katie Hyams " + year;
+              $('footer p').text(copyText);
+          }
+
+
 
           function equalizeHeight() {
               /** for use on the Overview page. Function equalizes the height of the images next to each other. Use jquery plugin: matchHeight
@@ -433,7 +441,7 @@
               This function uses a mutation observer to detect changes in the data-image-resolution attribute on the banner.
               There are only a few DOM elements
               that fire on each page.
-              This functions is responsible for firing trimDiv and updateBannerScroll each time a new page is opened
+              This function is responsible for firing trimDiv, updateBannerScroll, equalize height and updateCopyright each time a new page is opened
               */
 
               // console.log("start function runObserver");
@@ -457,6 +465,7 @@
                               trimDiv();
                               updateBannerScroll();
                               equalizeHeight();
+                              updateCopyright();
                               }, delay);
 
 
