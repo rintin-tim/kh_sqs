@@ -73,17 +73,13 @@
                   var stored = scrollPosition
                   var current = element.scrollLeft
 
-                  // TODO if scrollLeft doesn't go back (or only goes back breifly) it's because of momentum, in this instance don't change the scollLeft again
                   if (((stored  - current) > tolerance ) && (current < tolerance)) {
                       console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
                       console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
                       console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
 
-                      // scrollLeft1 = False
-                      // scrollLeft2 = False
-                      // scrollLeft3 = False
-
                       setTimeout( function() {
+                         /** wait 3 milliseconds for a change befre executing */
                         updatedScroll = element.scrollLeft
                         console.log('old updated scroll (aka current) is '+ current +'new updated scroll is: ' + updatedScroll)
                         if ((current == updatedScroll) && !cancelReset) {
@@ -137,7 +133,6 @@
               Each caption is inserted in the document from the left margin according to the next corresponding LeftArray value. The distances
               are calculated by the trimDiv function  */
 
-              // debouncer
 
               captionAction = false;
 
@@ -162,7 +157,6 @@
                       item = item + (extra * index)
                   });  // add extra pixels to each item in the list to accomodate the gap between images
 
-                  // console.log(nextLeftArray)
 
                   // images are inserted multiple times per page load - remove old captions before re-inserting each time.
                   var sqsWrapperOld = document.getElementsByClassName("sqs-wrapper")[0];  // wrapper
@@ -190,7 +184,7 @@
                       newDiv.appendChild(content); // add text to new div
                       sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
-                  // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it  TODO is this needed? should it be elsewhere - fires multiple times here
+                  // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
                   // console.log("setting scroll to zero after captions");
                   // var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
                   // // nudgeBannerAlong(0)
@@ -363,9 +357,9 @@
                           console.log('resetFlag is: ' + resetFlag)
                           if (resetFlag) {
                               console.log('resetBanner true: reset banner: ' + resetFlag)
-                              nudgeBannerAlong(0)  // CHECK IF NEEDED
-                              elem.style.left = 0;
-                              //galleryStrip.scrollLeft = 0; // TODO check if needed
+                              //elem.style.left = 0;  // reset banner / gallery position to the beginning 
+                              $(elem).animate( { left: '0' });
+                              nudgeBannerAlong(0)  // sometimes on rest the first caption is partially obscured - this helps 
                           } else if ((sqsListenerRemoved) && (ev.target == lastImage)) {
                               var imageRight = lastImage.getBoundingClientRect().right;
                               scrollAmount = imageRight - window.innerWidth;
@@ -374,9 +368,7 @@
                                   elemLeftInt = parseFloat(elem.style.left);
                                   // elemLeftInt = parseInt(elem.style.left, 10);  // 10 needed for parseInt but not parseFloat
                                   extraMargin = 50  // to try and make sure the last image is visible
-                                  //debugger;  see why it doesn't work second time around
                                   updatedElemLeftInt = elemLeftInt - (scrollAmount + extraMargin)
-                                  // updatedElemLeftInt = elemLeftInt - scrollAmount
                                   console.log('manual resetBanner')
                                   elem.style.left = updatedElemLeftInt.toString() + 'px';
                                   console.log('elem.style.left: ' + elem.style.left)
@@ -418,7 +410,7 @@
 
                           var imgObserver = new MutationObserver(function(mutation) {
                           console.log('running imageNudgeObserver')
-                          // TODO add to on-click listener?
+                        
                           if (lastImage.classList.contains('sqs-active-slide')) {
                               console.log('adding nudge to current scrollLeft of: ' + galleryStrip.scrollLeft)
                               /** debouncer for observer */
@@ -429,7 +421,6 @@
                                  console.log('debounce cleared. scrollLeft is now ' + galleryStrip.scrollLeft)
                              }, 50)
 
-                             // TODO to many resets? should this be else if?
                               } else {
                                   console.log('resetting scrollLeft to 0')
                                  galleryStrip.scrollLeft = 0
@@ -483,17 +474,11 @@
 
               var element = document.querySelector('#content'); // ouer wrapper used
 
-              // var observerCount = 0  // TBC counts number of times mutation obeserver has run
-              // var myTimestamp = 0
-
               var actions = false // placeholder value for action in the MutationObserver
 
               var observer = new MutationObserver(function(mutations) {
                   console.log("start new observer");
                   console.log("mutations length :" + mutations.length);
-
-                  // trimDiv();
-                  // updateBannerScroll();
 
                   // debouncing - ensures functions aren't called unnecessarily. These functions execute when another mutation isn't triggered within  the delay (ms)
                   var delay = 400
