@@ -244,7 +244,7 @@ div.logo-image {
         margin-top: 15vh;
     }
 
-    /* Mobile nav - Home and Overview, Work and About */
+    /* Mobile nav appearance - Home and Overview, Work and About */
     nav>div.collection>a,
     .folder label {
         /*font-family:  verdana;*/
@@ -748,6 +748,71 @@ img.sqs-gallery-design-strip-slide {
 
 
 /* OVERVIEW page*/
+
+/* copied from squarespace's site.css - copied layout rules from 640px+ so that they apply to 567px+. Devices above 567px no longer stack the overview images 1 per row in landscape.
+This includes iphone 5s and Galaxy S7 */
+
+@media only screen and (min-width: 567px) and (max-width: 640px) {
+     .sqs-layout [class*=sqs-col] {
+         float:left !important;
+    }
+     .sqs-layout .sqs-col-12 {
+         width: 100% !important 
+    }
+     .sqs-layout .sqs-col-11 {
+         width: 91.6667% !important 
+    }
+     .sqs-layout .sqs-col-10 {
+         width: 83.3333% !important 
+    }
+     .sqs-layout .sqs-col-9 {
+         width: 75% !important 
+    }
+     .sqs-layout .sqs-col-8 {
+         width: 66.6667% !important 
+    }
+     .sqs-layout .sqs-col-7 {
+         width: 58.3333% !important 
+    }
+     .sqs-layout .sqs-col-6 {
+         width: 50% !important 
+    }
+     .sqs-layout .sqs-col-5 {
+         width: 41.6667% !important 
+    }
+     .sqs-layout .sqs-col-4 {
+         width: 33.3333% !important 
+    }
+     .sqs-layout .sqs-col-3 {
+         width: 25% !important 
+    }
+     .sqs-layout .sqs-col-2 {
+         width: 16.6667% !important 
+    }
+     .sqs-layout .sqs-col-1 {
+         width: 8.3333% !important 
+    }
+     .sqs-layout .spacer-block {
+         display: none !important 
+    }
+     .sqs-layout .sqs-row .sqs-block:first-child {
+         padding-top: 8px !important 
+    }
+     .sqs-layout .sqs-row .sqs-block:last-child {
+         padding-bottom: 8px !important;
+    }
+     .sqs-layout .sqs-row+.sqs-row,.sqs-layout .sqs-row+.sqs-block {
+         margin-top: 0px !important 
+    }
+     .sqs-gallery-design-grid-slide {
+         width: 50% !important;
+         clear: none !important 
+    }
+}
+
+
+
+
 /*footer has a position of relative because fixed position would overlap content */
 /*footer - selecting footer block and footer content */
     #collection-5a526ba10d9297f9a596a5cb #footer,
