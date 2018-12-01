@@ -2,22 +2,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
 
       <script>
-      // console.log("script started");
-          window.addEventListener('load', function() {
 
-          // window.onload = function() {
+          window.addEventListener('load', function() {
 
           // console.log("start onload function");
 
               trimDiv();  // potentially debounce trimDiv  runObserver();
               runObserver()
               equalizeHeight();
-              // $( document ).ready( function() { equalizeHeight(); });
               window.onresize = function() {
                 trimDiv();
                 runObserver();
               };
-          //window.addEventListener('resize', trimDiv);  // consider change for onresize
+              
           // console.log("finish onload function");
 
           });
@@ -30,7 +27,7 @@
               var overviewPage = document.getElementById('collection-5a526ba10d9297f9a596a5cb')
               if (overviewPage) { 
                   $('.image-block-wrapper').matchHeight();
-                  console.log('equalising');
+                  // console.log('equalising');
               }
           }
 
@@ -57,7 +54,7 @@
 
               if (galleryStrip && (viewportWidth < 1025) ) {
                   /** listen for any scroll event and run function. but only on mobile. */
-                  console.log('screen is smaller than 1025')
+                  // console.log('screen is smaller than 1025')
                   galleryStrip.onscroll = function() { scrollLog(galleryStrip); };
               }
 
@@ -65,27 +62,26 @@
 
                   /** if there's a large jump, restore the previous scrollPosition, otherwise update the scroll position */
 
-                  console.log('start scrollLog function')
                   element = galleryStrip
-                  console.log('current scrollPosition is: ' + scrollPosition)
-                  console.log('current scrollLeft is: ' + element.scrollLeft)
+                  // console.log('current scrollPosition is: ' + scrollPosition)
+                  // console.log('current scrollLeft is: ' + element.scrollLeft)
                   var stored = scrollPosition
                   var current = element.scrollLeft
 
                   if (((stored  - current) > tolerance ) && (current < tolerance)) {
-                      console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
-                      console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
+                      // console.log(' stored: ' + stored + ' current: ' + current + ' stored - current = ' + (stored - current))
+                      // console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
                       console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
 
                       setTimeout( function() {
                          /** wait 3 milliseconds for a change befre executing */
                         updatedScroll = element.scrollLeft
-                        console.log('old updated scroll (aka current) is '+ current +'new updated scroll is: ' + updatedScroll)
+                        // console.log('old updated scroll (aka current) is '+ current +'new updated scroll is: ' + updatedScroll)
                         if ((current == updatedScroll) && !cancelReset) {
                           console.log('resetting to scrollPosition: ' + scrollPosition)
                           element.scrollLeft = scrollPosition;
                         } else {
-                          console.log('skipping over')
+                          // console.log('skipping over')
                           cancelReset = true
                           scrollPosition = current;
                         }
@@ -94,17 +90,17 @@
 
                   } else if (((stored  - current) > tolerance ) && (current > tolerance)) {
                       // try resetting as per normal
-                      console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
-                      console.log('not to the beginning but large jump. current scrollPosition: ' + scrollPosition)
+                      // console.log(' stored: ' + stored + ' current: ' + current + ' stored - current = ' + (stored - current))
+                      // console.log('not to the beginning but large jump. current scrollPosition: ' + scrollPosition)
 
                       setTimeout( function() {
                         updatedScroll = element.scrollLeft
-                        console.log('old updated scroll (aka current) is '+ current +'new updated scroll is: ' + updatedScroll)
+                        // console.log('old updated scroll (aka current) is '+ current +'new updated scroll is: ' + updatedScroll)
                         if ((current == updatedScroll) && !cancelReset) {
-                          console.log('resetting to scrollPosition: ' + scrollPosition)
+                          // console.log('resetting to scrollPosition: ' + scrollPosition)
                           element.scrollLeft = scrollPosition;
                         } else {
-                          console.log('skipping over')
+                          // console.log('skipping over')
                           cancelReset = true
                           scrollPosition = current;
                         }
@@ -113,10 +109,10 @@
 
                   }
                   else {
-                      console.log('in the else')
-                      console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
-                      console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
-                      console.log('within tolerance. scrollPosition updated to: ' + current)
+                      // console.log('in the else')
+                      // console.log(' stored: ' + stored + ' current: ' + current + ' stored - current = ' + (stored - current))
+                      // console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
+                      // console.log('within tolerance. scrollPosition updated to: ' + current)
                       scrollPosition = current;
                       cancelReset = false
 
@@ -183,12 +179,6 @@
                       newDiv.appendChild(content); // add text to new div
                       sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
-                  // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
-                  // console.log("setting scroll to zero after captions");
-                  // var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
-                  // // nudgeBannerAlong(0)
-                  // galleryStrip.scrollLeft = 0
-
                   });
               }
           }
@@ -208,14 +198,14 @@
 
                */
 
-              console.log("trim div initialised");
+              // console.log("trim div initialised");
               var homePage = document.getElementById("collection-5ac681c4aa4a99b176337f89")
               var portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")
               
 
               // skip function if on the homepage
               if (!homePage) {
-                  console.log("trim div running");
+                  // console.log("trim div running");
 
                   var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide");  // images within overflow element
 
@@ -271,7 +261,7 @@
 
                       if (portraitPage) {
                           // console.log('adding listener')
-                          // secondLastImage.addEventListener("click", resetBanner, true );
+                          // secondLastImage.addEventListener("click", resetBanner, true );  // not used
                           lastImage.addEventListener("click", resetBanner, true );
                       }
 
@@ -290,9 +280,8 @@
 
                       function nudgeBannerAlong(pixels) {
                         /** shifts the scroll left position by the number of pixels*/
-                          console.log('requesting nudgeBanner along');
                           if (window.innerWidth > 1024) {
-                              console.log('nudgeBannerAlong: ' + pixels)
+                              // console.log('nudgeBannerAlong: ' + pixels)
                               //galleryStrip.scrollLeft = pixels;
                               $(galleryStrip).animate( { scrollLeft: pixels }, 'fast');
                           }
@@ -302,7 +291,7 @@
 
                       function bannerScrollObserver() {
                         /** uses imageVisible function to update the DOM for a banner reset - removes existing listener if relevant  */
-                          console.log('initialise bannerScrollObserver')
+                          // console.log('initialise bannerScrollObserver')
                           var wrapper = document.getElementsByClassName('sqs-wrapper')[0];
                           scrollDelay = 50
                           /** detects when the banner has finished scrolling  */
@@ -348,7 +337,6 @@
                           // console.log('resetFlag is: ' + resetFlag)
                           if (resetFlag) {
                               // console.log('reset banner: ' + resetFlag)
-                              //elem.style.left = 0;  // reset banner / gallery position to the beginning 
                               $(elem).animate( { left: '0' });
                               nudgeBannerAlong(0)  // sometimes on rest the first caption is partially obscured - this helps 
                           } else if ((sqsListenerRemoved) && (ev.target == lastImage)) {
@@ -381,10 +369,12 @@
                       var visibleFlag = false
 
                       function imageNudgeObserver(nudgePixels) {
-                          console.log("waiting to nudge if required");
+                          // console.log("waiting to nudge if required");
+                          
                           /** when the last image is active, nudge to the right to ensure it's fully visible using scrollLeft
                           when the last image is not active, remove the nudge  */
-                          console.log("last image width is: " + lastImage.clientWidth)
+                          
+                          // console.log("last image width is: " + lastImage.clientWidth)
                           // adjust the size of the nudge based on whether image is landscape or portrait
                           if (lastImage.clientWidth < lastImage.clientHeight) {
                             var nudge = lastImage.clientWidth/2.5  // in pixels
@@ -392,31 +382,28 @@
                             var nudge = nudgePixels  // in pixels
                           }
 
-                          // var nudge = lastImage.clientWidth/3
-
-                          var dbTimeout = false
+                          var dbTimeout = false  // debounce timeout
 
                           var imgObserver = new MutationObserver(function(mutation) {
-                          console.log('running imageNudgeObserver')
+                          // console.log('running imageNudgeObserver')
                         
                           if (lastImage.classList.contains('sqs-active-slide')) {
-                              console.log('adding nudge to current scrollLeft of: ' + galleryStrip.scrollLeft)
+                              // console.log('adding nudge to current scrollLeft of: ' + galleryStrip.scrollLeft)
                               /** debouncer for observer */
-                              console.log('hang on for debounce...')
+                              // console.log('hang on for debounce...')
                              clearTimeout(dbTimeout)
                              dbTimeout = setTimeout(function() {
                                  galleryStrip.scrollLeft = nudge;
-                                 console.log('debounce cleared. scrollLeft is now ' + galleryStrip.scrollLeft)
+                                 // console.log('debounce cleared. scrollLeft is now ' + galleryStrip.scrollLeft)
                              }, 50)
 
                               } else {
-                                  console.log('resetting scrollLeft to 0')
+                                  // console.log('resetting scrollLeft to 0')
                                  galleryStrip.scrollLeft = 0
                               }
                           })
 
                       // console.log('last image: ' + typeof lastImage)
-
                       imgObserver.observe(lastImage, { attributes: true, subtree: false, attributeFilter: ['class'] } )
 
                       }
@@ -431,7 +418,7 @@
 
                       // if not portrait page (and now, not mobile) - run these functions
                       if (!portraitPage && (window.innerWidth > 1024)) {
-                          // console.log('running not portrait mode')
+                          // console.log('running not-portrait mode')
                           imageNudgeObserver(100) // nudge if not on the portrait page  
                       }
                   }
@@ -466,7 +453,7 @@
                   clearTimeout(actions)
 
                   actions = setTimeout(function() {
-                              console.log('ok doing something now')
+                              // console.log('ok doing something now')
                               trimDiv();
                               updateBannerScroll();
                               equalizeHeight();
@@ -484,5 +471,4 @@
 
           }
 
-          // console.log("script finished");
       </script>
