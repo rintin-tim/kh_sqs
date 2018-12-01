@@ -207,14 +207,14 @@
               5. prevents clicking on the last image in the carousel as this causes the length of a trimmed wrapper to go crazy
                */
 
-              console.log("trim div kicked in");
+              console.log("trim div initialised");
               var homePage = document.getElementById("collection-5ac681c4aa4a99b176337f89")
               var portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")
-              // TODO make a new "galleyPage" variable - which returns true if the gallery element is found on the page. use this instrad of 'homepage' to determine whether to run the below
-              // TODO add viewportWidth to trimdiv here so that it can be used by imageVisible and nudgeBannerAlong (if jumpy scroll is fixed)
+              
 
               // skip function if on the homepage
               if (!homePage) {
+                  console.log("trim div running");
 
                   var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide");  // images within overflow element
 
@@ -315,14 +315,13 @@
                           /** detects when the banner has finished scrolling  */
 
                           var debounce = false
-                          // TODO does this debounce really work?
 
                           var bannerScrollObserver = new MutationObserver(function(mutation) {
                               console.log('bannerscroll actions kick in')
                               clearTimeout(debounce)
                               debounce = setTimeout( function() {
                                   console.log('finished scroll')
-                                  // debugger;
+                                  
                                   if (imageVisible(lastImage) && !sqsListenerRemoved) {
                                       console.log('image visible, listener present - listener removed')
                                       resetFlag = true;  // set flag to true - reset banner on next click
@@ -343,7 +342,6 @@
                       bannerScrollObserver.observe(wrapper, { attributes: true, subtree: false, attributeFilter: ['style'] } )
                       }
 
-                      // test - run banner scroll only if on portrait page???
 
                       if (portraitPage) {
                         if (window.innerWidth > 1024) {
@@ -365,8 +363,7 @@
                               scrollAmount = imageRight - window.innerWidth;
                               if (scrollAmount > 0) {
                                   console.log('remove from the scroll: ' + scrollAmount)
-                                  elemLeftInt = parseFloat(elem.style.left);
-                                  // elemLeftInt = parseInt(elem.style.left, 10);  // 10 needed for parseInt but not parseFloat
+                                  elemLeftInt = parseFloat(elem.style.left);  // convert css value to number
                                   extraMargin = 50  // to try and make sure the last image is visible
                                   updatedElemLeftInt = elemLeftInt - (scrollAmount + extraMargin)
                                   console.log('manual resetBanner')
@@ -451,12 +448,12 @@
                       // if not portrait page (and now, not mobile) - run these functions
                       if (!portraitPage && (window.innerWidth > 1024)) {
                           console.log('running not portrait mode')
-                          imageNudgeObserver(100) // nudge if not on the portrait page  TODO make this % of image width in imageNudgeObserver?
+                          imageNudgeObserver(100) // nudge if not on the portrait page  
                       }
                   }
               } else {
-                  console.log('cancel out - on the homepage');  // else clause can be removed
-                  }
+                  null;
+              }
           };
 
 
