@@ -131,7 +131,7 @@
 
               captionAction = false;
 
-              console.log('insertCaption fired')
+              // console.log('insertCaption fired')
               delay = 250
 
               clearTimeout(captionAction)
@@ -271,7 +271,7 @@
                           var elemRight = rect.right
                           viewport = window.innerWidth;
                           if (elemRight < viewport) {
-                              console.log('image is fully visible')
+                              // console.log('image is fully visible')
                               nudgeBannerAlong(el.clientWidth/20);
                               // console.log('...nudged')
                               return true;
@@ -283,7 +283,7 @@
                           if (window.innerWidth > 1024) {
                               // console.log('nudgeBannerAlong: ' + pixels)
                               //galleryStrip.scrollLeft = pixels;
-                              $(galleryStrip).animate( { scrollLeft: pixels }, 'fast');
+                              $(galleryStrip).animate( { scrollLeft: pixels }, 100);
                           }
 
                       }
