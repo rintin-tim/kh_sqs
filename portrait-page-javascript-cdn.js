@@ -295,7 +295,8 @@
                           console.log('requesting nudgeBanner along');
                           if (window.innerWidth > 1024) {
                               console.log('nudgeBannerAlong: ' + pixels)
-                              galleryStrip.scrollLeft = pixels;
+                              //galleryStrip.scrollLeft = pixels;
+                              $(galleryStrip).animate( { scrollLeft: pixels });
                           }
 
                       }
