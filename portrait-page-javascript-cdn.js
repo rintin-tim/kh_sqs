@@ -73,42 +73,6 @@
                   var stored = scrollPosition
                   var current = element.scrollLeft
 
-                  // if (((stored  - current) > tolerance ) && (current < tolerance)) {
-                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
-                  //     console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
-                  //     console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
-                  //     element.scrollLeft = scrollPosition;
-                  // } else {
-                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
-                  //     console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
-                  //     console.log('within tolerance. scrollPosition updated to: ' + current)
-                  //     scrollPosition = current;
-                  // }
-
-                  // current < tolerance checks if the scrollLeft will take the user somewhere near the beginning of the gallery - origuinally these were the only resets of relevance
-                  // however there's also an Else If now that does the reset even if it's not going near the beignning
-
-                  // TODO if scrollLeft doesn't go back (or only goes back breifly) it's because of momentum, in this instance don't change the scollLeft again
-                  // if (((stored  - current) > tolerance ) && (current < tolerance)) {
-                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
-                  //     console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
-                  //     console.log('large jump. resetting scrollLeft to: ' + scrollPosition)
-                  //     element.scrollLeft = scrollPosition;
-                  // } else if (((stored  - current) > tolerance ) && (current > tolerance)) {
-                  //     // try resetting as per normal
-                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
-                  //     console.log('not to the beginning but large jump. resetting scrollLeft to: ' + scrollPosition)
-                  //     element.scrollLeft = scrollPosition;
-                  //     // try NOT resetting the scroll - and keeping the previous scroll position
-                  //     //	console.log('big jump but not to the beginning - doing nothing)
-                  // }
-                  // else {
-                  //     console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
-                  //     console.log(' part1: ' + ((stored  - current) > tolerance ) + ' part2: ' + (current < tolerance))
-                  //     console.log('within tolerance. scrollPosition updated to: ' + current)
-                  //     scrollPosition = current;
-                  // }
-
                   // TODO if scrollLeft doesn't go back (or only goes back breifly) it's because of momentum, in this instance don't change the scollLeft again
                   if (((stored  - current) > tolerance ) && (current < tolerance)) {
                       console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
@@ -133,26 +97,6 @@
 
                       }, 3 )
 
-                      // scrollLeft1 = element.scrollLeft
-                      // setTimeout( function() {
-                      //   scrollLeft2 = element.scrollLeft
-                      //   }, 2)
-
-                      // setTimeout( function() {
-                      //   scrollLeft3 = element.scrollLeft
-                      //   }, 4)
-                      
-                      // console.log('double check scrollLeft1 = ' + scrollLeft1 + 'scrollLeft2 = ' + scrollLeft2)
-
-                      // if (scrollLeft1 == scrollLeft2) {
-                      //     element.scrollLeft = scrollPosition;
-                      // } 
-
-                      // if (scrollLeft2 == scrollLeft3) {
-                      //   console.log('double check scrollLeft2 = ' + scrollLeft1 + 'scrollLeft3 = ' + scrollLeft2)
-                      //     element.scrollLeft = scrollPosition;
-                      // }
-                      // element.scrollLeft = scrollPosition;
                   } else if (((stored  - current) > tolerance ) && (current > tolerance)) {
                       // try resetting as per normal
                       console.log(' stored: ' + stored + ' current: ' + current + ' stored - current: ' + (stored - current))
@@ -172,29 +116,6 @@
 
                       }, 3 )
 
-                      // scrollLeft1 = False
-                      // scrollLeft2 = False
-                      // scrollLeft3 = False
-
-                      // scrollLeft1 = element.scrollLeft
-                      // setTimeout( function() {
-                      //   scrollLeft2 = element.scrollLeft
-                      //   }, 2)
-
-                      // setTimeout( function() {
-                      //   scrollLeft3 = element.scrollLeft
-                      //   }, 4)
-                      
-                      // console.log('double check scrollLeft1 = ' + scrollLeft1 + 'scrollLeft2 = ' + scrollLeft2)
-
-                      // if (scrollLeft1 == scrollLeft2) {
-                      //     element.scrollLeft = scrollPosition;
-                      // } 
-
-                      // if (scrollLeft2 == scrollLeft3) {
-                      //   console.log('double check scrollLeft2 = ' + scrollLeft1 + 'scrollLeft3 = ' + scrollLeft2)
-                      //     element.scrollLeft = scrollPosition;
-                      // }
                   }
                   else {
                       console.log('in the else')
