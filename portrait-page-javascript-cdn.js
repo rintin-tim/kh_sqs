@@ -10,9 +10,11 @@
         runObserver();
         equalizeHeight();
         updateCopyright();
+        ajaxObserver();
         window.onresize = function() {
             trimDiv();
             runObserver();
+            ajaxObserver();
         };
 
         // console.log("finish onload function");
@@ -490,6 +492,40 @@
             attributes: true,
             subtree: true,
             attributeFilter: ['data-image-resolution'] //listen for changes to this specific attribute only
+        });
+
+    }
+
+    function ajaxObserver() {
+        /**
+        Checks for changes in the 'data-ajax-loaded' attribute on the body of an element. It is used to trigger the footer. 
+        */
+
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+        var element = document.querySelector('body'); // main body used
+
+        var actions = false // placeholder value for action in the MutationObserver
+
+        var observer = new MutationObserver(function(mutations) {
+            
+            // debouncing - ensures functions aren't called unnecessarily. These functions execute when another mutation isn't triggered within  the delay (ms)
+            var delay = 100
+
+            clearTimeout(actions)
+
+            actions = setTimeout(function() {
+                updateCopyright();
+            }, delay);
+
+
+        });
+
+        // run observer with below parameters
+        observer.observe(element, {
+            attributes: true,
+            subtree: true,
+            attributeFilter: ['data-ajax-loader'] //listen for changes to this specific attribute only
         });
 
     }
