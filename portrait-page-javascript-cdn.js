@@ -97,7 +97,7 @@
                         scrollPosition = current;
                     }
 
-                }, 3)
+                }, 2)
 
             } else if (((stored - current) > tolerance) && (current > tolerance)) {
                 // try resetting as per normal
@@ -116,7 +116,7 @@
                         scrollPosition = current;
                     }
 
-                }, 3)
+                }, 2)
 
             } else {
                 // console.log('in the else')

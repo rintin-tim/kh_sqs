@@ -391,9 +391,9 @@ img.sqs-gallery-design-strip-slide {
 }
 
 /* possibly delete - don't think this does anything */
-#footer .text-align-center {
-    font-size: 12px;
-}
+/* #footer .text-align-center { */
+/*    font-size: 12px; */
+/* }  */
 
 /* stops the code block interferring with the page length and thus the footer position. TODO remove from redundant places! */
 #footer div.sqs-block.code-block.sqs-block-code {
