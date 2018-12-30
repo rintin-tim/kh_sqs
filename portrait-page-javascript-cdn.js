@@ -189,6 +189,12 @@
                 newDiv.appendChild(content); // add text to new div
                 sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
+            // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
+            // console.log("setting scroll to zero after captions");
+            // var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
+            // nudgeBannerAlong(0)
+            // galleryStrip.scrollLeft = 0
+
             });
         }
     }
