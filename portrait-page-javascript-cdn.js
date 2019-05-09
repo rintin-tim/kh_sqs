@@ -189,12 +189,6 @@
                 newDiv.appendChild(content); // add text to new div
                 sqsWrapper.appendChild(newDiv); // add new div to wrapper
 
-            // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
-            // console.log("setting scroll to zero after captions");
-            // var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0];
-            // nudgeBannerAlong(0)
-            // galleryStrip.scrollLeft = 0
-
             });
         }
     }
@@ -224,10 +218,12 @@
         if (!homePage) {
             // console.log("trim div running");
 
-            var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide"); // images within overflow element
+            //var imgs = document.getElementsByClassName("sqs-gallery-design-strip-slide"); // images within overflow element - legacy no longer selects just images
+            var imgs = document.querySelectorAll('img.sqs-gallery-design-strip-slide'); // images within overflow element- updated version
 
             // check images are loaded before continuing
             if (imgs.length > 0) {
+                //console.log("number of images: " + imgs.length)
                 // console.log("images are present");
 
                 var nextLeftArray = [] // list of image widths
@@ -364,7 +360,7 @@
                         $(elem).animate({
                             left: '0'
                         });
-                        nudgeBannerAlong(0) // sometimes on rest the first caption is partially obscured - this helps 
+                        nudgeBannerAlong(0) // sometimes on reset the first caption is partially obscured - this helps 
                     } else if ((sqsListenerRemoved) && (ev.target == lastImage)) {
                         var imageRight = lastImage.getBoundingClientRect().right;
                         scrollAmount = imageRight - window.innerWidth;
@@ -442,6 +438,7 @@
 
                 // if portrait page - run these functions
                 if (portraitPage) {
+                    //console.log(captionNames)  // used to debug null captions
                     insertCaption(nextLeftArray, captionNames) // insert the captions on the portrait page
                     // console.log('running portrait mode')
                 }
