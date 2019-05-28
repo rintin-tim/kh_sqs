@@ -6,7 +6,7 @@
 
         // console.log("start onload function");
 
-        trimDiv(); // potentially debounce trimDiv  runObserver();
+        //trimDiv(); // removed triDiv as it appeared to be running too early and causing images not to load, runObserver runs it anyway (!); 
         runObserver();
         equalizeHeight();
         updateCopyright();
@@ -188,6 +188,13 @@
                 newDiv.setAttributeNode(styleAttribute); // add style to new div
                 newDiv.appendChild(content); // add text to new div
                 sqsWrapper.appendChild(newDiv); // add new div to wrapper
+            
+            // sometimes the nudge is overzealous and kicks in on the initial page load - this corrects it
+            // console.log("setting scroll to zero after captions");
+            // var galleryStrip = document.getElementsByClassName("sqs-gallery-design-strip")[0]; - old version
+            //var imgs = document.querySelectorAll('img.sqs-gallery-design-strip-slide'); // images within overflow element- updated version
+            //nudgeBannerAlong(0)
+            //galleryStrip.scrollLeft = 0
 
             });
         }
