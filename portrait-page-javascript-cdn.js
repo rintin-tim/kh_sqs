@@ -2,23 +2,54 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
 
 <script>
+	
+	//$(window).on("load", initFunctions)
+	
+	//window.onload = initFunctions()
+
     window.addEventListener('load', function() {
 
         // console.log("start onload function");
-
         //trimDiv(); // removed triDiv as it appeared to be running too early and causing images not to load, runObserver runs it anyway (!); 
-        runObserver();
+        
+        // previous start
+        // runObserver();
+        // equalizeHeight();
+        // updateCopyright();
+        // ajaxObserver();
+        // window.onresize = function() {
+        //     trimDiv();
+        //     runObserver();
+        //     ajaxObserver();
+        // };
+        // previous end
+
+        initFunctions();
+        console.log("finish onload function");
+
+    });
+
+    function initFunctions() {
+    	window.savedUrl = location.href
+    	trimDiv();	
+    	runObserver();
         equalizeHeight();
         updateCopyright();
         ajaxObserver();
+        // window.onpopstate = () => setTimeout(initFunctions, 0);
+        // window.onpopstate = function() {
+        // 	console.log('popstate')
+        //     trimDiv();
+        //     runObserver();
+        //     ajaxObserver();
+        // };
         window.onresize = function() {
             trimDiv();
             runObserver();
             ajaxObserver();
         };
 
-        // console.log("finish onload function");
-    });
+    }
 
     function updateCopyright() {
         var year = new Date().getFullYear();
@@ -216,7 +247,7 @@
 
          */
 
-        // console.log("trim div initialised");
+        console.log("trim div initialised. readyState: " + document.readyState + "data-ajax-loader: " + document.getElementsByTagName('body')[0].getAttribute('data-ajax-loader'));
         var homePage = document.getElementById("collection-5ac681c4aa4a99b176337f89")
         var portraitPage = document.getElementById("collection-5a52a4c753450aea1728c820")
 
@@ -232,6 +263,8 @@
             if (imgs.length > 0) {
                 //console.log("number of images: " + imgs.length)
                 // console.log("images are present");
+
+                $(imgs[imgs.length-1]).on("load"), function(){console.log('last image loaded')}
 
                 var nextLeftArray = [] // list of image widths
                 var captionNames = [] // list of caption names
@@ -478,20 +511,37 @@
         var actions = false // placeholder value for action in the MutationObserver
 
         var observer = new MutationObserver(function(mutations) {
-            // console.log("start new observer");
+            console.log("start new observer");
             // console.log("mutations length :" + mutations.length);
 
+            console.log("refresh page check")
+            console.log(location.href)
+            console.log(window.savedUrl)
+            if (location.href != window.savedUrl) {	
+            	location.reload()
+            }
+
             // debouncing - ensures functions aren't called unnecessarily. These functions execute when another mutation isn't triggered within  the delay (ms)
-            var delay = 400
+            var delay = 700
 
             clearTimeout(actions)
 
             actions = setTimeout(function() {
-                // console.log('ok doing something now')
-                trimDiv();
+                console.log('runObsever - ok doing something now')
+                // todo - change for initFunctions || add window.onload || 
+                // window.onload = initFunctions();
+                // initFunctions();
+
+               // trimDiv();
+				trimDiv();
+                //runObserver();
+            	//ajaxObserver();
+
                 updateBannerScroll();
                 equalizeHeight();
                 updateCopyright();
+                
+
             }, delay);
 
 
@@ -525,6 +575,7 @@
             clearTimeout(actions)
 
             actions = setTimeout(function() {
+                trimDiv();
                 updateCopyright();
             }, delay);
 
